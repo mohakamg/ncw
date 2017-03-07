@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NaughtCollegeWorks</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <% if flash[:success] || flash[:alert] || flash[:notice] %>
+      <%= flash[:success] %><br>
+      <%= flash[:alert] %><br>
+      <%= flash[:notice] %><br>
+    <% end %>
+
+    <% if student_logged_in? %>
+      <%= link_to "LogOut", students_session_path(current_student), method: :delete %>
+    <% end %>
+
+    <%= yield %>
+  </body>
+</html>

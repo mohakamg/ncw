@@ -1,0 +1,24 @@
+<%= form_for @student do |f| %>
+
+  <% if @student.errors.any? %>
+    <h1><%= pluralize(@student.errors.count, "Errors") %> Prevented Your Anonymous Identity Creation </h1>
+      <% @student.errors.full_messages.each do |e| %>
+        <li><%= e %></li>
+      <% end %>
+  <% end %>
+
+  <%= f.label "Username" %>
+  <%= f.text_field :username %><br>
+
+  <%= f.label "Password" %>
+  <%= f.password_field :password %><br>
+
+  <%= f.label "Password Confirmation" %>
+  <%= f.password_field :password_confirmation %><br>
+
+  <%= f.label "Terms Of Acceptance" %>
+  <%= f.check_box :acceptance_of_terms %><br>
+
+  <%= f.submit "Sign Up!" %>
+
+<% end %>
