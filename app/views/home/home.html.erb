@@ -1,0 +1,84 @@
+<html>
+	<head>
+		<title>NaughtyCollegeWorks | Mohak Kant</title>
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
+		<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+	</head>
+
+	<body>
+		<section id="banner">
+			<div class="wrapper">
+				<div class="content">
+					<h1 class="title">We create Billionaires !</h1><br>
+					<h2 class="sub_title">"Tomorrow is my Exam, but I don't care because a single sheet of paper cannot decide my future." <br> - Thomas Edison</h2>
+					<div class="button_wrapper">
+
+						<button type="button" class="button button_highlight" data-toggle="modal" data-target="#login-modal">
+						  Login
+						</button>
+						<%= link_to "Sign Up", new_student_path, class: "button button_secondary" %>
+					</div>
+					<%= image_tag 'arrows_down', class:"see_more" %>
+				</div>
+			</div>
+		</section>
+
+		<section id="services" class="cf">
+			<div class="wrapper">
+				<div class="service">
+					<br><h3>Homework</h3><br>
+					<p>Lagging Back on Homework?<br> No Problem. Get it done :)</p>
+					<a href="#" class="button button_highlight button_small">Learn More</a><br><br>
+				</div>
+
+				<div class="service middle">
+					<br><h3>Teaching / Tutoring For Exam</h3><br>
+					<p>Think Your Professors suck? <br> Or have 8 am's <br> Hell Yeah! Learn with us...</p>
+					<a href="#" class="button button_highlight button_small">Learn More</a>
+				</div>
+
+				<div class="service"><br>
+					<h3>Learn Your Homework</h3><br>
+					<p>Dont't just want HW done?<br> Want to learn how to do it?<br> We are here ;)</p>
+					<a href="#" class="button button_highlight button_small">Learn More</a>
+				</div>
+			</div>
+		</section>
+
+		<section id="past_work">
+			<div class="wrapper">
+				<h2 class="title">Know More !</h2>
+
+			</div>
+		</section>
+
+		<section id="contact">
+			<div class="wrapper">
+				<h2 class="title">Get in touch</h2><br>
+				<p class="sub_title">Truffaut DIY keffiyeh, twee messenger bag venmo locavore organic master cleanse marfa gochujang selvage.</p>
+				<a href="#" class="button button_highlight button_large">Contact Us</a>
+			</div>
+		</section>
+		<!-- Button trigger modal -->
+
+
+	<!-- Modal -->
+	<div class="modal fade container" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Login</h4>
+	      </div>
+	      <div class="modal-body">
+	        <%= render 'students_sessions/login' %>
+	      </div>
+	      <div class="modal-footer">
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	</body>
+</html>

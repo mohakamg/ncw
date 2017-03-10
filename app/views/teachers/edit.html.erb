@@ -1,2 +1,76 @@
-<h1>Teachers#edit</h1>
-<p>Find me in app/views/teachers/edit.html.erb</p>
+<div class="container form-wrapper2">
+    <%= form_for @teacher do |f| %>
+
+    <% if @teacher.errors.any? %>
+      <h1><%= pluralize(@teacher.errors.count, "Errors") %> Prevented the Update </h1>
+        <% @teacher.errors.full_messages.each do |e| %>
+          <li><%= e %></li>
+        <% end %>
+    <% end %>
+
+        <div class="form-group">
+            <%= f.label "First Name" %><br>
+            <%= f.text_field :first_name, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+            <%= f.label "Last Name" %><br>
+            <%= f.text_field :last_name, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+            <%= f.label "Email" %><br>
+            <%= f.email_field :email, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+            <%= f.label "Phone" %><br>
+            <%= f.text_field :phone, class: "form-control" %>
+        </div>
+
+        <div id="form-group">
+            <%= f.label "Gender" %><br>
+            <%= f.select :gender, options_for_select(["Male", "Female", "Prefer Not To Say"]) %>
+        </div><br>
+
+        <div id="form-group">
+            <%= f.label "Country" %><br>
+            <%= f.select :country, options_for_select(["United States","Afghanistan","Albania","Algeria","Andorra","Angola","Anguilla","Antigua &amp; Barbuda","Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bermuda","Bhutan","Bolivia","Bosnia &amp; Herzegovina","Botswana","Brazil","British Virgin Islands","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Cape Verde","Cayman Islands","Chad","Chile","China","Colombia","Congo","Cook Islands","Costa Rica","Cote D Ivoire","Croatia","Cruise Ship","Cuba","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Estonia","Ethiopia","Falkland Islands","Faroe Islands","Fiji","Finland","France","French Polynesia","French West Indies","Gabon","Gambia","Georgia","Germany","Ghana","Gibraltar","Greece","Greenland","Grenada","Guam","Guatemala","Guernsey","Guinea","Guinea Bissau","Guyana","Haiti","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Isle of Man","Israel","Italy","Jamaica","Japan","Jersey","Jordan","Kazakhstan","Kenya","Kuwait","Kyrgyz Republic","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macau","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Mauritania","Mauritius","Mexico","Moldova","Monaco","Mongolia","Montenegro","Montserrat","Morocco","Mozambique","Namibia","Nepal","Netherlands","Netherlands Antilles","New Caledonia","New Zealand","Nicaragua","Niger","Nigeria","Norway","Oman","Pakistan","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Puerto Rico","Qatar","Reunion","Romania","Russia","Rwanda","Saint Pierre &amp; Miquelon","Samoa","San Marino","Satellite","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","South Africa","South Korea","Spain","Sri Lanka","St Kitts &amp; Nevis","St Lucia","St Vincent","St. Lucia","Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor L'Este","Togo","Tonga","Trinidad &amp; Tobago","Tunisia","Turkey","Turkmenistan","Turks &amp; Caicos","Uganda","Ukraine","United Arab Emirates","United Kingdom","Uruguay","Uzbekistan","Venezuela","Vietnam","Virgin Islands (US)","Yemen","Zambia","Zimbabwe" ]), class: "form-control" %>
+        </div><br>
+
+        <div class="form-group">
+            <%= f.label "Status" %><br>
+            <%= f.text_field :status, default: @teacher.status , class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+            <%= f.label "About" %><br>
+            <%= f.text_area :about, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+            <%= f.label "Why Me?" %><br>
+            <%= f.text_area :whyme, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+            <%= f.label "New Password (Leave Blank If Same)" %><br>
+            <%= f.password_field :password, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+            <%= f.label "New Password Confirmation (Leave Blank If Same)" %><br>
+            <%= f.password_field :password_confirmation, class: "form-control" %>
+        </div>
+
+        <hr>
+
+        <div class="form-group">
+            <%= f.label "Enter Old Password to Save" %><br>
+            <%= f.password_field :old_pass, class: "form-control" %>
+        </div>
+
+        <%= f.submit "Update", class: "btn btn-success form-control" %>
+    <% end %><br><br>
+
+</div>

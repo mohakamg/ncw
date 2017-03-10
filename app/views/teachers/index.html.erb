@@ -1,2 +1,10 @@
-<h1>Teachers#index</h1>
-<p>Find me in app/views/teachers/index.html.erb</p>
+<div class="container">
+    <h1 class="text-center"><u><bold>Our Teachers</bold></u></h1>
+
+    <% @teachers.each do |i| %>
+       <blockquote>
+          <p><bold><%= link_to (i.first_name + i.last_name).titleize, i %></bold></p>
+          <footer>Status: <cite title="Source Title"><%= i.status %></cite></footer>
+        </blockquote>
+    <% end %>
+</div>

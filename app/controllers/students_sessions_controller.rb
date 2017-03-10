@@ -1,7 +1,8 @@
 class StudentsSessionsController < ApplicationController
 
 
-  before_action :check_login
+  before_action :check_login, except: [:destroy]
+  before_action :check_teacher_login, except: [:destroy]
 
   def new
   end
@@ -37,9 +38,17 @@ class StudentsSessionsController < ApplicationController
   end
 
   private
+
   def check_login
     if student_logged_in?
       flash[:notice] = "You Are Already logged In!"
+      redirect_to root_path
+    end
+  end
+
+  def check_teacher_login
+    if teacher_logged_in?
+      flash[:alert] = "You ain't logged in as a student"
       redirect_to root_path
     end
   end

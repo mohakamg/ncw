@@ -1,0 +1,57 @@
+<div class="container form-wrapper">
+
+    <%= form_for [@student, @order] do |f| %>
+
+        <% if @order.errors.any? %>
+          <h1><%= pluralize(@order.errors.count, "Errors") %> Prevented Your Order Creation </h1>
+            <% @order.errors.full_messages.each do |e| %>
+              <li><%= e %></li>
+            <% end %>
+        <% end %>
+
+        <div class="form-group">
+            <%= f.label "Order" %><br>
+            <%= f.select :order_type, options_for_select(["Get Homework Done", "Live Video Tuition", "Homework with Explaination"]), class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+            <%= f.label "Subject" %><br>
+            <%= f.text_field :subject, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+            <%= f.label "Topic" %><br>
+            <%= f.text_field :topic, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+            <%= f.label "About The Homework" %><br>
+            <%= f.text_area :about_homework, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+            <%= f.label "Deadline (yy-mm-dd hh:mm)" %><br>
+            <%= f.datetime_field :deadline, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+            <%= f.label "Link to HW, if any?" %><br>
+            <%= f.text_field :website, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+            <%= f.label "Credentials to Login to that Website, if any?" %><br>
+            <%= f.text_field :credentials, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+            <%= f.label "Special Comments" %><br>
+            <%= f.text_area :special_comments, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+            <%= f.submit "Place Order", class: "form-control btn btn-success" %>
+        </div>
+    <% end %>
+
+</div>

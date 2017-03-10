@@ -7,4 +7,7 @@ class Student < ApplicationRecord
   validates :acceptance_of_terms, acceptance: true
   validates :password_confirmation, presence: true, on: :create
 
+  has_many :orders
+  has_many :teachers, through: :orders
+
 end

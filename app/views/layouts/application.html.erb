@@ -1,25 +1,77 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>NaughtCollegeWorks</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>Workspace</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css"><link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+  <script
+  src="https://code.jquery.com/jquery-3.1.1.js"
+  integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+  crossorigin="anonymous"></script>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-  <body>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div id="nav">
+    <div class="wrapper">
+      <header>
+    					<p id="logo">Naughty<span>College</span>Works</p>
 
-    <% if flash[:success] || flash[:alert] || flash[:notice] %>
-      <%= flash[:success] %><br>
-      <%= flash[:alert] %><br>
-      <%= flash[:notice] %><br>
+    					<nav>
+                <% if !teacher_logged_in? && !student_logged_in? %>
+                  <%= link_to "Home", root_path %>
+    						  <a href="#">Services</a>
+    						  <a href="#">Know More</a>
+                <% end %>
+    						<% if teacher_logged_in? %>
+                  <%= link_to current_teacher.first_name +  " " + current_teacher.last_name, root_path %>
+    						  <%= link_to "Edit Profile", edit_teacher_path(current_teacher) %>
+                  <%= link_to "LogOut", teacher_session_path(current_teacher), method: :delete, class:"button button_secondary button_small" %>
+                <% elsif student_logged_in? %>
+                  <%= link_to current_student.username, root_path %>
+                  <%= link_to "LogOut", students_session_path(current_student), method: :delete, class:"button button_secondary button_small" %>
+                <% else %>
+                  <%= link_to "Our Teachers", teachers_path %>
+                  <%= link_to "Teacher LogIn", new_teacher_session_path %>
+                  <%= link_to "Teacher Sign Up!", new_teacher_path, class:"button button_secondary button_small" %>
+                <% end %>
+    					</nav>
+    	</header>
+  	</div>
+	</div>
+
+  <div class="bg-warning">
+    <% if flash[:notice] %>
+      <p class="flashes"><%= flash[:notice] %></p>
     <% end %>
-
-    <% if student_logged_in? %>
-      <%= link_to "LogOut", students_session_path(current_student), method: :delete %>
+  </div>
+  <div class="bg-danger">
+    <% if flash[:alert] %>
+      <p class="flashes"><%= flash[:alert] %></p>
     <% end %>
+  </div>
+  <div class="bg-success">
+    <% if flash[:success] %>
+      <p class="flashes"><%= flash[:success] %></p>
+    <% end %>
+  </div>
 
-    <%= yield %>
-  </body>
+
+
+
+  <%= yield %>
+
+  <footer>
+			<p class="copyright">&copy; 2017 <a href="#">Because We Hate School More Than You Do</a> :)</p>
+  </footer>
+
+</body>
 </html>

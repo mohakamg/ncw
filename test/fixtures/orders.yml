@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  student_id: 1
+  teacher_id: 1
+  order_type: MyString
+  special_comments: MyText
+  status: MyString
+  deadline: 2017-03-09 21:08:31
+  approved_confirmation: false
+  website: MyString
+  credentials: MyString
+  subject: MyString
+  topic: MyString
+  about_homework: MyText
+
+two:
+  student_id: 1
+  teacher_id: 1
+  order_type: MyString
+  special_comments: MyText
+  status: MyString
+  deadline: 2017-03-09 21:08:31
+  approved_confirmation: false
+  website: MyString
+  credentials: MyString
+  subject: MyString
+  topic: MyString
+  about_homework: MyText

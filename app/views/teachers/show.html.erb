@@ -1,2 +1,41 @@
-<h1>Teachers#show</h1>
-<p>Find me in app/views/teachers/show.html.erb</p>
+<div class="showpage">
+    <div class="showteacher">
+        <h3><bold><u><%= (@teacher.first_name + @teacher.last_name).titleize %></u></bold></h3>
+        <br><br>
+        <h4>Basic Information</h4>
+        <table class="table table-striped">
+              <th></th>
+              <th></th>
+              <% if teacher_logged_in? %>
+                <tr>
+                    <td>Email</td>
+                    <td><a href= "mailtto:<%= @teacher.email %>"><%= @teacher.email %></a></td>
+                </tr>
+                <tr>
+                    <td>Phone</td>
+                    <td><a href="tel:<%= (@teacher.phone).to_i %>"><%= @teacher.phone %></a></td>
+                </tr>
+              <% end %>
+              <tr>
+                  <td>Country</td>
+                  <td>I belong to <%= @teacher.country.titleize %></td>
+              </tr>
+              <tr>
+                  <td>Gender</td>
+                  <td>I am a <%= @teacher.gender.titleize %></td>
+              </tr>
+        </table>
+        <br><br>
+        <% if @teacher.status %>
+            <blockquote class="blockquote-reverse">
+                  <p><%= @teacher.status %></p>
+                  <footer> By <cite title="Source Title"><%= @teacher.first_name %></cite></footer>
+            </blockquote>
+        <% end %>
+        <br><br>
+        <h4><u>About Me</u></h4>
+        <p><%= @teacher.about.html_safe %></p>
+        <br><br>
+        <h4><u>Why Me</u></h4>
+        <p><%= @teacher.whyme.html_safe %></p>
+</div>

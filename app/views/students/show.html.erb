@@ -1,2 +1,59 @@
-<h1>Students#show</h1>
-<p>Find me in app/views/students/show.html.erb</p>
+<div class="container">
+  <h1>Hello, <%= @student.username %></h1>
+
+  <br><br><br><br>
+
+  <% if @student.orders.any? %>
+    <h1><u>MY ORDERS</u></h1>
+    <table class="table table-hover">
+      <th>Order Type</th>
+      <th>Subject</th>
+      <th>Topic</th>
+      <th>About Subject</th>
+      <th>Teacher Name</th>
+      <th>Status</th>
+      <th>Deadline</th>
+      <th>Special Comments</th>
+      <th>Approved Confirmation?</th>
+      <% @student.orders.where(approved_completion: false).order(updated_at: :desc).each do |order| %>
+                    <tr>
+                        <td><%= link_to(order.id, student_order_path(@student)) + " " + order.order_type %></td>
+                        <td><%= order.subject %></td>
+                        <td><%= order.topic %></td>
+                        <td><%= order.about_homework %></td>
+                        <% if order.teacher_id != 0 %>
+                            <td><%= link_to order.teacher.first_name, order.teacher %></td>
+                        <% else %>
+                            <td> Not Accepted By Anyone Yet </td>
+                        <% end %>
+                        <td><%= order.status %></td>
+                        <td><%= order.deadline %></td>
+                        <td><%= order.special_comments %></td>
+                        <td><%= order.approved_completion.to_s.titleize %></td>
+                    </tr>
+        <% end %>
+        <% @student.orders.where(approved_completion: true).order(updated_at: :desc).each do |order| %>
+            <tr class="danger">
+                <td><%= link_to(order.id, order) +" " + order.order_type %></td>
+                <td><%= order.subject %></td>
+                <td><%= order.topic %></td>
+                <td><%= order.about_homework %></td>
+                <% if order.teacher_id != 0 %>
+                    <td><%= link_to order.teacher.first_name, order.teacher %></td>
+                <% else %>
+                    <td> Not Accepted By Anyone Yet </td>
+                <% end %>
+                <td><%= order.status %></td>
+                <td><%= order.deadline %></td>
+                <td><%= order.special_comments %></td>
+                <td><%= order.approved_completion.to_s.titleize %></td>
+            </tr>
+        <% end %>
+      </table>
+    <% end %>
+
+
+  <br><br><br><br>
+
+  <%= link_to "Place Order", new_student_order_path(student_id: current_student), class: "btn btn-success form-control" %>
+</div>

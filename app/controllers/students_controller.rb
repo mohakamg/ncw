@@ -1,7 +1,8 @@
 class StudentsController < ApplicationController
 
-  before_action :require__student_login, only: :show
+  before_action :require_student_login, only: :show
   before_action :check_login, except: :show
+  before_action :check_teacher_login
 
   def new
     @student = Student.new
@@ -25,7 +26,11 @@ class StudentsController < ApplicationController
   end
 
   def show
-
+    @student = Student.find(params[:id])
+    if session[:student_id] != @student.id
+      flash[:alert] = "No Sneaking Into Another Account"
+      redirect_to current_studenst
+    end
   end
 
   private
@@ -39,4 +44,14 @@ class StudentsController < ApplicationController
       redirect_to root_path
     end
   end
+
+  def check_teacher_login
+    if teacher_logged_in?
+      flash[:alert] = "You ain't logged A Teacher, Buddy!"
+      redirect_to root_path
+    end
+  end
+
+
+
 end
