@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   resources :teacher_sessions, only: [:new, :create, :destroy]
 
   resources :teachers do
-    resources :orders, except: [:destroy, :new, :create]
+    resources :orders, except: [:destroy, :new, :create] do
+      patch :accept_order_path
+    end
     member do
       get :confirm_email
     end

@@ -38,4 +38,83 @@
         <br><br>
         <h4><u>Why Me</u></h4>
         <p><%= @teacher.whyme.html_safe %></p>
+
+        <% if teacher_logged_in? %>
+                <h3 class="text-center"><u>My Orders</u></h3>
+                <% if @teacher.orders.any? %>
+                        <table class="table table-hover">
+                        <th>Order Type</th>
+                        <th>Subject</th>
+                        <th>Topic</th>
+                        <th>Student</th>
+                        <th>Status</th>
+                        <th>Deadline</th>
+                        <% @teacher.orders.where(approved_completion: false).order(updated_at: :desc).each do |order| %>
+                            <tr class="success">
+                                <td><%= link_to(order.id, teacher_order_path(@teacher, order)) +" " + order.order_type %></td>
+                                <td><%= order.subject %></td>
+                                <td><%= order.topic %></td>
+                                <td><%= order.student.username %></td>
+                                <td><%= order.status %></td>
+                                <td><%= order.deadline %></td>
+                            </tr>
+                        <% end %>
+                    </table>
+                <% else %>
+                    <p class="text-center">No Orders Yet</p>
+                <% end %>
+
+                <br><br><hr><br><br>
+
+                <h3 class="text-center"><u>New Orders You Can Accept?</u></h3>
+                <% if Order.where(teacher_id: 0).any? %>
+                        <table class="table table-hover">
+                        <th>Order Type</th>
+                        <th>Subject</th>
+                        <th>Topic</th>
+                        <th>Student Name</th>
+                        <th>Status</th>
+                        <th>Deadline</th>
+                        <th>Accept?</th>
+                        <% Order.where(teacher_id: 0).order(updated_at: :desc).each do |order| %>
+                            <tr>
+                                <td><%= link_to(order.id, teacher_order_path(@teacher, order)) +" " + order.order_type %></td>
+                                <td><%= order.subject %></td>
+                                <td><%= order.topic %></td>
+                                <td><%= order.student.username %></td>
+                                <td><%= order.status %></td>
+                                <td><%= order.deadline %></td>
+                                <td><%= link_to "Accept this Order", teacher_order_accept_order_path_path(@teacher, order), method: :patch , class:"btn btn-success" %></td>
+                            </tr>
+                        <% end %>
+                        </table>
+
+
+
+                <% else %>
+                    <p class="text-center">No New Orders</p>
+                <% end %>
+
+                <h3 class="text-center"><u>Past Orders</u></h3>
+                <% if Order.where(approved_completion: true).any? %>
+                        <table class="table table-hover">
+                        <th>Order Type</th>
+                        <th>Subject</th>
+                        <th>Topic</th>
+                        <th>Student Name</th>
+                        <th>Status</th>
+                        <th>Deadline</th>
+                        <% @teacher.orders.where(approved_completion: true).order(updated_at: :desc).each do |order| %>
+                            <tr class="danger">
+                                <td><%= link_to(order.id, teacher_order_path(@teacher, order)) +" " + order.order_type %></td>
+                                <td><%= order.subject %></td>
+                                <td><%= order.topic %></td>
+                                <td><%= order.student.username %></td>
+                                <td><%= order.status %></td>
+                                <td><%= order.deadline %></td>
+                            </tr>
+                        <% end %>
+                        </table>
+                <% end %>
+            <% end %>
 </div>

@@ -15,7 +15,25 @@
       <th>Deadline</th>
       <th>Special Comments</th>
       <th>Approved Confirmation?</th>
-      <% @student.orders.where(approved_completion: false).order(updated_at: :desc).each do |order| %>
+      <% @student.orders.where(approved_completion: false && status == "Completed").order(updated_at: :desc).each do |order| %>
+                    <tr class="success">
+                        <td><%= link_to(order.id, student_order_path(@student, order)) + " " + order.order_type %></td>
+                        <td><%= order.subject %></td>
+                        <td><%= order.topic %></td>
+                        <td><%= order.about_homework %></td>
+                        <% if order.teacher_id != 0 %>
+                            <td><%= link_to order.teacher.first_name, order.teacher %></td>
+                        <% else %>
+                            <td> Not Accepted By Anyone Yet </td>
+                        <% end %>
+                        <td><%= order.status %></td>
+                        <td><%= order.deadline %></td>
+                        <td><%= order.special_comments %></td>
+                        <td><%= order.approved_completion.to_s.titleize %></td>
+                    </tr>
+        <% end %>
+
+      <% @student.orders.where(approved_completion: false && status! == "Completed").order(updated_at: :desc).each do |order| %>
                     <tr>
                         <td><%= link_to(order.id, student_order_path(@student, order)) + " " + order.order_type %></td>
                         <td><%= order.subject %></td>
