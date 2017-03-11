@@ -1,2 +1,87 @@
-<h1>Orders#show</h1>
-<p>Find me in app/views/orders/show.html.erb</p>
+<div class="container">
+
+
+    <% if student_logged_in? %>
+      <% if @order.teacher_id != 0 %>
+        <h1>Order Attended By: <%= @order.teacher.first_name %></h1>
+      <% else %>
+        <h1>Order Waiting to be Accepted</h1>
+      <% end %>
+        <% if @order.status == "Completed" && @order.approved_completion %>
+            </h1>
+            <p>Subject: <%= @order.subject %></p>
+            <p>Topic: <%= @order.topic %></p>
+            <p>Placed On: <%= @order.created_at %></p>
+            <p>Status: <%= @order.status %></p>
+            <p>Deadline: <%= @order.deadline %></p>
+            <p>Extra Comments: <%= @order.special_comments %></p>
+            <h2 class="text-center">Approved Completion: <%= @order.approved_completion.to_s.titleize %></h2>
+
+            Your Uploads:
+            <% @order.stud_docs.each do |f| %>
+              <br><%= link_to f.to_s, f.url %><br>
+            <% end %>
+
+      <% else %>
+          <% if @order.teacher_id != 0 %>
+            <h1>Order Attended By: <%= @order.teacher.first_name %></h1>
+          <% else %>
+            <h1>Order Waiting to be Accepted</h1>
+          <% end %>
+          <p>Placed On: <%= @order.created_at %></p>
+          <p>Status: <%= @order.status %></p>
+
+          Your Uploads:
+          <% @order.stud_docs.each do |f| %>
+            <br><%= link_to f.path.to_s, f.url %><br>
+          <% end %>
+
+          <%= form_for [@student, @order], method: :patch do |f| %>
+
+              <% if @order.errors.any? %>
+                <h1><%= pluralize(@order.errors.count, "Errors") %> Prevented Your Order Creation </h1>
+                  <% @order.errors.full_messages.each do |e| %>
+                    <li><%= e %></li>
+                  <% end %>
+              <% end %>
+
+              <p>Subject: <%= @order.subject %></p>
+              <p>Topic: <%= @order.topic %></p>
+
+              <div class="form-group">
+                  <%= f.label "About Homework" %><br>
+                  <%= f.text_area :about_homework, default: @order.about_homework, class:"form-control" %>
+              </div>
+
+              <div class="form-group">
+                  <%= f.label "Website For HW" %><br>
+                  <%= f.text_field :website, default: @order.website.to_s, class:"form-control" %>
+              </div>
+
+              <div class="form-group">
+                  <%= f.label "Crdentials for Website" %><br>
+                  <%= f.text_area :credentials, default: @order.credentials.to_s, class:"form-control" %>
+              </div>
+
+              <div class="form-group">
+                  <%= f.label "Extra Comments" %><br>
+                  <%= f.text_area :special_comments, default: @order.special_comments, class:"form-control" %>
+              </div>
+
+              <div class="form-group">
+                  <%= f.label :approved_completion, "Approve Completion" %><br>
+                  <%= f.check_box :approved_completion %>
+              </div>
+
+              <div class="form-group">
+                  <%= f.label "Upload More Docs (You Can Upload Multiple Docs With Multiple Select)" %><br>
+                  <%= f.file_field :stud_docs, multiple: true, class: "form-control" %>
+              </div>
+
+              <%= f.submit "Update Status of Order", class: "btn btn-success" %>
+          <% end %>
+
+      <% end %>
+
+    <% end %>
+</div>

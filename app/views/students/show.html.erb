@@ -17,7 +17,7 @@
       <th>Approved Confirmation?</th>
       <% @student.orders.where(approved_completion: false).order(updated_at: :desc).each do |order| %>
                     <tr>
-                        <td><%= link_to(order.id, student_order_path(@student)) + " " + order.order_type %></td>
+                        <td><%= link_to(order.id, student_order_path(@student, order)) + " " + order.order_type %></td>
                         <td><%= order.subject %></td>
                         <td><%= order.topic %></td>
                         <td><%= order.about_homework %></td>
@@ -34,7 +34,7 @@
         <% end %>
         <% @student.orders.where(approved_completion: true).order(updated_at: :desc).each do |order| %>
             <tr class="danger">
-                <td><%= link_to(order.id, order) +" " + order.order_type %></td>
+                <td><%= link_to(order.id, student_order_path(@student, order)) +" " + order.order_type %></td>
                 <td><%= order.subject %></td>
                 <td><%= order.topic %></td>
                 <td><%= order.about_homework %></td>

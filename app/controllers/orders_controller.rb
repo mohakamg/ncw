@@ -7,6 +7,8 @@ class OrdersController < ApplicationController
   end
 
   def show
+    @student = Student.find(params[:student_id])
+    @order = Order.find(params[:id])
   end
 
   def new
@@ -28,16 +30,41 @@ class OrdersController < ApplicationController
 
   end
 
-  def edit
-  end
-
   def update
+    student = Student.find(params[:student_id])
+    order = Order.find(params[:id])
+
+    docs = order.stud_docs
+
+    if params[:order][:stud_docs]
+      docs += params[:order][:stud_docs]
+    end
+    
+    order.stud_docs = docs
+
+    order.about_homework = params[:order][:about_homework]
+
+    order.website = params[:order][:website]
+
+    order.credentials = params[:order][:credentials]
+
+    order.special_comments = params[:order][:special_comments]
+
+    order.approved_completion = params[:order][:approved_completion]
+
+    if order.save
+      flash[:success] = "Order Updated Successfully. Have a wonderful time!!!"
+      redirect_to student_order_path(student, order)
+    else
+      flash[:notice] = "Not Created"
+      render :show
+    end
   end
 
   private
 
   def create_order_student_params
-    params.require(:order).permit(:student_id, :order_type, :special_comments, :deadline, :approved_confirmation, :website, :credentials, :subject, :topic, :about_homework)
+    params.require(:order).permit(:student_id, :order_type, :special_comments, :deadline, :approved_completion, :website, :credentials, :subject, :topic, :about_homework, {stud_docs: []})
   end
 
   def create_order_teacher_params

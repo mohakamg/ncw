@@ -34,6 +34,11 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem "carrierwave", :github => "carrierwaveuploader/carrierwave"
 gem "fog-aws"
+gem "rmagick", "~> 2.13.1"
+#gem 'carrierwave_backgrounder'
+gem 'carrierwave_backgrounder', :git => 'https://github.com/lardawge/carrierwave_backgrounder.git'
+gem "sidekiq"
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
