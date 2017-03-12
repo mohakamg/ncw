@@ -40,13 +40,13 @@ class OrdersController < ApplicationController
       student = Student.find(params[:student_id])
       order = Order.find(params[:id])
 
-      docs = order.stud_docs
 
       if params[:order][:stud_docs]
+        docs = order.stud_docs
         docs += params[:order][:stud_docs]
+        order.stud_docs = docs
       end
 
-      order.stud_docs = docs
 
       order.about_homework = params[:order][:about_homework]
 
@@ -66,6 +66,23 @@ class OrdersController < ApplicationController
         render :show
       end
     elsif teacher_logged_in?
+      teacher = Teacher.find(params[:teacher_id])
+      order = Order.find(params[:id])
+
+      if params[:order][:teacher_docs]
+        docs = order.teacher_docs
+        docs += params[:order][:teacher_docs]
+        order.teacher_docs = docs
+      end
+
+      order.status = params[:order][:status]
+      if order.save
+        flash[:success] = "Order Updated Successfully. Have a wonderful time!!!"
+        redirect_to teacher_order_path(teacher, order)
+      else
+        flash[:notice] = "Not Created"
+        render :show
+      end
 
     end
   end
@@ -81,6 +98,16 @@ class OrdersController < ApplicationController
     else
       flash[:alert] = "Order Acceptance Failed. Please Contact the Administrator"
       redirect_to :back
+    end
+  end
+
+  def pastedImages
+    order = Order.find(params[:order_id])
+    order.stud_pasted_images.push(params[:pastedImage])
+    if order.save!
+      render status: 200
+    else
+      puts "Failed"
     end
   end
 

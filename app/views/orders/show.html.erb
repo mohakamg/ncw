@@ -1,3 +1,36 @@
+<script>
+$(document).ready(function()
+{
+  $('#order_website').pastableTextarea();
+
+  $('#order_website').on('pasteImage', function (ev, data){
+    //console.log("dataURL: " + data.dataURL);
+    ev.preventDefault();
+    console.log("width: " + data.width);
+    console.log("height: " + data.height);
+    console.log(data.blob);
+    $.ajax({
+      type: "POST",
+      beforeSend: function() {
+        console.log("Sending AJAX");
+      },
+      url: "/pastedImage/<%= @order.id %>/image/",
+      data: {pastedImage: data.dataURL}
+    });
+    $('#order_special_comments').after('<img class=\"result \" src='+ data.dataURL +'>');
+
+  }).on('pasteImageError', function(ev, data){
+    alert('Oops: ' + data.message);
+    if(data.url){
+      alert('But we got its url anyway:' + data.url)
+    }
+  }).on('pasteText', function (ev, data){
+    console.log("text: " + data.text);
+  });
+});
+</script>
+
+
 <div class="container">
     <% if student_logged_in? %>
       <% if @order.teacher_id != 0 %>
@@ -15,19 +48,37 @@
             <p>Extra Comments: <%= @order.special_comments %></p>
             <h2 class="text-center">Approved Completion: <%= @order.approved_completion.to_s.titleize %></h2>
 
-            Your Uploads:
+
             <% @order.stud_docs.each do |f| %>
               <br><%= link_to f.to_s, f.url %><br>
             <% end %>
 
+            <% @order.stud_pasted_images.each do |f| %>
+              <br><%= image_tag f %><br>
+            <% end %>
+
+            Teacher Uploads:
+            <% @order.teacher_docs.each do |f| %>
+              <br><%= link_to f.path.to_s, f.url %><br>
+            <% end %>
+
         <% else %>
-            Your Uploads:
+
             <% @order.stud_docs.each do |f| %>
               <br><%= link_to f.path.to_s, f.url %><br>
             <% end %>
 
-            <%= form_for [@student, @order], method: :patch do |f| %>
 
+              <% @order.stud_pasted_images.each do |f| %>
+                <br><%= image_tag f, class: 'result' %><br>
+              <% end %>
+
+            Teacher Uploads:
+            <% @order.teacher_docs.each do |f| %>
+              <br><%= link_to f.path.to_s, f.url %><br>
+            <% end %>
+
+            <%= form_for [@student, @order], method: :patch do |f| %>
                 <% if @order.errors.any? %>
                   <h1><%= pluralize(@order.errors.count, "Errors") %> Prevented Your Order Creation </h1>
                     <% @order.errors.full_messages.each do |e| %>
@@ -44,7 +95,7 @@
                 </div>
 
                 <div class="form-group">
-                    <%= f.label "Website For HW" %><br>
+                    <%= f.label "Website For HW/Screenshots" %><br>
                     <%= f.text_field :website, default: @order.website.to_s, class:"form-control" %>
                 </div>
 
@@ -89,6 +140,13 @@
         <br><%= link_to f.path.to_s, f.url %><br>
       <% end %>
 
+      Your Uploads:
+      <% @order.teacher_docs.each do |f| %>
+        <br><%= link_to f.path.to_s, f.url %><br>
+      <% end %>
+
+
+
       <% if @order.teacher == current_teacher && !@order.approved_completion %>
 
         <%= form_for [@teacher, @order], method: :patch do |f| %>
@@ -96,6 +154,11 @@
             <div class="form-group">
               <%= f.label "Status" %><br>
               <%= f.select :status, options_for_select(["Accepted. In Progress", "Completed"], @order.status), class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+                <%= f.label "Upload Docs (You Can Upload Multiple Docs With Multiple Select)" %><br>
+                <%= f.file_field :teacher_docs, multiple: true, class: "form-control" %>
             </div>
 
             <%= f.submit "Update Status of Order", class: "btn btn-success" %>

@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
+  protect_from_forgery with: :exception, except: :pastedImages
 
   helper_method :student_logged_in?, :require_student_login, :current_student, :teacher_logged_in?, :require_teacher_login, :current_teacher, :require_login
   def student_logged_in?

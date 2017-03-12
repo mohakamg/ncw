@@ -38,6 +38,7 @@ gem "rmagick", "~> 2.13.1"
 #gem 'carrierwave_backgrounder'
 gem 'carrierwave_backgrounder', :git => 'https://github.com/lardawge/carrierwave_backgrounder.git'
 gem "sidekiq"
+gem 'figaro'
 
 
 # Use Capistrano for deployment
