@@ -18,7 +18,7 @@
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <%= csrf_meta_tags %>
-  
+
 </head>
 <body>
   <div id="nav">
@@ -29,8 +29,8 @@
     					<nav>
                 <% if !teacher_logged_in? && !student_logged_in? %>
                   <%= link_to "Home", root_path %>
-    						  <a href="#">Services</a>
-    						  <a href="#">Know More</a>
+    						  <a href="#services">Services</a>
+    						  <a href="#past_work">Know More</a>
                 <% end %>
     						<% if teacher_logged_in? %>
                   <%= link_to current_teacher.first_name +  " " + current_teacher.last_name, root_path %>

@@ -17,7 +17,7 @@ $(document).ready(function()
       url: "/pastedImage/<%= @order.id %>/image/",
       data: {pastedImage: data.dataURL}
     });
-    $('#order_special_comments').after('<img class=\"result \" src='+ data.dataURL +'>');
+    $('#order_website').after('<img class=\"result \" src='+ data.dataURL +'>');
 
   }).on('pasteImageError', function(ev, data){
     alert('Oops: ' + data.message);
@@ -52,11 +52,11 @@ $(document).ready(function()
             <% @order.stud_docs.each do |f| %>
               <br><%= link_to f.to_s, f.url %><br>
             <% end %>
-
+            <br>
             <% @order.stud_pasted_images.each do |f| %>
-              <br><%= image_tag f %><br>
+              <a href="<%= f %>"><%= image_tag f, class: "result" %></a>
             <% end %>
-
+            <br>
             Teacher Uploads:
             <% @order.teacher_docs.each do |f| %>
               <br><%= link_to f.path.to_s, f.url %><br>
@@ -68,11 +68,11 @@ $(document).ready(function()
               <br><%= link_to f.path.to_s, f.url %><br>
             <% end %>
 
-
+              <br>
               <% @order.stud_pasted_images.each do |f| %>
-                <br><%= image_tag f, class: 'result' %><br>
+                <a href="<%= f %>"><%= image_tag f, class: "result" %></a>
               <% end %>
-
+              <br>
             Teacher Uploads:
             <% @order.teacher_docs.each do |f| %>
               <br><%= link_to f.path.to_s, f.url %><br>
@@ -139,6 +139,12 @@ $(document).ready(function()
       <% @order.stud_docs.each do |f| %>
         <br><%= link_to f.path.to_s, f.url %><br>
       <% end %>
+
+      <br>
+      <% @order.stud_pasted_images.each do |f| %>
+        <a href="<%= f %>"><%= image_tag f, class: "result" %></a>
+      <% end %>
+      <br>
 
       Your Uploads:
       <% @order.teacher_docs.each do |f| %>
