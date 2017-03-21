@@ -3,7 +3,7 @@
 
     <% @teachers.each do |i| %>
        <blockquote>
-          <p><bold><%= link_to (i.first_name + i.last_name).titleize, i %></bold></p>
+          <p><bold><%= link_to (i.first_name + " " + i.last_name).titleize, i %></bold></p>
           <footer>Status: <cite title="Source Title"><%= i.status %></cite></footer>
         </blockquote>
     <% end %>

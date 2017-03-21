@@ -70,6 +70,39 @@ class TeachersController < ApplicationController
     end
   end
 
+  def reset_pass
+
+  end
+
+  def reset_pass_mail
+    teacher = Teacher.find_by_email(params[:email])
+    if !teacher
+      flash[:alert] = "You Dont Exist In Our Database. Please SignUp Instead"
+      redirect_to new_teacher_path
+    else
+      teacher.reset_token
+      TeacherResetPassMailer.teacher_forgot_pass(teacher).deliver_now
+      flash[:success] = "Reset Password Link has been sent successfully!!!"
+      redirect_to root_path
+    end
+  end
+
+  def reset_password_link
+    @teacher = Teacher.find_by_email_confirm_token(params[:token])
+  end
+
+  def reset_password
+    teacher = Teacher.find(params[:id])
+    teacher.password = params[:password]
+    teacher.email_confirm_token = nil
+    if teacher.save!
+      flash[:success] = "Password Successfully Updated Mr. Teacher. Please Login To Continue"
+      redirect_to new_teacher_session_path
+    else
+      flash[:alert] = "Some Error Occured. Please Contact Administrator"
+      redirect_to root_path
+    end
+  end
 
   private
 

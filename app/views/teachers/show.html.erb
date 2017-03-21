@@ -1,6 +1,6 @@
 <div class="showpage">
     <div class="showteacher">
-        <h3><bold><u><%= (@teacher.first_name + @teacher.last_name).titleize %></u></bold></h3>
+        <h3><bold><u><%= (@teacher.first_name + " " + @teacher.last_name).titleize %></u></bold></h3>
         <br><br>
         <h4>Basic Information</h4>
         <table class="table table-striped">
@@ -26,6 +26,7 @@
               </tr>
         </table>
         <br><br>
+
         <% if @teacher.status %>
             <blockquote class="blockquote-reverse">
                   <p><%= @teacher.status %></p>

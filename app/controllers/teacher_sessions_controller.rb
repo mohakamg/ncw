@@ -23,7 +23,7 @@ class TeacherSessionsController < ApplicationController
             end
           else
             flash[:notice] = "Incorrect!! Password"
-            redirect_to new_teacher_path
+            redirect_to new_teacher_session_path
           end
         else
           flash[:notice] = "Password Cannot Be Blank!!"

@@ -27,11 +27,19 @@ class Teacher < ApplicationRecord
       save!(validate: false)
   end
 
+  def reset_token
+    self.email_confirm_token = SecureRandom.urlsafe_base64.to_s
+    save!(validate: false)
+  end
+
+
 private
   def confirmation_token
     if self.email_confirm_token.blank?
       self.email_confirm_token = SecureRandom.urlsafe_base64.to_s
     end
   end
+
+
 
 end

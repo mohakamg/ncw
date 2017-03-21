@@ -13,6 +13,12 @@ Rails.application.routes.draw do
 
   post 'pastedImage/:order_id/image' => 'orders#pastedImages'
 
+  get 'reset_password' => 'teachers#reset_pass'
+  post 'reset_password' => 'teachers#reset_pass_mail'
+
+  get 'reset_password_link' => 'teachers#reset_password_link'
+  post 'reset_password_link' => 'teachers#reset_password'
+
   resources :teachers do
     resources :orders, except: [:destroy, :new, :create] do
       patch :accept_order_path

@@ -1,24 +1,43 @@
-<%= form_for @student do |f| %>
+<div class="form-wrapper">
 
-  <% if @student.errors.any? %>
-    <h1><%= pluralize(@student.errors.count, "Errors") %> Prevented Your Anonymous Identity Creation </h1>
+  <%= form_for @student do |f| %>
+
+    <% if @student.errors.any? %>
+      <div class="alert alert-danger">
+      <h1><%= pluralize(@student.errors.count, "Errors") %> Prevented Your Anonymous Identity Creation </h1>
       <% @student.errors.full_messages.each do |e| %>
         <li><%= e %></li>
       <% end %>
+      </div><br><br>
+    <% end %>
+
+
+  <div class="form-group">
+    <%= f.label "Username" %><br>
+    <%= f.text_field :username, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+
+    <%= f.label "Password" %><br>
+    <%= f.password_field :password, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+
+    <%= f.label "Password Confirmation" %><br>
+    <%= f.password_field :password_confirmation, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+
+    <%= f.label "Terms Of Acceptance" %>
+    <%= f.check_box :acceptance_of_terms %>
+  </div>
+
+  <%= f.submit "Sign Up!", class: "btn btn-success" %><br><br>
+  <%= link_to "Already With Us? Login Instead!!!", new_students_session_path %>
+
   <% end %>
 
-  <%= f.label "Username" %>
-  <%= f.text_field :username %><br>
-
-  <%= f.label "Password" %>
-  <%= f.password_field :password %><br>
-
-  <%= f.label "Password Confirmation" %>
-  <%= f.password_field :password_confirmation %><br>
-
-  <%= f.label "Terms Of Acceptance" %>
-  <%= f.check_box :acceptance_of_terms %><br>
-
-  <%= f.submit "Sign Up!" %>
-
-<% end %>
+</div>
