@@ -57,9 +57,11 @@ class TeacherSessionsController < ApplicationController
   end
 
   def email_verified?
-    unless Teacher.find_by_email(params[:email]).email_confirmed
-      flash[:alert] = "Please Verify Your Email First!!"
-      redirect_to root_path
+    if Teacher.find_by_email(params[:email])
+      unless Teacher.find_by_email(params[:email]).email_confirmed
+        flash[:alert] = "Please Verify Your Email First!!"
+        redirect_to root_path
+      end
     end
   end
 

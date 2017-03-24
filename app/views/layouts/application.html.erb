@@ -29,8 +29,7 @@
     					<nav>
                 <% if !teacher_logged_in? && !student_logged_in? %>
                   <%= link_to "Home", root_path %>
-    						  <a href="#services">Services</a>
-    						  <a href="#past_work">Know More</a>
+    						  <a href="#see_more">Services</a>
                 <% end %>
     						<% if teacher_logged_in? %>
                   <%= link_to current_teacher.first_name +  " " + current_teacher.last_name, root_path %>

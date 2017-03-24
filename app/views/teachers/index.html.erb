@@ -3,6 +3,9 @@
 
     <% @teachers.each do |i| %>
        <blockquote>
+         <% if i.profile_pic? %>
+           <%= image_tag i.profile_pic.thumb %>
+        <% end %>
           <p><bold><%= link_to (i.first_name + " " + i.last_name).titleize, i %></bold></p>
           <footer>Status: <cite title="Source Title"><%= i.status %></cite></footer>
         </blockquote>

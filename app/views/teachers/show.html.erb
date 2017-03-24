@@ -1,5 +1,12 @@
 <div class="showpage">
     <div class="showteacher">
+        <div class="profile_pic">
+          <% if @teacher.profile_pic? %>
+            <%= image_tag @teacher.profile_pic.thumb %>
+          <% else %>
+            <h3>No Profile Pic</h3>
+          <% end %>
+        </div>
         <h3><bold><u><%= (@teacher.first_name + " " + @teacher.last_name).titleize %></u></bold></h3>
         <br><br>
         <h4>Basic Information</h4>
@@ -85,7 +92,7 @@
                                 <td><%= order.student.username %></td>
                                 <td><%= order.status %></td>
                                 <td><%= order.deadline %></td>
-                                <td><%= link_to "Accept this Order", teacher_order_accept_order_path_path(@teacher, order), method: :patch , class:"btn btn-success" %></td>
+                                <td><%= link_to "Accept this Order", teacher_order_accept_order_path_path(@teacher, order), method: :patch, remote: true , class:"btn btn-success" %></td>
                             </tr>
                         <% end %>
                         </table>
