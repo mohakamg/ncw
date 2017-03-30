@@ -53,7 +53,7 @@ body {
 #nav{
     background: #7ac483;
     padding-bottom: 1%;
-    border-bottom: 5px black solid;
+    border-bottom: 3px #71b77a solid;
 }
 #nav header {
     padding: 2rem 0;
@@ -191,13 +191,9 @@ body {
       .hw-list{
         display: flex;
         img{
-          height: 30px;
-          width: 30px;
+          height: 40px;
+          width: 40px;
         }
-        .hw1img{
-          padding-left: 20%;
-        }
-
       }
 
       #hw1pts2{
@@ -215,6 +211,12 @@ body {
         padding-left: 10px;
       }
 
+    }
+
+
+    .hw1img{
+      height: 347px;
+      width: 520px;
     }
 
     .block-button-container{

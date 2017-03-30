@@ -1,3 +1,55 @@
 // Place all the styles related to the Teachers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.our-teachers{
+  background-color: #fff;
+}
+
+.show-teacher-img-size{
+  border: 1px solid black;
+  height: 250px;
+  width: 350px;
+}
+
+.highlight{
+  background-color: #f5f5f5;
+  display: flex;
+  padding: 2% 4%;
+  border-bottom: 2px solid #e6e6e6;
+  a{
+    margin-left: 2%;
+    padding-top: 1.2%;
+    font-size: 1.5em;
+  }
+  h3{
+    margin-left: 4%;
+    font-size: 1em;
+    margin-top: 1.8%;
+    width: 100%;
+  }
+  span{
+    padding-top: 3.5%;
+  }
+}
+
+.teacher-show-details, .teacher-show-details2{
+  display: flex;
+  width: 100%;
+}
+
+.teacher-show-details1{
+  margin-left: 2%;
+}
+
+.teacher-show-details3{
+  margin-left: 6%;
+}
+
+.teacher-show-status{
+  margin-left: 5%;
+  margin-top: 5%;
+}
+
+.card-success{
+ color: #fff;
+}

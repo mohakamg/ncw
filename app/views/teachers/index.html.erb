@@ -1,13 +1,42 @@
-<div class="container">
-    <h1 class="text-center"><u><bold>Our Teachers</bold></u></h1>
+<div class="our-teachers">
+  <% j = 1 %>
+  <div class="container">
+      <br><br><h1 class="text-center"><u><bold>Our Teachers</bold></u></h1><br><br>
+      <div class="card-columns">
+        <% @teachers.each do |i| %>
+          <% if i.id != 0 %>
+            <div class="card">
+              <% if i.profile_pic? %>
+                <%= image_tag i.profile_pic, class: "card-img-top card-image-custom" %>
+              <% else %>
+                <% if i.gender == "Male" %>
+                  <%= image_tag 'boy.jpg', class: 'card-img-top card-image-custom' %><br>
+                <% else %>
+                  <%= image_tag 'girl.jpg', class: 'card-img-top card-image-custom' %><br>
+                <% end %>
+              <% end %>
+              <div class="card-block">
+                <h4 class="card-title"><%= link_to (i.first_name + " " + i.last_name).titleize, i %></h4>
+                <p class="card-text">Status: <cite title="Source Title"><%= i.status %></cite></p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </div>
+            </div>
+            <% if j == 2 %>
+              <div class="card card-inverse card-primary p-3 text-center">
+                <blockquote class="card-blockquote">
+                  <p>The thing about smart people is they sound crazy to dumb people.</p>
 
-    <% @teachers.each do |i| %>
-       <blockquote>
-         <% if i.profile_pic? %>
-           <%= image_tag i.profile_pic.thumb %>
+                      - <cite title="Source Title">Steve Jobs</cite>
+
+                </blockquote>
+              </div>
+            <% end %>
+            <% j = j+1 %>
+          <% end %>
         <% end %>
-          <p><bold><%= link_to (i.first_name + " " + i.last_name).titleize, i %></bold></p>
-          <footer>Status: <cite title="Source Title"><%= i.status %></cite></footer>
-        </blockquote>
-    <% end %>
+
+      </div>
+  </div>
 </div>

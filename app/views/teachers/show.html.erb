@@ -1,51 +1,75 @@
 <div class="showpage">
-    <div class="showteacher">
-        <div class="profile_pic">
-          <% if @teacher.profile_pic? %>
-            <%= image_tag @teacher.profile_pic.thumb %>
+  <div class="highlight">
+    <div class="teacher-show-details">
+      <div class="profile_pic">
+        <% if @teacher.profile_pic? %>
+          <%= image_tag @teacher.profile_pic.thumb, class: 'show-teacher-img-size' %><br>
+          <% if teacher_logged_in? %>
+            <%= link_to "Update Picture", edit_teacher_path(current_teacher) %>
+            <% end %>
+        <% else %>
+          <% if @teacher.gender == "Male" %>
+            <%= image_tag 'boy.jpg', class: 'show-teacher-img-size' %><br>
           <% else %>
-            <h3>No Profile Pic</h3>
+            <%= image_tag 'girl.jpg', class: 'show-teacher-img-size' %><br>
           <% end %>
+        <% end %>
+      </div>
+      <div class="teacher-show-details1">
+        <div class="teacher-show-details2">
+          <span class="glyphicon glyphicon-envelope" aria-hidden= true></span><a href="mailto:<%= @teacher.email %>"><%= @teacher.email %></a>
+          <h3><bold><%= (@teacher.first_name + " " + @teacher.last_name).titleize %></bold></h3>
         </div>
-        <h3><bold><u><%= (@teacher.first_name + " " + @teacher.last_name).titleize %></u></bold></h3>
-        <br><br>
-        <h4>Basic Information</h4>
-        <table class="table table-striped">
-              <th></th>
-              <th></th>
-              <% if teacher_logged_in? %>
-                <tr>
-                    <td>Email</td>
-                    <td><a href= "mailtto:<%= @teacher.email %>"><%= @teacher.email %></a></td>
-                </tr>
-                <tr>
-                    <td>Phone</td>
-                    <td><a href="tel:<%= (@teacher.phone).to_i %>"><%= @teacher.phone %></a></td>
-                </tr>
-              <% end %>
-              <tr>
-                  <td>Country</td>
-                  <td>I belong to <%= @teacher.country.titleize %></td>
-              </tr>
-              <tr>
-                  <td>Gender</td>
-                  <td>I am a <%= @teacher.gender.titleize %></td>
-              </tr>
-        </table>
-        <br><br>
-
+        <div class="teacher-show-details3">
+          <p><span class="glyphicon glyphicon-screenshot"></span><%= "\t" + @teacher.country.titleize %></p>
+          <p><span class="glyphicon glyphicon-earphone"></span><%= "\t" + @teacher.phone %></p>
+          <p><span class="glyphicon glyphicon-user"></span><%= "\t" + @teacher.gender %></p>
+        </div>
+      </div>
+      <div class="teacher-show-status">
         <% if @teacher.status %>
             <blockquote class="blockquote-reverse">
                   <p><%= @teacher.status %></p>
                   <footer> By <cite title="Source Title"><%= @teacher.first_name %></cite></footer>
             </blockquote>
         <% end %>
-        <br><br>
-        <h4><u>About Me</u></h4>
-        <p><%= @teacher.about.html_safe %></p>
-        <br><br>
-        <h4><u>Why Me</u></h4>
-        <p><%= @teacher.whyme.html_safe %></p>
+      </div>
+    </div>
+  </div>
+  <br><br><br>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card card-outline-success">
+          <h3 class="card-header">About Me</h3>
+          <div class="card-block">
+            <p class="card-text"><%= @teacher.about.html_safe %></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="card card-outline-success">
+          <h3 class="card-header">Why Me ?</h3>
+          <div class="card-block">
+            <p class="card-text"><%= @teacher.whyme.html_safe %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br><br><br>
+
+
+
+
+
+
+
+
+
+
+
 
         <% if teacher_logged_in? %>
                 <h3 class="text-center"><u>My Orders</u></h3>

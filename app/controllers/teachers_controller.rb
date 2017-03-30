@@ -52,11 +52,11 @@ class TeachersController < ApplicationController
         end
       else
         flash[:notice] = "Old Pass is Incorrect"
-        redirect_to edit_teacher_path
+        render :edit
       end
     else
       flash[:notice] = "Please Enter the Old Password as Well"
-      redirect_to edit_teacher_path
+      render :edit
     end
   end
 

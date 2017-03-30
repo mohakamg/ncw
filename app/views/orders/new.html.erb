@@ -13,7 +13,7 @@
             <%= f.label "Order" %><br>
             <%= f.select :order_type, options_for_select(["Get Homework Done", "Live Video Tuition", "Homework with Explaination"]), class: "form-control" %>
         </div>
-
+        <h1 id='price_of_option'>Price: $3</h1>
         <div class="form-group">
             <%= f.label "Subject" %><br>
             <%= f.text_field :subject, class: "form-control" %>
@@ -60,3 +60,22 @@
     <% end %>
 
 </div>
+<script type="text/javascript">
+
+  $(document).ready(function(){
+    $('#order_order_type').on('change', function(){
+      var selectedOption = $('#order_order_type option:selected').text();
+      console.log(selectedOption);
+      if(selectedOption == "Get Homework Done"){
+        console.log("Selected");
+        $('#price_of_option').innerHTML = "Price: $3";
+      } else if(selectedOption == "Live Video Tuition"){
+        console.log("Selected");
+        $('#price_of_option').html("Price: $5/hr");
+      }
+      else {
+        $('#price_of_option').html("Price: $4");
+      }
+    });
+  });
+</script>
