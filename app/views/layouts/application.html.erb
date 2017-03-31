@@ -2,8 +2,8 @@
 <html>
 <head>
   <title>NaughtyCollegeWorks | Mohak Kant | Ronak Joshi</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css"><link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
   <script
   src="https://code.jquery.com/jquery-3.1.1.js"
@@ -21,6 +21,12 @@
 
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
+  <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+
   <%= csrf_meta_tags %>
 
 </head>
@@ -33,6 +39,7 @@
     					<nav>
                 <% if !teacher_logged_in? && !student_logged_in? %>
                   <%= link_to "Home", root_path %>
+                  <%= link_to "Our Teachers", teachers_path %>
                 <% end %>
     						<% if teacher_logged_in? %>
                   <%= link_to current_teacher.first_name +  " " + current_teacher.last_name, root_path %>
@@ -40,9 +47,9 @@
                   <%= link_to "LogOut", teacher_session_path(current_teacher), method: :delete, class:"button button_secondary button_small" %>
                 <% elsif student_logged_in? %>
                   <%= link_to current_student.username, root_path %>
+                  <%= link_to "Our Teachers", teachers_path %>
                   <%= link_to "LogOut", students_session_path(current_student), method: :delete, class:"button button_secondary button_small" %>
                 <% else %>
-                  <%= link_to "Our Teachers", teachers_path %>
                   <%= link_to "Teacher LogIn", new_teacher_session_path %>
                   <%= link_to "Teacher Sign Up!", new_teacher_path, class:"button button_secondary button_small" %>
                 <% end %>
@@ -77,4 +84,7 @@
   </footer>
 
 </body>
+
+
+
 </html>

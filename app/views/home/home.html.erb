@@ -1,13 +1,4 @@
-<html>
-	<head>
-		<title>NaughtyCollegeWorks | Mohak Kant</title>
-
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
-		<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
-	</head>
-
-	<body>
-		<section id="banner">
+	<section id="banner">
 			<div class="wrapper">
 				<div class="content">
 					<h1 class="title">We create Billionaires ! </h1>
@@ -281,94 +272,90 @@
 				<a href="#" class="button button_highlight button_large">Contact Us => naughtycollegeworks@gmail.com</a>
 			</div>
 		</section>
-		<!-- Button trigger modal -->
 
 
-	<!-- Modal -->
-	<div class="modal fade container" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	  <div class="modal-dialog" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title" id="myModalLabel">Login</h4>
-	      </div>
-	      <div class="modal-body">
-	        <%= render 'students_sessions/login' %>
-	      </div>
-	      <div class="modal-footer">
-	      </div>
-	    </div>
-	  </div>
+
+<!-- Modal -->
+<div class="modal fade container" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">Login</h4>
+			</div>
+			<div class="modal-body">
+				<%= render 'students_sessions/login' %>
+			</div>
+			<div class="modal-footer">
+			</div>
+		</div>
 	</div>
+</div>
 
-
-	<div class="modal fade container" id="homework" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	  <div class="modal-dialog" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title" id="myModalLabel">Homework</h4>
-	      </div>
-	      <div class="modal-body">
-	        <p>
-						<br><br>
-						Banh mi bicycle rights tattooed, craft beer semiotics XOXO kale chips. Post-ironic schlitz humblebrag craft beer food truck wolf, vice small batch succulents. Ugh single-origin coffee kogi hoodie. Fixie copper mug skateboard hashtag kombucha, irony authentic enamel pin helvetica celiac scenester letterpress slow-carb. Intelligentsia vegan next level, XOXO irony asymmetrical occupy jean shorts squid freegan bitters. Poutine whatever cred, chartreuse tumblr pug jean shorts yuccie pour-over cray flexitarian 3 wolf moon. Man braid hoodie unicorn sriracha direct trade, fam cray hell of humblebrag leggings raclette sartorial.
-						<br><br>
-						Vape man braid food truck, blue bottle art party narwhal stumptown actually gluten-free ramps hammock forage viral selfies four loko. Narwhal gochujang yr meditation dreamcatcher. Humblebrag blog meggings marfa etsy, whatever kitsch. Tousled hell of disrupt hot chicken, etsy pinterest yr asymmetrical fap. Banjo snackwave try-hard, umami health goth polaroid kitsch wayfarers four loko poke tote bag pinterest venmo neutra +1. Austin brooklyn fap knausgaard celiac. Hexagon drinking vinegar pok pok activated charcoal, irony aesthetic paleo tattooed meditation readymade kombucha art party.
-						<br><br>
-						Banh mi bicycle rights tattooed, craft beer semiotics XOXO kale chips. Post-ironic schlitz humblebrag craft beer food truck wolf, vice small batch succulents. Ugh single-origin coffee kogi hoodie. Fixie copper mug skateboard hashtag kombucha, irony authentic enamel pin helvetica celiac scenester letterpress slow-carb. Intelligentsia vegan next level, XOXO irony asymmetrical occupy jean shorts squid freegan bitters. Poutine whatever cred, chartreuse tumblr pug jean shorts yuccie pour-over cray flexitarian 3 wolf moon. Man braid hoodie unicorn sriracha direct trade, fam cray hell of humblebrag leggings raclette sartorial.
-					</p>
-	      </div>
-	      <div class="modal-footer">
-					<%= link_to "Go Ahead and Join Us on your Journey To Success!!!", new_student_path %>
-	      </div>
-	    </div>
-	  </div>
-	</div>
-
-	<div class="modal fade container" id="learnHomework" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	  <div class="modal-dialog" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title" id="myModalLabel">Learn Your Homework</h4>
-	      </div>
-	      <div class="modal-body">
+<div class="modal fade" id="homework" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">Homework</h4>
+			</div>
+			<div class="modal-body">
+				<p>
 					<br><br>
 					Banh mi bicycle rights tattooed, craft beer semiotics XOXO kale chips. Post-ironic schlitz humblebrag craft beer food truck wolf, vice small batch succulents. Ugh single-origin coffee kogi hoodie. Fixie copper mug skateboard hashtag kombucha, irony authentic enamel pin helvetica celiac scenester letterpress slow-carb. Intelligentsia vegan next level, XOXO irony asymmetrical occupy jean shorts squid freegan bitters. Poutine whatever cred, chartreuse tumblr pug jean shorts yuccie pour-over cray flexitarian 3 wolf moon. Man braid hoodie unicorn sriracha direct trade, fam cray hell of humblebrag leggings raclette sartorial.
 					<br><br>
 					Vape man braid food truck, blue bottle art party narwhal stumptown actually gluten-free ramps hammock forage viral selfies four loko. Narwhal gochujang yr meditation dreamcatcher. Humblebrag blog meggings marfa etsy, whatever kitsch. Tousled hell of disrupt hot chicken, etsy pinterest yr asymmetrical fap. Banjo snackwave try-hard, umami health goth polaroid kitsch wayfarers four loko poke tote bag pinterest venmo neutra +1. Austin brooklyn fap knausgaard celiac. Hexagon drinking vinegar pok pok activated charcoal, irony aesthetic paleo tattooed meditation readymade kombucha art party.
 					<br><br>
 					Banh mi bicycle rights tattooed, craft beer semiotics XOXO kale chips. Post-ironic schlitz humblebrag craft beer food truck wolf, vice small batch succulents. Ugh single-origin coffee kogi hoodie. Fixie copper mug skateboard hashtag kombucha, irony authentic enamel pin helvetica celiac scenester letterpress slow-carb. Intelligentsia vegan next level, XOXO irony asymmetrical occupy jean shorts squid freegan bitters. Poutine whatever cred, chartreuse tumblr pug jean shorts yuccie pour-over cray flexitarian 3 wolf moon. Man braid hoodie unicorn sriracha direct trade, fam cray hell of humblebrag leggings raclette sartorial.
-	      </div>
-	      <div class="modal-footer">
-					<%= link_to "Go Ahead and Join Us on your Journey To Success!!!", new_student_path %>
-	      </div>
-	    </div>
-	  </div>
+				</p>
+			</div>
+			<div class="modal-footer">
+				<%= link_to "Go Ahead and Join Us on your Journey To Success!!!", new_student_path %>
+			</div>
+		</div>
 	</div>
+</div>
 
-	<div class="modal fade container" id="exam" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	  <div class="modal-dialog" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title" id="myModalLabel">Teaching / Tutoring For Exams</h4>
-	      </div>
-	      <div class="modal-body">
-					<br><br>
-					Banh mi bicycle rights tattooed, craft beer semiotics XOXO kale chips. Post-ironic schlitz humblebrag craft beer food truck wolf, vice small batch succulents. Ugh single-origin coffee kogi hoodie. Fixie copper mug skateboard hashtag kombucha, irony authentic enamel pin helvetica celiac scenester letterpress slow-carb. Intelligentsia vegan next level, XOXO irony asymmetrical occupy jean shorts squid freegan bitters. Poutine whatever cred, chartreuse tumblr pug jean shorts yuccie pour-over cray flexitarian 3 wolf moon. Man braid hoodie unicorn sriracha direct trade, fam cray hell of humblebrag leggings raclette sartorial.
-					<br><br>
-					Vape man braid food truck, blue bottle art party narwhal stumptown actually gluten-free ramps hammock forage viral selfies four loko. Narwhal gochujang yr meditation dreamcatcher. Humblebrag blog meggings marfa etsy, whatever kitsch. Tousled hell of disrupt hot chicken, etsy pinterest yr asymmetrical fap. Banjo snackwave try-hard, umami health goth polaroid kitsch wayfarers four loko poke tote bag pinterest venmo neutra +1. Austin brooklyn fap knausgaard celiac. Hexagon drinking vinegar pok pok activated charcoal, irony aesthetic paleo tattooed meditation readymade kombucha art party.
-					<br><br>
-					Banh mi bicycle rights tattooed, craft beer semiotics XOXO kale chips. Post-ironic schlitz humblebrag craft beer food truck wolf, vice small batch succulents. Ugh single-origin coffee kogi hoodie. Fixie copper mug skateboard hashtag kombucha, irony authentic enamel pin helvetica celiac scenester letterpress slow-carb. Intelligentsia vegan next level, XOXO irony asymmetrical occupy jean shorts squid freegan bitters. Poutine whatever cred, chartreuse tumblr pug jean shorts yuccie pour-over cray flexitarian 3 wolf moon. Man braid hoodie unicorn sriracha direct trade, fam cray hell of humblebrag leggings raclette sartorial.
-	      </div>
-	      <div class="modal-footer">
-					<%= link_to "Go Ahead and Join Us on your Journey To Success!!!", new_student_path %>
-	      </div>
-	    </div>
-	  </div>
+<div class="modal fade container" id="learnHomework" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">Learn Your Homework</h4>
+			</div>
+			<div class="modal-body">
+				<br><br>
+				Banh mi bicycle rights tattooed, craft beer semiotics XOXO kale chips. Post-ironic schlitz humblebrag craft beer food truck wolf, vice small batch succulents. Ugh single-origin coffee kogi hoodie. Fixie copper mug skateboard hashtag kombucha, irony authentic enamel pin helvetica celiac scenester letterpress slow-carb. Intelligentsia vegan next level, XOXO irony asymmetrical occupy jean shorts squid freegan bitters. Poutine whatever cred, chartreuse tumblr pug jean shorts yuccie pour-over cray flexitarian 3 wolf moon. Man braid hoodie unicorn sriracha direct trade, fam cray hell of humblebrag leggings raclette sartorial.
+				<br><br>
+				Vape man braid food truck, blue bottle art party narwhal stumptown actually gluten-free ramps hammock forage viral selfies four loko. Narwhal gochujang yr meditation dreamcatcher. Humblebrag blog meggings marfa etsy, whatever kitsch. Tousled hell of disrupt hot chicken, etsy pinterest yr asymmetrical fap. Banjo snackwave try-hard, umami health goth polaroid kitsch wayfarers four loko poke tote bag pinterest venmo neutra +1. Austin brooklyn fap knausgaard celiac. Hexagon drinking vinegar pok pok activated charcoal, irony aesthetic paleo tattooed meditation readymade kombucha art party.
+				<br><br>
+				Banh mi bicycle rights tattooed, craft beer semiotics XOXO kale chips. Post-ironic schlitz humblebrag craft beer food truck wolf, vice small batch succulents. Ugh single-origin coffee kogi hoodie. Fixie copper mug skateboard hashtag kombucha, irony authentic enamel pin helvetica celiac scenester letterpress slow-carb. Intelligentsia vegan next level, XOXO irony asymmetrical occupy jean shorts squid freegan bitters. Poutine whatever cred, chartreuse tumblr pug jean shorts yuccie pour-over cray flexitarian 3 wolf moon. Man braid hoodie unicorn sriracha direct trade, fam cray hell of humblebrag leggings raclette sartorial.
+			</div>
+			<div class="modal-footer">
+				<%= link_to "Go Ahead and Join Us on your Journey To Success!!!", new_student_path %>
+			</div>
+		</div>
 	</div>
+</div>
 
-	</body>
-</html>
+<div class="modal fade container" id="exam" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">Teaching / Tutoring For Exams</h4>
+			</div>
+			<div class="modal-body">
+				<br><br>
+				Banh mi bicycle rights tattooed, craft beer semiotics XOXO kale chips. Post-ironic schlitz humblebrag craft beer food truck wolf, vice small batch succulents. Ugh single-origin coffee kogi hoodie. Fixie copper mug skateboard hashtag kombucha, irony authentic enamel pin helvetica celiac scenester letterpress slow-carb. Intelligentsia vegan next level, XOXO irony asymmetrical occupy jean shorts squid freegan bitters. Poutine whatever cred, chartreuse tumblr pug jean shorts yuccie pour-over cray flexitarian 3 wolf moon. Man braid hoodie unicorn sriracha direct trade, fam cray hell of humblebrag leggings raclette sartorial.
+				<br><br>
+				Vape man braid food truck, blue bottle art party narwhal stumptown actually gluten-free ramps hammock forage viral selfies four loko. Narwhal gochujang yr meditation dreamcatcher. Humblebrag blog meggings marfa etsy, whatever kitsch. Tousled hell of disrupt hot chicken, etsy pinterest yr asymmetrical fap. Banjo snackwave try-hard, umami health goth polaroid kitsch wayfarers four loko poke tote bag pinterest venmo neutra +1. Austin brooklyn fap knausgaard celiac. Hexagon drinking vinegar pok pok activated charcoal, irony aesthetic paleo tattooed meditation readymade kombucha art party.
+				<br><br>
+				Banh mi bicycle rights tattooed, craft beer semiotics XOXO kale chips. Post-ironic schlitz humblebrag craft beer food truck wolf, vice small batch succulents. Ugh single-origin coffee kogi hoodie. Fixie copper mug skateboard hashtag kombucha, irony authentic enamel pin helvetica celiac scenester letterpress slow-carb. Intelligentsia vegan next level, XOXO irony asymmetrical occupy jean shorts squid freegan bitters. Poutine whatever cred, chartreuse tumblr pug jean shorts yuccie pour-over cray flexitarian 3 wolf moon. Man braid hoodie unicorn sriracha direct trade, fam cray hell of humblebrag leggings raclette sartorial.
+			</div>
+			<div class="modal-footer">
+				<%= link_to "Go Ahead and Join Us on your Journey To Success!!!", new_student_path %>
+			</div>
+		</div>
+	</div>
+</div>

@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     resources :orders, except: [:destroy, :new, :create] do
       patch :accept_order_path
     end
+    resources :teacher_comments, only: [:create]
     member do
       get :confirm_email
     end

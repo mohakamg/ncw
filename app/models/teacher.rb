@@ -22,6 +22,8 @@ class Teacher < ApplicationRecord
       has_many :orders
       has_many :students, through: :orders
 
+      has_many :teacher_comments
+
 
   def email_activate
       self.email_confirmed = true

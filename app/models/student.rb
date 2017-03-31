@@ -10,4 +10,6 @@ class Student < ApplicationRecord
   has_many :orders
   has_many :teachers, through: :orders
 
+  has_many :teacher_comments
+
 end
