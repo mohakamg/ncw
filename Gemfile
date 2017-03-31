@@ -40,7 +40,7 @@ gem 'carrierwave_backgrounder', :git => 'https://github.com/lardawge/carrierwave
 gem "sidekiq"
 gem 'figaro'
 gem 'localtunnel'
-
+gem 'bootstrap-sass', '3.2.0.2'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
