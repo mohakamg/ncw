@@ -25,10 +25,7 @@ default: &default
 development:
   <<: *default
   database: naughtCollegeWorks_development
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  host: localhost
-  username: postgres
-  password: 0203-2748
+
 
 
   # The specified database role being used to connect to postgres.
@@ -81,14 +78,11 @@ test:
 #
 # You can use this database configuration with:
 #
-#   production:
-#     url: <%= ENV['DATABASE_URL'] %>
-#
 production:
-  <<: *default
-  database: d93o73g0453m8j
-  #username: naughtCollegeWorks
-  #password: <%= ENV['NAUGHTCOLLEGEWORKS_DATABASE_PASSWORD'] %>
-  host: ec2-184-73-199-72.compute-1.amazonaws.com
-  username: xmkvlfmueclbrg
-  password: <%= ENV['PG_PASS'] %>
+  url: <%= ENV['DATABASE_URL'] %>
+#
+#production:
+#  <<: *default
+#  database: naughtCollegeWorks_production
+#  username: naughtCollegeWorks
+#  password: <%= ENV['NAUGHTCOLLEGEWORKS_DATABASE_PASSWORD'] %>
