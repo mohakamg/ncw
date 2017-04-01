@@ -42,7 +42,7 @@ class TeachersController < ApplicationController
     if old_pass
       if @teacher.authenticate(old_pass)
         @teacher.assign_attributes(create_teacher_params)
-        @teacher.profile_pic = params[:teacher][:pic]
+        @teacher.profile_pic = params[:teacher][:pic] if params[:teacher][:pic]
         if @teacher.save
           flash[:success] = "Success, Mr. Teacher"
           redirect_to @teacher
