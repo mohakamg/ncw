@@ -86,5 +86,5 @@ test:
 production:
   <<: *default
   database: naughtCollegeWorks_production
-  username: naughtCollegeWorks
+  username: postgres
   password: <%= ENV['NAUGHTCOLLEGEWORKS_DATABASE_PASSWORD'] %>

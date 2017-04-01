@@ -42,7 +42,7 @@ body {
     clear: both
 }
 #banner {
-    background-image: url(images/temp_back1.jpg);
+    background-image: image-url("temp_back1.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
@@ -276,13 +276,4 @@ footer .copyright a {
 
 *{
 	font-family: "PT Sans"
-}
-
-.modal{
- position: fixed;
-}
-
-.modal-content{
-  position: fixed;
-  width: 100%;
 }
