@@ -10,8 +10,7 @@ class TeacherCommentsController < ApplicationController
       flash[:notice] = "Comment Can't be blank"
       redirect_to :back
     end
-    @teacher_comment = teacher.teacher_comments.new(comment: comment_body)
-    @teacher_comment.student_id = cur_stud
+    @teacher_comment = teacher.teacher_comments.new(comment: comment_body, student_id: cur_stud.id)
     if @teacher_comment.save!
       respond_to do |format|
         format.html {redirect_to teacher}
