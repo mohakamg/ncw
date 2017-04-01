@@ -86,7 +86,7 @@ test:
 #
 production:
   <<: *default
-  database: naughtCollegeWorks_production
+  database: d93o73g0453m8j
   #username: naughtCollegeWorks
   #password: <%= ENV['NAUGHTCOLLEGEWORKS_DATABASE_PASSWORD'] %>
   host: ec2-184-73-199-72.compute-1.amazonaws.com
