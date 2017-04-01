@@ -11,7 +11,7 @@ class TeacherCommentsController < ApplicationController
       redirect_to :back
     end
     @teacher_comment = teacher.teacher_comments.new(comment: comment_body)
-    @teacher_comment.student = cur_stud
+    @teacher_comment.student_id = cur_stud
     if @teacher_comment.save!
       respond_to do |format|
         format.html {redirect_to teacher}
@@ -27,7 +27,7 @@ class TeacherCommentsController < ApplicationController
       flash[:alert] = "You need to login to leave a comment."
       redirect_to new_students_session_path
     else
-      unless Teacher.find(params[:teacher_id]).students.find(current_student.id)
+      unless Teacher.find(params[:teacher_id]).students.find_by_id(current_student.id)
         flash[:notice] = "This Teacher never taught you. You cannot leave a comment"
         redirect_to root_path
       end
