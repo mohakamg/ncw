@@ -17,8 +17,8 @@ $(document).ready(function()
       url: "/pastedImage/<%= @order.id %>/image/",
       data: {pastedImage: data.dataURL}
     });
-    $('#order_website').after('<img class=\"result \" src='+ data.dataURL +'>');
 
+    $('#order_website').after('<img class=\"result \" src='+ data.dataURL +'>');
   }).on('pasteImageError', function(ev, data){
     alert('Oops: ' + data.message);
     if(data.url){
