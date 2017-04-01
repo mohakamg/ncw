@@ -89,6 +89,6 @@ production:
   database: naughtCollegeWorks_production
   #username: naughtCollegeWorks
   #password: <%= ENV['NAUGHTCOLLEGEWORKS_DATABASE_PASSWORD'] %>
-  host: naughtycollegeworks.herokuapp.com
-  username: postgres
-  password: 0203-2748
+  host: ec2-184-73-199-72.compute-1.amazonaws.com
+  username: xmkvlfmueclbrg
+  password: <%= ENV['PG_PASS'] %>
