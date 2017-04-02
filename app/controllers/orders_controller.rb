@@ -25,6 +25,9 @@ class OrdersController < ApplicationController
     @student = Student.find(params[:student_id])
     @order = @student.orders.new(create_order_student_params)
     @order.teacher_id = 0
+    @order.price = 3 if params[:order_type] == "Get Homework Done"
+    @order.price = 4 if params[:order_type] == "Homework with Explaination"
+    @order.price = 5 if params[:order_type] == "Live Video Tuition"
     if @order.save
       flash[:success] = "Order Placed. Have a wonderful time!!!"
       redirect_to @student
