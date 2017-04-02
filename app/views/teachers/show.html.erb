@@ -99,7 +99,7 @@
                   <th>Student</th>
                   <th>Status</th>
                   <th>Deadline</th>
-                  <% @teacher.orders.where(approved_completion: false).order(updated_at: :desc).each do |order| %>
+                  <% @teacher.orders.where(approved_completion: false, purchase_status: "Completed").order(updated_at: :desc).each do |order| %>
                       <tr class="success">
                           <td><%= link_to(order.id, teacher_order_path(@teacher, order)) +" " + order.order_type %></td>
                           <td><%= order.subject %></td>
@@ -126,7 +126,7 @@
                   <th>Status</th>
                   <th>Deadline</th>
                   <th>Accept?</th>
-                  <% Order.where(teacher_id: 0).order(updated_at: :desc).each do |order| %>
+                  <% Order.where(teacher_id: 0, purchase_status: "Completed").order(updated_at: :desc).each do |order| %>
                       <tr>
                           <td><%= link_to(order.id, teacher_order_path(@teacher, order)) +" " + order.order_type %></td>
                           <td><%= order.subject %></td>

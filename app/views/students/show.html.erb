@@ -15,7 +15,7 @@
       <th>Deadline</th>
       <th>Special Comments</th>
       <th>Approved Confirmation?</th>
-      <% @student.orders.where(approved_completion: false, status: "Completed").order(updated_at: :desc).each do |order| %>
+      <% @student.orders.where(approved_completion: false, status: "Completed", purchase_status: "Completed").order(updated_at: :desc).each do |order| %>
                     <tr class="success">
                         <td><%= link_to(order.id, student_order_path(@student, order)) + " " + order.order_type %></td>
                         <td><%= order.subject %></td>
@@ -33,7 +33,7 @@
                     </tr>
         <% end %>
 
-      <% @student.orders.where(approved_completion: false).where.not(status: "Completed").order(updated_at: :desc).each do |order| %>
+      <% @student.orders.where(approved_completion: false, purchase_status: "Completed").where.not(status: "Completed").order(updated_at: :desc).each do |order| %>
                     <tr>
                         <td><%= link_to(order.id, student_order_path(@student, order)) + " " + order.order_type %></td>
                         <td><%= order.subject %></td>
@@ -50,7 +50,7 @@
                         <td><%= order.approved_completion.to_s.titleize %></td>
                     </tr>
         <% end %>
-        <% @student.orders.where(approved_completion: true).order(updated_at: :desc).each do |order| %>
+        <% @student.orders.where(approved_completion: true, purchase_status: "Completed").order(updated_at: :desc).each do |order| %>
             <tr class="danger">
                 <td><%= link_to(order.id, student_order_path(@student, order)) +" " + order.order_type %></td>
                 <td><%= order.subject %></td>

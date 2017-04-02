@@ -12,7 +12,7 @@ class Order < ApplicationRecord
 
   def paypal_url(return_path)
     values = {
-        business: "naughtycworks-facilitator@gmail.com",
+        business: "naughtycworks@gmail.com",
         cmd: "_xclick",
         upload: 1,
         return: "#{Rails.application.secrets.app_host}#{return_path}",
