@@ -59,19 +59,19 @@
   	</div>
 	</div>
 
-  <div class="bg-warning">
+  <div class="">
     <% if flash[:notice] %>
-      <p class="flashes"><%= flash[:notice] %></p>
+      <p class="alert alert-warning"><%= flash[:notice] %></p>
     <% end %>
   </div>
-  <div class="bg-danger">
+  <div class="">
     <% if flash[:alert] %>
-      <p class="flashes"><%= flash[:alert] %></p>
+      <p class="alert alert-danger"><%= flash[:alert] %></p>
     <% end %>
   </div>
-  <div class="bg-success">
+  <div class="">
     <% if flash[:success] %>
-      <p class="flashes"><%= flash[:success] %></p>
+      <p class="alert alert-success"><%= flash[:success] %></p>
     <% end %>
   </div>
 

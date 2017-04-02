@@ -32,7 +32,6 @@ class OrdersController < ApplicationController
       flash[:notice] = "Not Created"
       render :new
     end
-
   end
 
   def update
