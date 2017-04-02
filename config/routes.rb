@@ -29,4 +29,6 @@ Rails.application.routes.draw do
     end
   end
 
+  post "/hook" => "orders#hook"
+
 end

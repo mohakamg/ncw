@@ -10,6 +10,19 @@ class Order < ApplicationRecord
   validates :subject, presence: true, on: :create
   validates :topic, presence: true, on: :create
 
-
+  def paypal_url(return_path)
+    values = {
+        business: "merchant-testncw@gmail.com",
+        cmd: "_xclick",
+        upload: 1,
+        return: "#{Rails.application.secrets.app_host}#{return_path}",
+        invoice: id,
+        amount: order.price,
+        item_name: order.order_type,
+        item_number: order.id,
+        quantity: '1'
+    }
+    "#{Rails.application.secrets.paypal_host}/cgi-bin/webscr?" + values.to_query
+  end
 
 end

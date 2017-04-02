@@ -30,7 +30,7 @@ class OrdersController < ApplicationController
     @order.price = 5 if params[:order_type] == "Live Video Tuition"
     if @order.save
       flash[:success] = "Order Placed. Have a wonderful time!!!"
-      redirect_to @student
+      redirect_to @order.paypal_url(@order)
     else
       flash[:notice] = "Not Created"
       render :new
