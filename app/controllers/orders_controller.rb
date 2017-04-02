@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
 
-  before_action :require_login
+  before_action :require_login, except: [:hook]
   before_action :require_student_login, only: [:new, :create]
   before_action :require__teacher_login, only: [:accept_order_path]
 
@@ -25,12 +25,15 @@ class OrdersController < ApplicationController
     @student = Student.find(params[:student_id])
     @order = @student.orders.new(create_order_student_params)
     @order.teacher_id = 0
-    @order.price = 3 if params[:order_type] == "Get Homework Done"
-    @order.price = 4 if params[:order_type] == "Homework with Explaination"
-    @order.price = 5 if params[:order_type] == "Live Video Tuition"
+    if params[:order][:order_type] == "Get Homework Done"
+      @order.price = 3
+    elsif params[:order][:order_type] == "Homework with Explaination"
+      @order.price = 4
+    elsif params[:order][:order_type] == "Live Video Tuition"
+      @order.price = 5
+    end
     if @order.save
-      flash[:success] = "Order Placed. Have a wonderful time!!!"
-      redirect_to @order.paypal_url(@order)
+      redirect_to @order.paypal_url(student_order_path(@student, @order))
     else
       flash[:notice] = "Not Created"
       render :new
@@ -113,10 +116,23 @@ class OrdersController < ApplicationController
     end
   end
 
+  protect_from_forgery except: [:hook]
+  def hook
+    status = params[:payment_status]
+    if status == "Completed"
+      @order = Order.find(params[:item_number])
+      parameters = String.new
+      params.each do |key, value|
+        parameters += key + " = " + value + " | "
+      end
+      @order.update_attributes(notification_params: parameters, purchase_status: status, transaction_id: params[:txn_id], purchased_at: Time.now)
+    end
+  end
+
   private
 
   def create_order_student_params
-    params.require(:order).permit(:student_id, :order_type, :special_comments, :deadline, :approved_completion, :website, :credentials, :subject, :topic, :about_homework, {stud_docs: []})
+    params.require(:order).permit(:student_id, :order_type, :special_comments, :deadline, :approved_completion, :website, :credentials, :subject, :topic, :about_homework, {stud_docs: []}, :price, :notification_params, :purchase_status)
   end
 
   def create_order_teacher_params

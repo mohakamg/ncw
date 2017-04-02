@@ -12,14 +12,14 @@ class Order < ApplicationRecord
 
   def paypal_url(return_path)
     values = {
-        business: "merchant-testncw@gmail.com",
+        business: "naughtycworks-facilitator@gmail.com",
         cmd: "_xclick",
         upload: 1,
         return: "#{Rails.application.secrets.app_host}#{return_path}",
         invoice: id,
-        amount: order.price,
-        item_name: order.order_type,
-        item_number: order.id,
+        amount: self.price,
+        item_name: self.order_type,
+        item_number: self.id,
         quantity: '1',
         notify_url: "#{Rails.application.secrets.app_host}/hook"
     }
