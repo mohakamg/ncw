@@ -88,4 +88,9 @@
   <%= link_to "Place New Order", new_student_order_path(student_id: current_student), class: "button button_highlight" %>
     <br><br><br><br>  <br><br><br><br>
       <br><br><br><br>
+      <% if @student.orders.count < 9 %>
+      <br><br><br><br>  <br><br><br><br>
+        <br><br><br><br>
+      <% end %>
+      <%  %>
 </div>
