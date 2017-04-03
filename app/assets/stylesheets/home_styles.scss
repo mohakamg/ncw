@@ -54,12 +54,12 @@ body {
     position: relative;
 	  padding-bottom: 9%;
     text-align: center;
-    color: #7ac483;
+    color: white;
 }
 #nav{
-    background: #7ac483;
+    background: black;
     padding-bottom: 1%;
-    border-bottom: 3px #71b77a solid;
+    opacity: 0.5;
 }
 #nav header {
     padding: 2rem 0;
@@ -277,15 +277,16 @@ body {
 footer {
     padding: 1rem 0;
     padding-top: 2rem;
-    background: #7ac483;
+    background: black;
+    opacity: 0.5;
 }
 footer .copyright {
     text-align: center;
     font-weight: 700;
-    color: #000;
+    color: #fff;
 }
 footer .copyright a {
-    color: #000;
+    color: #fff;
     text-decoration: none
 }
 
@@ -299,12 +300,12 @@ footer .copyright a {
   margin-right: 10%;
 }
 
-#past1, #past3{
+#past1{
   background-image: image-url("half-green-back1.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
-#past2, #past4{
+#past3{
   background-image: image-url("half-green-back2.png");
   background-repeat: no-repeat;
   background-size: cover;
