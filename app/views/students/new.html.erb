@@ -1,14 +1,14 @@
 <div class="form-wrapper">
-
-  <%= form_for @student do |f| %>
+  <div class="inner-form">
+    <%= form_for @student do |f| %>
 
     <% if @student.errors.any? %>
-      <div class="alert alert-danger">
+    <div class="alert alert-danger">
       <h1><%= pluralize(@student.errors.count, "Errors") %> Prevented Your Anonymous Identity Creation </h1>
       <% @student.errors.full_messages.each do |e| %>
-        <li><%= e %></li>
+      <li><%= e %></li>
       <% end %>
-      </div><br><br>
+    </div><br><br>
     <% end %>
 
 
@@ -32,6 +32,7 @@
     <%= f.submit "Sign Up!", class: "button button_highlight" %><br><br>
     <%= link_to "Already With Us? Login Instead!!!", new_students_session_path %>
 
-  <% end %>
+    <% end %>
+  </div>
 <br><br><br><br>
 </div>
