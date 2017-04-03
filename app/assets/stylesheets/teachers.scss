@@ -62,5 +62,16 @@
 }
 
 .our-teachers{
-  background: linear-gradient(#537577, #233237);
+  background-image: image-url("linen-back.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.overlay{
+
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0.9;
+
 }
