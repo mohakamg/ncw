@@ -1,77 +1,91 @@
-<div class="container">
-  <h1>Hello, <%= @student.username %></h1>
+<div class="container order-show">
 
   <br><br><br><br>
-
   <% if @student.orders.any? %>
-    <h1><u>MY ORDERS</u></h1>
-    <table class="table table-hover">
-      <th>Order Type</th>
-      <th>Subject</th>
-      <th>Topic</th>
-      <th>About Subject</th>
-      <th>Teacher Name</th>
-      <th>Status</th>
-      <th>Deadline</th>
-      <th>Special Comments</th>
-      <th>Approved Confirmation?</th>
+
       <% @student.orders.where(approved_completion: false, status: "Completed", purchase_status: "Completed").order(updated_at: :desc).each do |order| %>
-                    <tr class="success">
-                        <td><%= link_to(order.id, student_order_path(@student, order)) + " " + order.order_type %></td>
-                        <td><%= order.subject %></td>
-                        <td><%= order.topic %></td>
-                        <td><%= order.about_homework %></td>
-                        <% if order.teacher_id != 0 %>
-                            <td><%= link_to order.teacher.first_name, order.teacher %></td>
-                        <% else %>
-                            <td> Not Accepted By Anyone Yet </td>
-                        <% end %>
-                        <td><%= order.status %></td>
-                        <td><%= order.deadline %></td>
-                        <td><%= order.special_comments %></td>
-                        <td><%= order.approved_completion.to_s.titleize %></td>
-                    </tr>
+
+
+                    <div class="card-columns">
+                      <div class="card card-outline-success">
+                        <img class="card-img-top img-fluid" src="..." alt="Card image cap">
+                        <div class="card-block">
+                          <h4 class="card-title"><%= link_to(order.id, student_order_path(@student, order)) + " " + order.order_type %></h4>
+                          <p class="card-text">
+                            Subject: <%= order.subject %><br>
+                            Topic: <%= order.topic %><br>
+                            About Homework: <%= order.about_homework %><br>
+                            Teacher Name: <% if order.teacher_id != 0 %>
+                                <td><%= link_to order.teacher.first_name, order.teacher %></td>
+                            <% else %>
+                                <td> Not Accepted By Anyone Yet </td>
+                            <% end %><br>
+                            Status: <%= order.status %><br>
+                            Deadline: <%= order.deadline %><br>
+                            Special Comments: <%= order.special_comments %><br>
+                            Approved Cofirmation?: <%= order.approved_completion.to_s.titleize %>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
         <% end %>
 
+
+        <div class="card-columns">
       <% @student.orders.where(approved_completion: false, purchase_status: "Completed").where.not(status: "Completed").order(updated_at: :desc).each do |order| %>
-                    <tr>
-                        <td><%= link_to(order.id, student_order_path(@student, order)) + " " + order.order_type %></td>
-                        <td><%= order.subject %></td>
-                        <td><%= order.topic %></td>
-                        <td><%= order.about_homework %></td>
-                        <% if order.teacher_id != 0 %>
-                            <td><%= link_to order.teacher.first_name, order.teacher %></td>
-                        <% else %>
-                            <td> Not Accepted By Anyone Yet </td>
-                        <% end %>
-                        <td><%= order.status %></td>
-                        <td><%= order.deadline %></td>
-                        <td><%= order.special_comments %></td>
-                        <td><%= order.approved_completion.to_s.titleize %></td>
-                    </tr>
+            <div class="card">
+              <div class="card-block">
+                <h4 class="card-title"><%= link_to(order.id, student_order_path(@student, order)) + " " + order.order_type %></h4>
+                <p class="card-text">
+                  Subject: <%= order.subject %><br>
+                  Topic: <%= order.topic %><br>
+                  About Homework: <%= order.about_homework %><br>
+                  Teacher Name: <% if order.teacher_id != 0 %>
+                      <td><%= link_to order.teacher.first_name, order.teacher %></td>
+                  <% else %>
+                      <td> Not Accepted By Anyone Yet </td>
+                  <% end %><br>
+                  Status: <%= order.status %><br>
+                  Deadline: <%= order.deadline %><br>
+                  Special Comments: <%= order.special_comments %><br>
+                  Approved Cofirmation?: <%= order.approved_completion.to_s.titleize %>
+                </p>
+              </div>
+            </div>
         <% end %>
+      </div>
+
         <% @student.orders.where(approved_completion: true, purchase_status: "Completed").order(updated_at: :desc).each do |order| %>
-            <tr class="danger">
-                <td><%= link_to(order.id, student_order_path(@student, order)) +" " + order.order_type %></td>
-                <td><%= order.subject %></td>
-                <td><%= order.topic %></td>
-                <td><%= order.about_homework %></td>
-                <% if order.teacher_id != 0 %>
-                    <td><%= link_to order.teacher.first_name, order.teacher %></td>
-                <% else %>
-                    <td> Not Accepted By Anyone Yet </td>
-                <% end %>
-                <td><%= order.status %></td>
-                <td><%= order.deadline %></td>
-                <td><%= order.special_comments %></td>
-                <td><%= order.approved_completion.to_s.titleize %></td>
-            </tr>
+          <div class="card-columns">
+            <div class="card">
+              <img class="card-img-top img-fluid" src="..." alt="Card image cap">
+              <div class="card-block">
+                <h4 class="card-title"><%= link_to(order.id, student_order_path(@student, order)) + " " + order.order_type %></h4>
+                <p class="card-text">
+                  Subject: <%= order.subject %><br>
+                  Topic: <%= order.topic %><br>
+                  About Homework: <%= order.about_homework %><br>
+                  Teacher Name: <% if order.teacher_id != 0 %>
+                      <td><%= link_to order.teacher.first_name, order.teacher %></td>
+                  <% else %>
+                      <td> Not Accepted By Anyone Yet </td>
+                  <% end %><br>
+                  Status: <%= order.status %><br>
+                  Deadline: <%= order.deadline %><br>
+                  Special Comments: <%= order.special_comments %><br>
+                  Approved Cofirmation?: <%= order.approved_completion.to_s.titleize %>
+                </p>
+              </div>
+            </div>
+          </div>
         <% end %>
-      </table>
     <% end %>
 
 
   <br><br><br><br>
 
-  <%= link_to "Place Order", new_student_order_path(student_id: current_student), class: "btn btn-success form-control" %>
+  <%= link_to "Place New Order", new_student_order_path(student_id: current_student), class: "button button_highlight" %>
+    <br><br><br><br>  <br><br><br><br>
+      <br><br><br><br>
 </div>

@@ -1,5 +1,4 @@
-<div class="container form-wrapper">
-
+<div class="form-wrapper">
     <%= form_for [@student, @order] do |f| %>
 
         <% if @order.errors.any? %>
@@ -11,51 +10,45 @@
 
         <div class="form-group">
             <%= f.label "Order" %><br>
-            <%= f.select :order_type, options_for_select(["Get Homework Done", "Live Video Tuition", "Homework with Explaination"]), class: "form-control" %>
+            <%= f.select(:order_type, ["Get Homework Done", "Live Video Tuition", "Homework with Explaination"], {}, {class: "custom-select mb-2 mr-sm-2 mb-sm-0"}) %>
         </div>
-        <h1 id='price_of_option'>Price: $3</h1>
+        <h3 id='price_of_option' style="color:#333;">Price: $3</h3>
         <div class="form-group">
-            <%= f.label "Subject" %><br>
-            <%= f.text_field :subject, class: "form-control" %>
-        </div>
+            <%= f.text_field :subject, class: "form-control", placeholder: "Subject" %>
+        </div><br>
 
         <div class="form-group">
-            <%= f.label "Topic" %><br>
-            <%= f.text_field :topic, class: "form-control" %>
-        </div>
+            <%= f.text_field :topic, class: "form-control", placeholder: "Topic" %>
+        </div><br>
 
         <div class="form-group">
-            <%= f.label "About The Homework" %><br>
-            <%= f.text_area :about_homework, class: "form-control" %>
-        </div>
+            <%= f.text_area :about_homework, class: "form-control", placeholder: "About Homework" %>
+        </div><br>
 
         <div class="form-group">
             <%= f.label "Deadline (yy-mm-dd hh:mm)" %><br>
             <%= f.datetime_field :deadline, class: "form-control" %>
-        </div>
+        </div><br>
 
         <div class="form-group">
-            <%= f.label "Link to HW, if any?" %><br>
-            <%= f.text_field :website, class: "form-control" %>
-        </div>
+            <%= f.text_field :website, class: "form-control", placeholder: "Link To Homework (if any?)" %>
+        </div><br>
 
         <div class="form-group">
-            <%= f.label "Credentials to Login to that Website, if any?" %><br>
-            <%= f.text_field :credentials, class: "form-control" %>
-        </div>
+            <%= f.text_field :credentials, class: "form-control", placeholder: "Credentials for the Website. Leave blank if no website provided." %>
+        </div><br>
 
         <div class="form-group">
-            <%= f.label "Special Comments" %><br>
-            <%= f.text_area :special_comments, class: "form-control" %>
-        </div>
+            <%= f.text_area :special_comments, class: "form-control", placeholder: "Special Comments" %>
+        </div><br>
 
         <div class="form-group">
             <%= f.label "Docs (You Can Upload Multiple Docs With Multiple Select)" %><br>
-            <%= f.file_field :stud_docs, multiple: true, class: "form-control" %>
-        </div>
+            <%= f.file_field :stud_docs, multiple: true, class: "btn" %>
+        </div><br>
 
         <div class="form-group">
-            <%= f.submit "Place Order", class: "form-control btn btn-success" %>
+            <%= f.submit "Place Order", class: "button button_highlight" %>
         </div>
     <% end %>
 

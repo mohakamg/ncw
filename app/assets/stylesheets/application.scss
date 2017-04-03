@@ -74,12 +74,22 @@
   padding: 10%;
   background: white;
   border-radius: 2%;
+  color: #000;
 }
 
 .inner-form-no-bg{
   padding: 10%;
   background: none;
   color: white;
+}
+
+.order-show{
+  background-image: image-url("crowd.jpg");
+  background-size: cover;;
+  background-repeat: no-repeat;
+  margin: 0;
+  width: 100%;
+  padding: 0 10%;
 }
 
 .inner-form-inverse {
@@ -97,4 +107,11 @@
 hr{
   padding-top: 0;
   margin-top: 0;
+}
+
+.order-edit-show{
+  margin: 0;
+  padding: 0 30%;
+  background: image-url("login.jpg");
+  color: #428bca;
 }

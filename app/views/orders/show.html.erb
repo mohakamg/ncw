@@ -30,65 +30,78 @@ $(document).ready(function()
 });
 </script>
 
-
-<div class="container">
-    <% if student_logged_in? %>
-      <% if @order.teacher_id != 0 %>
-        <h1>Order Attended By: <%= @order.teacher.first_name %></h1>
-        <h3>Status Of Order: <%= @order.status %></h3>
-      <% else %>
-        <h1>Order Waiting to be Accepted</h1>
-      <% end %>
-        <% if @order.approved_completion %>
-            </h1>
-            <p>Subject: <%= @order.subject %></p>
-            <p>Topic: <%= @order.topic %></p>
-            <p>Placed On: <%= @order.created_at %></p>
-            <p>Status: <%= @order.status %></p>
-            <p>Deadline: <%= @order.deadline %></p>
-            <p>Extra Comments: <%= @order.special_comments %></p>
-            <h2 class="text-center">Approved Completion: <%= @order.approved_completion.to_s.titleize %></h2>
-
-
-            <% @order.stud_docs.each do |f| %>
-              <br><%= link_to f.to_s, f.url %><br>
-            <% end %>
-            <br>
-            <% @order.stud_pasted_images.each do |f| %>
-              <a href="<%= f %>"><%= image_tag f, class: "result" %></a>
-            <% end %>
-            <br>
-            Teacher Uploads:
-            <% @order.teacher_docs.each do |f| %>
-              <br><%= link_to f.path.to_s, f.url %><br>
-            <% end %>
-
-        <% else %>
-            <h3>My Uploads:</h3>
-            <% @order.stud_docs.each do |f| %>
-              <br><%= link_to f.path.to_s, f.url %><br>
-            <% end %>
-
-              <br>
-              <% @order.stud_pasted_images.each do |f| %>
-                <a href="<%= f %>"><%= image_tag f, class: "result" %></a>
+<div class="order-edit-show">
+  <br><br><br><br>
+        <div class="inner-form">
+            <% if student_logged_in? %>
+              <% if @order.teacher_id != 0 %>
+                <p>Order Attended By: <%= @order.teacher.first_name %></p>
+                <p>Status Of Order: <%= @order.status %></p>
+              <% else %>
+                <p>Order Waiting to be Accepted</p>
               <% end %>
-              <br><hr>
-            <h3>Teacher Uploads:</h3>
-            <% @order.teacher_docs.each do |f| %>
-              <br><%= link_to f.path.to_s, f.url %><br>
-            <% end %>
-            <br><hr>
-            <%= form_for [@student, @order], method: :patch do |f| %>
-                <% if @order.errors.any? %>
-                  <h1><%= pluralize(@order.errors.count, "Errors") %> Prevented Your Order Creation </h1>
-                    <% @order.errors.full_messages.each do |e| %>
-                      <li><%= e %></li>
-                    <% end %>
+
+            <% if @order.approved_completion %>
+                </h1>
+                <p>Subject: <%= @order.subject %></p>
+                <p>Topic: <%= @order.topic %></p>
+                <p>Placed On: <%= @order.created_at %></p>
+                <p>Status: <%= @order.status %></p>
+                <p>Deadline: <%= @order.deadline %></p>
+                <p>Extra Comments: <%= @order.special_comments %></p>
+                <p>Approved Completion: <%= @order.approved_completion.to_s.titleize %></p>
+
+
+                <% @order.stud_docs.each do |f| %>
+                  <br><%= link_to f.to_s, f.url %><br>
+                <% end %>
+                <br>
+                <% @order.stud_pasted_images.each do |f| %>
+                  <a href="<%= f %>"><%= image_tag f, class: "result" %></a>
+                <% end %>
+                <br>
+                <p>Teacher Uploads:</p>
+                <% @order.teacher_docs.each do |f| %>
+                  <br><%= link_to f.path.to_s, f.url %><br>
                 <% end %>
 
-                <h3>Subject: <%= @order.subject %></h3><br><hr>
-                <h3>Topic: <%= @order.topic %></h3><br><hr>
+            <% else %>
+
+                <% if @order.stud_docs.any? %>
+                  <p>My Uploads:</p>
+                  <% @order.stud_docs.each do |f| %>
+                    <ul>
+                      <li><%= link_to f.path.to_s, f.url %></li>
+                    </ul>
+                  <% end %>
+                <% end %>
+                <% @order.stud_pasted_images.each do |f| %>
+                <a href="<%= f %>"><%= image_tag f, class: "result" %></a>
+                <% end %>
+                <br>
+                <br>
+
+                <% if @order.teacher_docs.any? %>
+                  <p>Teacher Uploads:</p>
+                  <% @order.teacher_docs.each do |f| %>
+                    <ul>
+                      <li><%= link_to f.path.to_s, f.url %></li>
+                    </ul>
+                  <% end %>
+                <% end %>
+                <p>Subject: <%= @order.subject %></p>
+                <p>Topic: <%= @order.topic %></p>
+                <br><br>
+
+            <hr>
+
+                <%= form_for [@student, @order], method: :patch do |f| %>
+                  <% if @order.errors.any? %>
+                  <h1><%= pluralize(@order.errors.count, "Errors") %> Prevented Your Order Creation </h1>
+                  <% @order.errors.full_messages.each do |e| %>
+                  <li><%= e %></li>
+                  <% end %>
+                <% end %>
 
                 <div class="form-group">
                     <%= f.label "About Homework" %><br>
@@ -111,32 +124,33 @@ $(document).ready(function()
                 </div>
 
                 <div class="form-group">
-                    <%= f.label :approved_completion, "Approve Completion" %><br>
+                    <%= f.label :approved_completion, "Approve Completion" %>
                     <%= f.check_box :approved_completion %>
                 </div>
 
                 <div class="form-group">
-                    <%= f.label "Upload More Docs (You Can Upload Multiple Docs With Multiple Select)" %><br>
-                    <%= f.file_field :stud_docs, multiple: true, class: "form-control" %>
+                    <%= f.label "Upload More Docs (You Can Upload Multiple Docs With Multiple Select)" %>
+                    <%= f.file_field :stud_docs, multiple: true %>
                 </div>
 
-                <%= f.submit "Update Status of Order", class: "btn btn-success" %>
+                <%= f.submit "Update Status of Order", class: "button button_highlight" %>
             <% end %>
 
+          </div>
         <% end %>
 
       <% end %>
 
     <% if teacher_logged_in? %>
 
-      <h1><%= @order.student.username %></h1>
+      <h3><%= @order.student.username %></h3>
       <p>Subject: <%= @order.subject %></p>
       <p>Topic: <%= @order.topic %></p>
       <p>Placed On: <%= @order.created_at %></p>
       <p>Deadline: <%= @order.deadline %></p>
       <p>Extra Comments: <%= @order.special_comments %></p>
-      <h2 class="text-center">Approved Completion: <%= @order.approved_completion.to_s.titleize %></h2>
-      Student Uploads:
+      <p>Approved Completion: <%= @order.approved_completion.to_s.titleize %></p>
+      <p>Student Uploads:</p>
       <% @order.stud_docs.each do |f| %>
         <br><%= link_to f.path.to_s, f.url %><br>
       <% end %>
@@ -148,7 +162,7 @@ $(document).ready(function()
       <br>
 
       <% if @order.teacher_id == current_teacher.id %>
-        Your Uploads:
+        <p>Your Uploads:</p>
         <% @order.teacher_docs.each do |f| %>
           <br><%= link_to f.path.to_s, f.url %><br>
         <% end %>
@@ -170,7 +184,7 @@ $(document).ready(function()
                 <%= f.file_field :teacher_docs, multiple: true, class: "form-control" %>
             </div>
 
-            <%= f.submit "Update Status of Order", class: "btn btn-success" %>
+            <%= f.submit "Update Status of Order", class: "button button_highlight" %>
 
         <% end %>
 
@@ -178,5 +192,5 @@ $(document).ready(function()
 
   <% end %>
 
-
+  <br><br><br><br>
 </div>
