@@ -13,29 +13,23 @@
 
 
   <div class="form-group">
-    <%= f.label "Username" %><br>
-    <%= f.text_field :username, class: "form-control" %>
-  </div>
+    <%= f.text_field :username, class: "form-control", placeholder: "Username" %>
+  </div><br>
 
   <div class="form-group">
-
-    <%= f.label "Password" %><br>
-    <%= f.password_field :password, class: "form-control" %>
-  </div>
+    <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
+  </div><br>
 
   <div class="form-group">
-
-    <%= f.label "Password Confirmation" %><br>
-    <%= f.password_field :password_confirmation, class: "form-control" %>
-  </div>
+    <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Password Confirmation"%>
+  </div><br>
 
   <div class="form-group">
-
     <%= f.label "Terms Of Acceptance" %>
     <%= f.check_box :acceptance_of_terms %>
   </div>
 
-  <%= f.submit "Sign Up!", class: "btn btn-success" %><br><br>
+  <%= f.submit "Sign Up!", class: "button button_highlight" %><br><br>
   <%= link_to "Already With Us? Login Instead!!!", new_students_session_path %>
 
   <% end %>

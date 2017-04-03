@@ -1,73 +1,59 @@
-<div class="form-wrapper">
+<div class="form-wrapper teacher-signup">
+  <div class="inner-form">
+    <h3>Signup</h3><br><br>
+    <%= form_for @teacher do |f| %>
 
-  <%= form_for @teacher do |f| %>
+    <% if @teacher.errors.any? %>
+      <div class="alert alert-danger">
+        <h1><%= pluralize(@teacher.errors.count, "Errors") %> Prevented Your Anonymous Identity Creation </h1>
+        <% @teacher.errors.full_messages.each do |e| %>
+        <li><%= e %></li>
+        <% end %>
+      </div>
+    <% end %>
 
-  <% if @teacher.errors.any? %>
-    <div class="alert alert-danger">
-      <h1><%= pluralize(@teacher.errors.count, "Errors") %> Prevented Your Anonymous Identity Creation </h1>
-      <% @teacher.errors.full_messages.each do |e| %>
-      <li><%= e %></li>
-      <% end %>
+    <div class="form-group">
+      <%= f.text_field :first_name, class: "form-control", placeholder: "First Name" %>
+    </div><br>
+
+    <div class="form-group">
+      <%= f.text_field :last_name, class: "form-control" , placeholder: "Last Name"%>
+    </div><br>
+
+    <div class="form-group">
+      <%= f.text_field :email, class: "form-control", placeholder: "Email" %>
+    </div><br>
+
+    <div class="form-group">
+      <%= f.number_field :phone, class: "form-control", placeholder: "Phone" %>
+    </div><br>
+
+    <div class="form-group">
+      <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
+    </div><br>
+
+    <div class="form-group">
+      <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Password Confirmation" %>
+    </div><br>
+
+    <div class="form-group">
+      <%= f.label "Country" %><br>
+      <%= f.select(:country, ["United States Of America", "Afghanistan","Albania","Algeria","Andorra","Angola","Anguilla","Antigua &amp; Barbuda","Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bermuda","Bhutan","Bolivia","Bosnia &amp; Herzegovina","Botswana","Brazil","British Virgin Islands","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Cape Verde","Cayman Islands","Chad","Chile","China","Colombia","Congo","Cook Islands","Costa Rica","Cote D Ivoire","Croatia","Cruise Ship","Cuba","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Estonia","Ethiopia","Falkland Islands","Faroe Islands","Fiji","Finland","France","French Polynesia","French West Indies","Gabon","Gambia","Georgia","Germany","Ghana","Gibraltar","Greece","Greenland","Grenada","Guam","Guatemala","Guernsey","Guinea","Guinea Bissau","Guyana","Haiti","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Isle of Man","Israel","Italy","Jamaica","Japan","Jersey","Jordan","Kazakhstan","Kenya","Kuwait","Kyrgyz Republic","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macau","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Mauritania","Mauritius","Mexico","Moldova","Monaco","Mongolia","Montenegro","Montserrat","Morocco","Mozambique","Namibia","Nepal","Netherlands","Netherlands Antilles","New Caledonia","New Zealand","Nicaragua","Niger","Nigeria","Norway","Oman","Pakistan","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Puerto Rico","Qatar","Reunion","Romania","Russia","Rwanda","Saint Pierre &amp; Miquelon","Samoa","San Marino","Satellite","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","South Africa","South Korea","Spain","Sri Lanka","St Kitts &amp; Nevis","St Lucia","St Vincent","St. Lucia","Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor L'Este","Togo","Tonga","Trinidad &amp; Tobago","Tunisia","Turkey","Turkmenistan","Turks &amp; Caicos","Uganda","Ukraine","United Arab Emirates","United Kingdom","Uruguay","Uzbekistan","Venezuela","Vietnam","Virgin Islands (US)","Yemen","Zambia","Zimbabwe" ], {}, { class: "custom-select mb-2 mr-sm-2 mb-sm-0" }) %>
     </div>
-  <% end %>
 
-  <div class="form-group">
+    <div class="form-group">
+      <%= f.label "Gender" %><br>
+      <%= f.select(:country, ["Male", "Female"], {}, { class: "custom-select mb-2 mr-sm-2 mb-sm-0" }) %>
+    </div>
 
-    <%= f.label "First Name" %><br>
-    <%= f.text_field :first_name, class: "form-control" %>
+    <div class="form-group">
+      <%= f.label "Terms Of Acceptance" %>
+      <%= f.check_box :acceptance_of_terms %>
+    </div>
+
+    <%= f.submit "Sign Up!", class: "button button_highlight" %><br><br>
+
+    <% end %>
+    <%= link_to "Login Instead??", new_teacher_session_path %>
   </div>
-
-  <div class="form-group">
-
-    <%= f.label "Last Name" %><br>
-    <%= f.text_field :last_name, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-
-    <%= f.label "Email" %><br>
-    <%= f.text_field :email, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-
-    <%= f.label "Phone" %><br>
-    <%= f.number_field :phone, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-
-    <%= f.label "Password" %><br>
-    <%= f.password_field :password, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-
-    <%= f.label "Password Confirmation" %><br>
-    <%= f.password_field :password_confirmation, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-
-    <%= f.label "Country" %><br>
-    <%= f.select :country, options_for_select(["United States Of America", "Afghanistan","Albania","Algeria","Andorra","Angola","Anguilla","Antigua &amp; Barbuda","Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bermuda","Bhutan","Bolivia","Bosnia &amp; Herzegovina","Botswana","Brazil","British Virgin Islands","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Cape Verde","Cayman Islands","Chad","Chile","China","Colombia","Congo","Cook Islands","Costa Rica","Cote D Ivoire","Croatia","Cruise Ship","Cuba","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Estonia","Ethiopia","Falkland Islands","Faroe Islands","Fiji","Finland","France","French Polynesia","French West Indies","Gabon","Gambia","Georgia","Germany","Ghana","Gibraltar","Greece","Greenland","Grenada","Guam","Guatemala","Guernsey","Guinea","Guinea Bissau","Guyana","Haiti","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Isle of Man","Israel","Italy","Jamaica","Japan","Jersey","Jordan","Kazakhstan","Kenya","Kuwait","Kyrgyz Republic","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macau","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Mauritania","Mauritius","Mexico","Moldova","Monaco","Mongolia","Montenegro","Montserrat","Morocco","Mozambique","Namibia","Nepal","Netherlands","Netherlands Antilles","New Caledonia","New Zealand","Nicaragua","Niger","Nigeria","Norway","Oman","Pakistan","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Puerto Rico","Qatar","Reunion","Romania","Russia","Rwanda","Saint Pierre &amp; Miquelon","Samoa","San Marino","Satellite","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","South Africa","South Korea","Spain","Sri Lanka","St Kitts &amp; Nevis","St Lucia","St Vincent","St. Lucia","Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor L'Este","Togo","Tonga","Trinidad &amp; Tobago","Tunisia","Turkey","Turkmenistan","Turks &amp; Caicos","Uganda","Ukraine","United Arab Emirates","United Kingdom","Uruguay","Uzbekistan","Venezuela","Vietnam","Virgin Islands (US)","Yemen","Zambia","Zimbabwe" ] ), class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-
-    <%= f.label "Gender" %><br>
-    <%= f.select :gender, options_for_select(["Male", "Female", "Prefer Not To Say"]), class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-
-    <%= f.label "Terms Of Acceptance" %>
-    <%= f.check_box :acceptance_of_terms %>
-  </div>
-
-  <%= f.submit "Sign Up!", class: "btn btn-success" %><br><br>
-
-  <% end %>
-  <%= link_to "Login Instead??", new_teacher_session_path %>
-
 </div>

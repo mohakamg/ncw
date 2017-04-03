@@ -1,19 +1,20 @@
-<div class="container form-wrapper">
+<div class="form-wrapper teacher-login">
+  <div class="inner-form">
+    <h3>Login</h3><br><br>
     <%= form_tag '/teacher_sessions' do %>
 
-        <div class="form-group">
-            <%= label_tag "Email" %><br>
-            <%= email_field_tag :email, "", class: "form-control" %>
-        </div>
+    <div class="form-group">
+      <%= email_field_tag :email, "", class: "form-control", placeholder: "Email" %>
+    </div><br>
 
-        <div class="form-group">
-            <%= label_tag "Password" %><br>
-            <%= password_field_tag :password, "", class: "form-control" %>
-        </div>
+    <div class="form-group">
+      <%= password_field_tag :password, "", class: "form-control", placeholder: "Password"  %>
+    </div><br>
 
-        <%= submit_tag "Log In!", class: "btn btn-success form-control" %>
-        <p class="text-center"><%= link_to "Dont' have a Teaching Account? Sign Up!", new_teacher_path %></p>
+    <%= submit_tag "Log In!", class: "button button_highlight" %><br><br>
+    <p class="text-center"><%= link_to "Dont' have a Teaching Account? Sign Up!", new_teacher_path %></p>
 
-        <p class="text-center"><%= link_to "Forgot Password? ", reset_password_path %></p>
+    <p class="text-center"><%= link_to "Forgot Password? ", reset_password_path %></p>
     <% end %>
+  </div>
 </div>

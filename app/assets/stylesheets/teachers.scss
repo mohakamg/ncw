@@ -1,9 +1,6 @@
 // Place all the styles related to the Teachers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.our-teachers{
-  background-color: #fff;
-}
 
 .show-teacher-img-size{
   border: 1px solid black;
@@ -56,4 +53,22 @@
 
 #our-teachers-title{
   color: #717070;
+}
+
+.inner-form{
+  padding: 10%;
+  background: white;
+  border-radius: 2%;
+}
+
+.teacher-signup{
+  background-image: image-url("crowd2.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.our-teachers{
+  background-image: image-url("crowd.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
 }

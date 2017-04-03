@@ -2,16 +2,14 @@
   <%= form_tag '/students_sessions/', method: :post  do %>
 
   <div class="form-group">
-    <%= label_tag :Username  %><br>
-    <%= text_field_tag :username, "", class: "form-control" %>
+    <%= text_field_tag :username, "", class: "form-control", placeholder: "Username" %>
   </div>
 
   <div class="form-group">
-    <%= label_tag :Password %><br>
-    <%= password_field_tag :password, "", class: "form-control" %>
-  </div>
+    <%= password_field_tag :password, "", class: "form-control", placeholder: "Password" %>
+  </div><br>
 
-  <%= submit_tag "Log In!", class: "btn btn-success" %><br><br>
+  <%= submit_tag "Log In!", class: "button button_highlight" %><br><br>
   <%= link_to "Not With Us!!! SignUp Instead? ", new_student_path %>
   <% end %>
 </div>
