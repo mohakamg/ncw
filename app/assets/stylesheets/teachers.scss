@@ -1,7 +1,7 @@
 // Place all the styles related to the Teachers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+@import url('https://fonts.googleapis.com/css?family=Pacifico|Shadows+Into+Light');
 .show-teacher-img-size{
   border: 1px solid black;
   height: 250px;
@@ -65,7 +65,11 @@
   opacity: 0;
 }
 
-
+.our-teachers{
+  background-image: image-url("crowd2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
 .overlay{
 
@@ -88,4 +92,84 @@
 
 .card-columns-teachers {
   column-count: 5;
+}
+
+.wrapper2{
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+  background-image: image-url("crowd.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  .showpage{
+    margin: auto 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .teacher-show-details{
+      height: 100vh;
+      color: rgba(255,255,255,0.5);
+      .left{
+        margin-top: 30vh;
+        margin-right: 10rem;
+        .heading-name{
+          font-size: 9rem;
+          font-family: 'Pacifico', cursive;
+        }
+        .heading-status{
+          font-size: 2rem;
+
+          font-family: 'Shadows Into Light', cursive;
+        }
+        .contact{
+          font-size: 2rem;
+          animation-iteration-count: 2;
+        }
+      }
+      .right{
+        margin-top: 25vh;
+        background: white;
+        padding-bottom: 0;
+        box-shadow: 0 0 100px 6px black;
+        height: 420px;
+        width: 320px;
+        position: relative;
+        .pro-pic{
+          padding: 10px;
+          height: 400px;
+          width: 300px;
+
+        }
+        .after {
+        position: absolute;
+        top: 320px;
+        left: 120px;
+        width: 200%;
+        display: block;
+        color: black;
+        overflow: hidden;
+        font-family: 'Shadows Into Light', cursive;
+        font-size: 3rem;
+        font-weight: bold;
+      }
+      .overlay2 {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        display: block;
+        color: #FFF;
+        background: rgba(0,0,255,0.3);
+      }
+
+      }
+    }
+  }
+}
+
+.order{
+  p{
+    color: white;
+  }
 }

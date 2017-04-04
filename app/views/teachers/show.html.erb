@@ -1,68 +1,39 @@
+<div class="wrapper2">
+
 <div class="showpage">
-  <div class="highlight">
-    <div class="teacher-show-details">
-      <div class="profile_pic">
-        <% if @teacher.profile_pic? %>
-          <%= image_tag @teacher.profile_pic, class: 'show-teacher-img-size' %><br>
-          <% if teacher_logged_in? %>
-            <%= link_to "Update Picture", edit_teacher_path(current_teacher) %>
-            <% end %>
-        <% else %>
-          <% if @teacher.gender == "Male" %>
-            <%= image_tag 'boy.jpg', class: 'show-teacher-img-size' %><br>
-          <% else %>
-            <%= image_tag 'girl.jpg', class: 'show-teacher-img-size' %><br>
-          <% end %>
-        <% end %>
-      </div>
-      <div class="teacher-show-details1">
-        <div class="teacher-show-details2">
-          <span class="glyphicon glyphicon-envelope" aria-hidden= true></span><a href="mailto:<%= @teacher.email %>"><%= @teacher.email %></a>
-          <h3><bold><%= (@teacher.first_name + " " + @teacher.last_name).titleize %></bold></h3>
+  <div class="teacher-show-details">
+
+      <div class="left">
+        <h1 class="display-3 heading-name animated slideInLeft">Hello, I am <br> <%= @teacher.first_name + " " + @teacher.last_name %></h1>
+        <hr class="my-4">
+        <p class="heading-status animated fadeInDown"><%= @teacher.status %></p><br>
+        <div class="contact animated wobble">
+          <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><%= " " + @teacher.email %></p>
+          <p><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span><%= " " + @teacher.phone %></p>
         </div>
-        <div class="teacher-show-details3">
-          <p><span class="glyphicon glyphicon-screenshot"></span><%= "\t" + @teacher.country.titleize %></p>
-          <p><span class="glyphicon glyphicon-earphone"></span><%= "\t" + @teacher.phone %></p>
-          <p><span class="glyphicon glyphicon-user"></span><%= "\t" + @teacher.gender %></p>
-        </div>
+        <p class="heading-status animated zoomInUp">About Me: <%= @teacher.about.html_safe %></p><br>
+        <p class="heading-status animated zoomInUp">Why Me: <%= @teacher.whyme.html_safe %></p><br>
       </div>
-      <div class="teacher-show-status">
-        <% if @teacher.status %>
-            <blockquote class="blockquote-reverse">
-                  <p><%= @teacher.status %></p>
-                  <footer> By <cite title="Source Title"><%= @teacher.first_name %></cite></footer>
-            </blockquote>
-        <% end %>
-      </div>
+
+
+
+    <div class="right animated slideInRight">
+      <%= image_tag @teacher.profile_pic, class: "pro-pic animated swing" %>
+      <p class="overlay2 animated slideInRight"></p>
+      <p class="after  animated rollIn">> LETS WORK TOGETHER</p>
     </div>
+
   </div>
-  <br><br><br>
-  <div class="container">
-
-    <div class="card card-outline-success">
-      <h3 class="card-header">About Me</h3>
-      <div class="card-block">
-        <p class="card-text"><%= @teacher.about.html_safe %></p>
-      </div>
-    </div>
-    <br>
-    <div class="card card-outline-success">
-      <h3 class="card-header">Why Me ?</h3>
-      <div class="card-block">
-        <p class="card-text"><%= @teacher.whyme.html_safe %></p>
-      </div>
-    </div>
+  </div>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 
-    <br><br>
+<!-- Order Processing  -->
 
-    <div id="comments-section">
+<div class="container">
+  <!-- Review Section  -->
+  <div id="comments-section">
       <div>
-        <% if teacher_logged_in? %>
-          <h3>Your Comments/Reviews:</h3>
-        <% else %>
-          <h3>Comments/Reviews:</h3>
-        <% end %>
         <div class="card-columns" id="comments">
           <% if @teacher.teacher_comments.any? %>
             <%= render @teacher.teacher_comments %>
@@ -73,105 +44,90 @@
         <br>
       </div>
     </div>
-    <% if !teacher_logged_in? %>
-      <%= form_for [@teacher, @teacher.teacher_comments.new], remote: true do |f| %>
-        <div class="form-group">
-          <%= f.text_field :comment, placeholder: "Post a Comment", class: "form-control" %>
-        </div>
-        <%= f.submit 'Post Comment', class:"btn btn-success" %>
-      <% end %>
+  <br>
+
+  <% if !teacher_logged_in? %>
+    <%= form_for [@teacher, @teacher.teacher_comments.new], remote: true do |f| %>
+      <div class=" container form-group">
+        <%= f.text_field :comment, placeholder: "Post a Comment", class: "form-control" %><br>
+        <%= f.submit 'Post a Comment/Review', class:"button button_highlight" %>
+      </div>
     <% end %>
-  </div>
+  <% end %>
 
 
 
   <br><br><br>
-
-<!-- Order Processing  -->
-
-<div class="container">
-  <% if teacher_logged_in? %>
-          <h3 class="text-center"><u>My Orders</u></h3>
-          <% if @teacher.orders.any? %>
-                  <table class="table table-hover">
-                  <th>Order Type</th>
-                  <th>Subject</th>
-                  <th>Topic</th>
-                  <th>Student</th>
-                  <th>Status</th>
-                  <th>Deadline</th>
-                  <% @teacher.orders.where(approved_completion: false, purchase_status: "Completed").order(updated_at: :desc).each do |order| %>
-                      <tr class="success">
-                          <td><%= link_to(order.id, teacher_order_path(@teacher, order)) +" " + order.order_type %></td>
-                          <td><%= order.subject %></td>
-                          <td><%= order.topic %></td>
-                          <td><%= order.student.username %></td>
-                          <td><%= order.status %></td>
-                          <td><%= order.deadline %></td>
-                      </tr>
-                  <% end %>
-              </table>
-          <% else %>
-              <p class="text-center">No Orders Yet</p>
-          <% end %>
-
-          <br><br><hr><br><br>
-
-          <h3 class="text-center"><u>New Orders You Can Accept?</u></h3>
-          <% if Order.where(teacher_id: 0).any? %>
-                  <table class="table table-hover">
-                  <th>Order Type</th>
-                  <th>Subject</th>
-                  <th>Topic</th>
-                  <th>Student Name</th>
-                  <th>Status</th>
-                  <th>Deadline</th>
-                  <th>Accept?</th>
-                  <% Order.where(teacher_id: 0, purchase_status: "Completed").order(updated_at: :desc).each do |order| %>
-                      <tr>
-                          <td><%= link_to(order.id, teacher_order_path(@teacher, order)) +" " + order.order_type %></td>
-                          <td><%= order.subject %></td>
-                          <td><%= order.topic %></td>
-                          <td><%= order.student.username %></td>
-                          <td><%= order.status %></td>
-                          <td><%= order.deadline %></td>
-                          <td><%= link_to "Accept this Order", teacher_order_accept_order_path_path(@teacher, order), method: :patch, remote: true , class:"btn btn-success" %></td>
-                      </tr>
-                  <% end %>
-                  </table>
-
-
-
-          <% else %>
-              <p class="text-center">No New Orders</p>
-          <% end %>
-          <br><br><br>
-          <h3 class="text-center"><u>Past Orders</u></h3>
-          <% if Order.where(approved_completion: true).any? %>
-                  <table class="table table-hover">
-                  <th>Order Type</th>
-                  <th>Subject</th>
-                  <th>Topic</th>
-                  <th>Student Name</th>
-                  <th>Status</th>
-                  <th>Deadline</th>
-                  <% @teacher.orders.where(approved_completion: true).order(updated_at: :desc).each do |order| %>
-                      <tr class="danger">
-                          <td><%= link_to(order.id, teacher_order_path(@teacher, order)) +" " + order.order_type %></td>
-                          <td><%= order.subject %></td>
-                          <td><%= order.topic %></td>
-                          <td><%= order.student.username %></td>
-                          <td><%= order.status %></td>
-                          <td><%= order.deadline %></td>
-                      </tr>
-                  <% end %>
-                  </table>
-          <% end %>
+  <div class="order">
+    <div class="card-columns">
+      <% if teacher_logged_in? %>
+      <% if @teacher.orders.any? %>
+      <% @teacher.orders.where(approved_completion: false, purchase_status: "Completed").order(updated_at: :desc).each do |order| %>
+      <div class="card card-success animated slideInRight">
+        <div class="card-block animated bounce">
+          <h4 class="card-title"><%= link_to(order.id, teacher_order_path(@teacher, order)) + " " + order.order_type %></h4>
+          <p class="card-text">
+            Student: <%= order.student.username %>
+            Subject: <%= order.subject %><br>
+            Topic: <%= order.topic %><br>
+            About Homework: <%= order.about_homework %><br>
+            Status: <%= order.status %><br>
+            Deadline: <%= order.deadline %><br>
+          </p>
+        </div>
+      </div>
       <% end %>
-</div>
+      <% end %>
 
+    </div>
+
+    <br><br><hr><br><br>
+
+    <div class="card-columns">
+      <% if Order.where(teacher_id: 0).any? %>
+      <% Order.where(teacher_id: 0, purchase_status: "Completed").order(updated_at: :desc).each do |order| %>
+        <div class="card">
+
+        <div class="card-block animated bounce" style="color:#333;">
+          <h4 class="card-title"><%= link_to(order.id, teacher_order_path(@teacher, order)) + " " + order.order_type %></h4>
+          <p class="card-text" style="color:#333;">
+            Subject: <%= order.subject %><br>
+            Topic: <%= order.topic %><br>
+            Student Name: <%= order.student.username %><br>
+            Status: <%= order.status %><br>
+            Deadline: <%= order.deadline %><br><br><br>
+            <%= link_to "Accept this Order", teacher_order_accept_order_path_path(@teacher, order), method: :patch, remote: true , class:"button button_highlight" %>
+          </p>
+        </div>
+      </div>
+      <% end %>
+      <% end %>
+    </div>
+
+    <br><br><hr><br><br>
+
+    <div class="card-columns">
+      <% if Order.where(approved_completion: true).any? %>
+
+      <% @teacher.orders.where(approved_completion: true).order(updated_at: :desc).each do |order| %>
+      <div class="card-block card-danger animated bounce">
+        <h4 class="card-title"><%= link_to(order.id, teacher_order_path(@teacher, order)) + " " + order.order_type %></h4>
+        <p class="card-text">
+          Subject: <%= order.subject %><br>
+          Topic: <%= order.topic %><br>
+          Student Name: <%= order.student.username %><br>
+          Status: <%= order.status %><br>
+          Deadline: <%= order.deadline %><br>
+        </p>
+      </div>
+      <% end %>
+      <% end %>
+      <% end %>
+    </div>
+
+    </div>
+<br><br><br><br><br><br>
 <!-- Order Processing Ends -->
+</div>
 
 <br><br><br>
-
-</div>
