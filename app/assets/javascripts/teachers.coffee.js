@@ -18,8 +18,8 @@ $(document).ready(function(){
       opacity: 1
     }, 1000, "linear");
 
-    if (--i) {          // If i > 0, keep going
-      theLoop(i);       // Call the loop again, and pass it the current value of i
+    if (--i) {          
+      theLoop(i);
     }
   }, 500);
 })($('.card').length);
