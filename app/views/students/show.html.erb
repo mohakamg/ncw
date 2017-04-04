@@ -1,7 +1,7 @@
 <div class="container order-show">
 
   <br><br><br><br>
-  <% if @student.orders.any? %>
+  <% if @student.orders.where(purchase_status: "Completed").any? %>
 
       <% @student.orders.where(approved_completion: false, status: "Completed", purchase_status: "Completed").order(updated_at: :desc).each do |order| %>
 
@@ -32,7 +32,7 @@
         <% end %>
 
 
-        <div class="card-columns">
+      <div class="card-columns">
       <% @student.orders.where(approved_completion: false, purchase_status: "Completed").where.not(status: "Completed").order(updated_at: :desc).each do |order| %>
             <div class="card">
               <div class="card-block">
@@ -80,12 +80,23 @@
             </div>
           </div>
         <% end %>
+        <br><br><br><br>
+
+        <%= link_to "Place New Order", new_student_order_path(student_id: current_student), class: "button button_highlight" %>
+    <% else %>
+
+    <div class="card card-inverse" style="background-color: #333; border-color: #333;">
+      <div class="card-block">
+        <h3 class="card-title">No Orders yet</h3>
+        <p class="card-text">Go Place Your First Order and Change Your Life.</p>
+        <%= link_to "Place New Order", new_student_order_path(student_id: current_student), class: "button button_highlight" %>
+      </div>
+    </div>
+
     <% end %>
 
 
-  <br><br><br><br>
 
-  <%= link_to "Place New Order", new_student_order_path(student_id: current_student), class: "button button_highlight" %>
     <br><br><br><br>  <br><br><br><br>
       <br><br><br><br>
       <% if @student.orders.count < 9 %>
