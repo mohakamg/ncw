@@ -1,4 +1,4 @@
 <h1>Forgot Password lInk</h1>
 <h3>We are here to help you out <%= @teacher.first_name + " " + @teacher.last_name %></h3>
 
-<p>Please Click On the Following Link To Recover Your Password: <%= link_to "http:localhost:3000/reset_password_link/?token=#{@teacher.email_confirm_token}", "http:localhost:3000/reset_password_link/?token=#{@teacher.email_confirm_token}" %></p>
+<p>Please Click On the Following Link To Recover Your Password: <%= link_to "#{Rails.application.secrets.app_host}/reset_password_link/?token=#{@teacher.email_confirm_token}", "#{Rails.application.secrets.app_host}/reset_password_link/?token=#{@teacher.email_confirm_token}" %></p>

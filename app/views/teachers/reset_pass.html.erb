@@ -1,12 +1,12 @@
 <div class="form-wrapper">
-  <h1>Forgot Password? NO PROBLEM'o</h1>
+  <h1 style="color:grey;">Forgot Password? NO PROBLEM'o</h1><br><br>
   <%= form_tag '/reset_password', method: :post do %>
     <div class="form-group">
-      <%= label_tag :email %><br>
-      <%= text_field_tag :email, "", class: "form-control" %>
+      <%= text_field_tag :email, "", class: "form-control", placeholder: "Email" %>
     </div>
-
-    <%= submit_tag "Submit", class: "btn btn-success" %>
+    <br>
+    <%= submit_tag "Submit", class: "button button_highlight" %>
 
   <% end %>
+  <br><br><br><br><br><br><br><br><br>
 </div>
