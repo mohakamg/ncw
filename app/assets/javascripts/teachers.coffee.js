@@ -8,8 +8,8 @@ $(document).ready(function(){
       $("#teacher-card-" + (i+1).toString()).animate({
         opacity: 1
       }, 1000, "linear");
-    }
   }, 1000);
+}
   //your code to be executed after 1 second
 
 });
