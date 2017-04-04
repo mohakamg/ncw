@@ -90,6 +90,9 @@ body {
 #banner .content .sub_title {
     font-weight: bold;
     text-align: center;
+    animation-duration: 4s;
+}
+.sub-sub-title{
 }
 #banner .content .title {
     font-size: 4.5rem;
@@ -102,7 +105,8 @@ body {
     font-size: 2rem;
     width: 1000px;
     margin: 0 auto 2rem auto;
-    line-height: 1.75
+    line-height: 1.75;
+    animation-delay: 1s;
 }
 #banner .content .button_wrapper {
     text-align: center;

@@ -21,6 +21,7 @@
     font-family: "PT Sans";
 }
 
+
 .form-wrapper{
     padding: 10% 30%;
 
@@ -31,7 +32,10 @@
     text-align: center;
     color: #3f3d4e;
 }
+.alert{
 
+  margin: 0;
+}
 .showteacher{
     padding: 10rem;
     margin-bottom: 17rem;
@@ -112,4 +116,8 @@ hr{
 
 .wide-container{
   margin: auto 3%;
+}
+
+@media (max-width: 1064px){
+
 }

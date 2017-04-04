@@ -1,15 +1,15 @@
 	<section id="banner">
 			<div class="wrapper">
 				<div class="content">
-					<h1 class="title">We create Billionaires ! </h1>
-					<h5>(Not The 4.0 Pointers)</h5><br>
-					<h2 class="sub_title">"Tomorrow is my Exam, but I don't care because a single sheet of paper cannot decide my future." <br> - Thomas Edison</h2>
+					<h1 class="title animated bounce">We create Billionaires ! </h1>
+					<h5 class="animated fadeInDown sub-sub-title">(Not The 4.0 Pointers)</h5><br>
+					<h2 class="sub_title animated lightSpeedIn">"Tomorrow is my Exam, but I don't care because a single sheet of paper cannot decide my future." <br> - Thomas Edison</h2>
 					<div class="button_wrapper">
 
-						<button type="button" class="button button_highlight" data-toggle="modal" data-target="#login-modal">
+						<button type="button" class="button button_highlight animated slideInLeft" data-toggle="modal" data-target="#login-modal">
 						  Login
 						</button>
-						<%= link_to "Sign Up", new_student_path, class: "button button_secondary" %>
+						<button type="button" name="button" class="button button_secondary animated slideInRight">	<%= link_to "Sign Up", new_student_path %></button>
 					</div>
 					<div id="see_more">
 						<%= image_tag 'arrows_down.png', class:"see_more" %>
