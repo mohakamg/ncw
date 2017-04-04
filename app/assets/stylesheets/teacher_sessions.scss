@@ -1,3 +1,9 @@
 // Place all the styles related to the TeacherSessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.teacher-login{
+  background: linear-gradient(45deg, #537577, #233237);
+  .inner-form-no-bg{
+    opacity: 0;
+  }
+}
