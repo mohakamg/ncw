@@ -9,17 +9,19 @@ $(document).ready(function(){
   //     }, 1000, "linear");
   //   }
 
+
+
   (function theLoop (i) {
   setTimeout(function () {
 
-    $("#teacher-card-" + (i+1).toString()).animate({
+    $("#teacher-card-" + (i).toString()).animate({
       opacity: 1
     }, 1000, "linear");
 
     if (--i) {          // If i > 0, keep going
       theLoop(i);       // Call the loop again, and pass it the current value of i
     }
-  }, 3000);
+  }, 500);
 })($('.card').length);
 
 });
