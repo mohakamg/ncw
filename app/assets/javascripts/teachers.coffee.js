@@ -18,10 +18,11 @@ $(document).ready(function(){
       opacity: 1
     }, 1000, "linear");
 
-    if (--i) {          
+    if (--i) {
       theLoop(i);
     }
   }, 500);
 })($('.card').length);
+
 
 });

@@ -1,45 +1,37 @@
 <div class="our-teachers">
   <% j = 1 %>
-  <div class="container">
+  <div class="wide-container">
       <br><br><br><br>
       <div class="card-columns">
         <% @teachers.each do |i| %>
           <% if i.id != 0 %>
-            <div class="card" style="border: #333;" id="teacher-card-<%= j %>">
-              <div class="card-block card-dark">
-                <h4 class="card-title"><%= link_to (i.first_name + " " + i.last_name).titleize, i %></h4>
-              </div>
-              <% if i.profile_pic? %>
-                <%= image_tag i.profile_pic, class: "card-img-top card-image-custom overlay" %>
-              <% else %>
-                <% if i.gender == "Male" %>
-                  <%= image_tag 'boy.jpg', class: 'card-img-top card-image-custom overlay' %><br>
+            <div class="card card-border narrow-cards" id="teacher-card-<%= j %>" style="width: 55%;">
+
+              <div class="", style="border-radius:4rem;">
+                <% if i.profile_pic? %>
+                  <%= image_tag i.profile_pic, class: "card-img-top card-image-custom overlay" %>
                 <% else %>
-                  <%= image_tag 'girl.jpg', class: 'card-img-top card-image-custom overlay' %><br>
+                  <% if i.gender == "Male" %>
+                    <%= image_tag 'boy.jpg', class: 'card-img-top card-image-custom overlay' %><br>
+                  <% else %>
+                    <%= image_tag 'girl.jpg', class: 'card-img-top card-image-custom overlay' %><br>
+                  <% end %>
                 <% end %>
-              <% end %>
-              <div class="card-block">
-                <p class="card-text">Status: <cite title="Source Title"><%= i.status %></cite></p>
+
               </div>
-              <div class="card-footer" style="background-color: #333;">
-                <small class="text-muted">Last updated 3 mins ago</small>
+              <div class="card-block">
+                <p class="card-text"><%= i.status %></p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted"><%= link_to (i.first_name + " " + i.last_name).titleize, i %></small>
               </div>
             </div>
-            <% if j == 2 %>
-              <div class="card p-3 text-center">
-                <blockquote class="card-blockquote">
-                  <p>The thing about smart people is they sound crazy to dumb people.</p>
 
-                      - <cite title="Source Title">Steve Jobs</cite>
-
-                </blockquote>
-              </div>
-            <% end %>
             <% j = j+1 %>
           <% end %>
         <% end %>
 
       </div>
   </div>
-  <br><br><br><br><br><br>
+  <br><br><br><br><br><br><br><br>
 </div>

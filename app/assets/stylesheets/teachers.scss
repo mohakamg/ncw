@@ -66,14 +66,13 @@
 }
 
 .our-teachers{
-  background-image: image-url("linen-back.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
 }
 
 .overlay{
 
-    border: 1px solid black;
+    border-bottom: 1px solid grey;
+    background: #d8dde2;
+    padding: 0.7rem;
 
 }
 
@@ -83,4 +82,9 @@
 
 .card {
   opacity: 0;
+  box-shadow: 10px 10px 5px grey;
+}
+.card-border{
+  border: 1px solid lightgrey;
+  border-radius: 1rem;
 }
