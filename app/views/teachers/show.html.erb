@@ -70,20 +70,20 @@
 
         <% if @teacher.orders.any? %>
           <% @teacher.orders.where(approved_completion: false, purchase_status: "Completed").order(updated_at: :desc).each do |order| %>
-          <div class="card card-success animated slideInRight">
-            <div class="card-block animated bounce">
-              <h4 class="card-title"><%= link_to(order.id, teacher_order_path(@teacher, order)) + " " + order.order_type %></h4>
-              <p class="card-text">
-                Student: <%= order.student.username %>
-                Subject: <%= order.subject %><br>
-                Topic: <%= order.topic %><br>
-                About Homework: <%= order.about_homework %><br>
-                Status: <%= order.status %><br>
-                Deadline: <%= order.deadline %><br>
-              </p>
+            <div class="card card-success">
+              <div class="card-block animated bounce">
+                <h4 class="card-title"><%= link_to(order.id, teacher_order_path(@teacher, order)) + " " + order.order_type %></h4>
+                <p class="card-text">
+                  Student: <%= order.student.username %>
+                  Subject: <%= order.subject %><br>
+                  Topic: <%= order.topic %><br>
+                  About Homework: <%= order.about_homework %><br>
+                  Status: <%= order.status %><br>
+                  Deadline: <%= order.deadline %><br>
+                </p>
+              </div>
             </div>
-          </div>
-        <% end %>
+          <% end %>
         <% end %>
 
     </div>
@@ -103,7 +103,7 @@
                 Status: <%= order.status %><br>
                 Deadline: <%= order.deadline %><br><br><br>
                 <%= link_to "Accept this Order", teacher_order_accept_order_path_path(@teacher, order), method: :patch, remote: true , class:"button button_highlight" %>
-              </p>
+              </p><br>
             </div>
           </div>
         <% end %>
