@@ -44,6 +44,7 @@
 .form-wrapper2{
     padding: 10%;
     padding-bottom: 21%;
+    margin: auto 20%;
 }
 
 .card-image-custom{
@@ -112,10 +113,19 @@ hr{
   padding: 0 30%;
   background: image-url("login.jpg");
   color: #428bca;
+  
 }
 
 .wide-container{
   margin: auto 3%;
+}
+
+.red-star{
+  color: red;
+  font-size: 1.5em;
+  margin: 0;
+  padding: 0;
+  display: inline;
 }
 
 @media (max-width: 1064px){

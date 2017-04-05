@@ -1,4 +1,4 @@
-<div class="form-wrapper">
+<div class="form-wrapper2">
     <%= form_for [@student, @order] do |f| %>
 
         <% if @order.errors.any? %>
@@ -9,15 +9,17 @@
         <% end %>
 
         <div class="form-group">
-            <%= f.label "Order" %><br>
+            <%= f.label "Order" %><span class="red-star">*</span><br>
             <%= f.select(:order_type, ["Get Homework Done", "Live Video Tuition", "Homework with Explaination"], {}, {class: "custom-select mb-2 mr-sm-2 mb-sm-0"}) %>
         </div>
-        <h3 id='price_of_option' style="color:#333;">Price: $3</h3>
+        <h3 id='price_of_option' style="color:grey;">Price: $3</h3>
         <div class="form-group">
+            <%= f.label "Subject:" %><span class="red-star">*</span><br>
             <%= f.text_field :subject, class: "form-control", placeholder: "Subject" %>
         </div><br>
 
         <div class="form-group">
+          <%= f.label "Topic:" %><span class="red-star">*</span><br>
             <%= f.text_field :topic, class: "form-control", placeholder: "Topic" %>
         </div><br>
 
@@ -26,7 +28,7 @@
         </div><br>
 
         <div class="form-group">
-            <%= f.label "Deadline (yy-mm-dd hh:mm)" %><br>
+            <%= f.label "Deadline (yy-mm-dd hh:mm)" %><span class="red-star">*</span><br>
             <%= f.datetime_field :deadline, class: "form-control" %>
         </div><br>
 
@@ -61,12 +63,12 @@
       console.log(selectedOption);
       if(selectedOption == "Get Homework Done"){
         console.log("Selected");
-        $('#price_of_option').innerHTML = "Price: $3";
+        $('#price_of_option').html("Price: $3");
       } else if(selectedOption == "Live Video Tuition"){
         console.log("Selected");
         $('#price_of_option').html("Price: $5/hr");
       }
-      else {
+      else if(selectedOption == "Homework with Explaination"){
         $('#price_of_option').html("Price: $4");
       }
     });
