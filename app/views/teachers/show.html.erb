@@ -17,11 +17,17 @@
 
 
 
-    <div class="right animated slideInRight">
-      <%= image_tag @teacher.profile_pic, class: "pro-pic animated swing" %>
-      <p class="overlay2 animated slideInRight"></p>
-      <p class="after  animated rollIn">> LETS WORK TOGETHER</p>
-    </div>
+      <div class="right animated slideInRight">
+        <% if @teacher.profile_pic %>
+          <%= image_tag @teacher.profile_pic, class: "pro-pic animated swing" %>
+        <% elsif @teacher.gender == "Male" %>
+          <%= image_tag "boy.jpg" %>
+        <% else %>
+          <%= image_tag "girl.jpg" %>
+        <% end %>
+        <p class="overlay2 animated slideInRight"></p>
+        <p class="after  animated rollIn">> LETS WORK TOGETHER</p>
+      </div>
 
   </div>
 </div>
@@ -130,3 +136,4 @@
 </div>
 
 <br><br><br>
+</div>
