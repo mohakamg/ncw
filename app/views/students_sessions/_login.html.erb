@@ -1,15 +1,14 @@
-<div class="form-wrapper">
-  <%= form_tag '/students_sessions/', method: :post  do %>
 
-  <div class="form-group">
-    <%= text_field_tag :username, "", class: "form-control", placeholder: "Username" %>
-  </div>
+<%= form_tag '/students_sessions/', method: :post  do %>
 
-  <div class="form-group">
-    <%= password_field_tag :password, "", class: "form-control", placeholder: "Password" %>
-  </div><br>
-
-  <%= submit_tag "Log In!", class: "button button_highlight" %><br><br>
-  <%= link_to "Not With Us!!! SignUp Instead? ", new_student_path %>
-  <% end %>
+<div class="form-group">
+  <%= text_field_tag :username, "", class: "form-control", placeholder: "Username" %>
 </div>
+
+<div class="form-group">
+  <%= password_field_tag :password, "", class: "form-control", placeholder: "Password" %>
+</div><br>
+
+<%= submit_tag "Log In!", class: "button button_highlight" %><br><br>
+<%= link_to "Not With Us!!! SignUp Instead? ", new_student_path %>
+<% end %>
