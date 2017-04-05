@@ -64,10 +64,10 @@
 
 
 
-
+<% if teacher_logged_in? %>
   <div class="order">
     <div class="card-columns">
-      <% if teacher_logged_in? %>
+
         <% if @teacher.orders.any? %>
           <% @teacher.orders.where(approved_completion: false, purchase_status: "Completed").order(updated_at: :desc).each do |order| %>
           <div class="card card-success animated slideInRight">
@@ -85,7 +85,7 @@
           </div>
         <% end %>
         <% end %>
-      <% end %>
+
     </div>
 
     <br><br><hr><br><br>
@@ -131,11 +131,11 @@
 
   <!-- Order Processing Ends -->
   </div>
-
+<% end %>
 </div>
-  <br><br><br><br><br><br>
 
-  <br><br><br>
+<br><br><br><br><br><br>
 
+<br><br><br>
 
 </div>
