@@ -1,64 +1,69 @@
 <div class="wrapper2">
 
-<div class="showpage">
-  <div class="teacher-show-details">
+  <div class="showpage">
+    <div class="teacher-show-details">
 
-      <div class="left">
-        <h1 class="display-3 heading-name animated slideInLeft">Hello, I am <br> <%= @teacher.first_name + " " + @teacher.last_name %></h1>
-        <hr class="my-4">
-        <p class="heading-status animated fadeInDown"><%= @teacher.status %></p><br>
-        <div class="contact animated wobble">
-          <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><%= " " + @teacher.email %></p>
-          <p><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span><%= " " + @teacher.phone %></p>
+        <div class="left">
+          <h1 class="display-3 heading-name animated slideInLeft">Hello, I am <br> <%= @teacher.first_name + " " + @teacher.last_name %></h1>
+          <hr class="my-4">
+          <p class="heading-status animated fadeInDown"><%= @teacher.status %></p><br>
+          <div class="contact animated wobble">
+            <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><%= " " + @teacher.email %></p>
+            <p><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span><%= " " + @teacher.phone %></p>
+          </div>
+          <p class="heading-status animated zoomInUp">About Me: <%= @teacher.about.html_safe %></p><br>
+          <p class="heading-status animated zoomInUp">Why Me: <%= @teacher.whyme.html_safe %></p><br>
         </div>
-        <p class="heading-status animated zoomInUp">About Me: <%= @teacher.about.html_safe %></p><br>
-        <p class="heading-status animated zoomInUp">Why Me: <%= @teacher.whyme.html_safe %></p><br>
-      </div>
 
 
 
-      <div class="right animated slideInRight">
-        <% if @teacher.profile_pic? %>
-          <%= image_tag @teacher.profile_pic, class: "pro-pic animated swing" %>
-        <% elsif @teacher.gender == "Male" %>
-          <%= image_tag "boy.jpg", class: "pro-pic animated swing" %>
-        <% else %>
-          <%= image_tag "girl.jpg", class: "pro-pic animated swing" %>
-        <% end %>
-        <p class="overlay2 animated slideInRight"></p>
-        <p class="after  animated rollIn">> LETS WORK TOGETHER</p>
-      </div>
+        <div class="right animated slideInRight">
+          <% if @teacher.profile_pic? %>
+            <%= image_tag @teacher.profile_pic, class: "pro-pic animated swing" %>
+          <% elsif @teacher.gender == "Male" %>
+            <%= image_tag "boy.jpg", class: "pro-pic animated swing" %>
+          <% else %>
+            <%= image_tag "girl.jpg", class: "pro-pic animated swing" %>
+          <% end %>
+          <p class="overlay2 animated slideInRight"></p>
+          <p class="after  animated rollIn">> LETS WORK TOGETHER</p>
+        </div>
 
+    </div>
   </div>
-
 
 <!-- Order Processing  -->
 
 
   <!-- Review Section  -->
-  <div id="comments-section">
+  <div class="container">
+
+    <div id="comments-section">
       <div class="card-columns" id="comments">
         <% if @teacher.teacher_comments.any? %>
-          <%= render @teacher.teacher_comments %>
+        <%= render @teacher.teacher_comments %>
         <% else %>
-          <p>No Comments/Reviews yet</p>
+        <p>No Comments/Reviews yet</p>
         <% end %>
       </div>
       <br>
-  </div>
+    </div>
+    <br>
 
-  <br>
-
-  <% if !teacher_logged_in? %>
-    <%= form_for [@teacher, @teacher.teacher_comments.new], remote: true do |f| %>
-      <div class=" container form-group">
-        <%= f.text_field :comment, placeholder: "Post a Comment", class: "form-control" %><br>
-        <%= f.submit 'Post a Comment/Review', class:"button button_highlight" %>
-      </div>
+    <% if !teacher_logged_in? %>
+      <%= form_for [@teacher, @teacher.teacher_comments.new], remote: true do |f| %>
+        <div class=" container form-group">
+          <%= f.text_field :comment, placeholder: "Post a Comment", class: "form-control" %><br>
+          <%= f.submit 'Post a Comment/Review', class:"button button_highlight" %>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
 
-  <br><br><br>
+    <br><br><br>
+
+
+
+
 
   <div class="order">
     <div class="card-columns">
@@ -123,12 +128,14 @@
         <% end %>
       <% end %>
     </div>
-  <!-- Order Processing Ends -->
-</div>
 
+  <!-- Order Processing Ends -->
+  </div>
+
+</div>
   <br><br><br><br><br><br>
 
   <br><br><br>
-</div>
+
 
 </div>
