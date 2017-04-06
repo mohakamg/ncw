@@ -6,7 +6,8 @@ class StudentsSessionsController < ApplicationController
 
   def new
   end
-  
+
+
   def create
     @student = Student.find_by_username(params[:username])
     if @student

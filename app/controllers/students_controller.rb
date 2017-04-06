@@ -33,6 +33,21 @@ class StudentsController < ApplicationController
     end
   end
 
+  protect_from_forgery except: [:getInfo]
+  def getInfo
+    username = params[:username]
+    pass = request.headers[:password]
+    if username && pass && Student.find_by_username(username).authenticate(pass)
+      respond_to do |f|
+        f.json { render json: Student.find_by_username(username)}
+      end
+    else
+      respond_to do |f|
+        f.json { render json: {"error": "Invalid ID Password Combination"}.to_json}
+      end
+    end
+  end
+
   private
   def stud_create_params
     params.require(:student).permit(:username,:password,:password_confirmation, :acceptance_of_terms)
