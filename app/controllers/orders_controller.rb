@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
 
-  before_action :require_login, except: [:hook]
+  before_action :require_login, except: [:hook, :getOrdersmobile]
   before_action :require_student_login, only: [:new, :create]
   before_action :require__teacher_login, only: [:accept_order_path]
 
@@ -116,7 +116,7 @@ class OrdersController < ApplicationController
     end
   end
 
-  protect_from_forgery except: [:hook]
+  protect_from_forgery except: [:hook, :getOrdersmobile]
   def hook
     status = params[:payment_status]
     if status == "Completed"
@@ -129,10 +129,26 @@ class OrdersController < ApplicationController
     end
   end
 
+  def getOrdersmobile
+    stud = Student.find(params[:id])
+    if stud && stud.token && stud.token == params['token']
+      orders = stud.orders
+      stud.token = ""
+      stud.save!
+      respond_to do |f|
+        f.json {render json: orders.as_json(except: [:stud_pasted_images, :price, :notification_params, :purchase_status]).to_json }
+      end
+    else
+      respond_to do |f|
+        f.json {render json: {error: "Authentication Failed!"}.to_json}
+      end
+    end
+  end
+
   private
 
   def create_order_student_params
-    params.require(:order).permit(:student_id, :order_type, :special_comments, :deadline, :approved_completion, :website, :credentials, :subject, :topic, :about_homework, {stud_docs: []}, :price, :notification_params, :purchase_status)
+    params.require(:order).permit(:student_id, :order_type, :special_comments, :deadline, :approved_completion, :website, :credentials, :subject, :topic, :about_homework, {stud_docs: []}, :price, :notification_params, :purchase_status, :time)
   end
 
   def create_order_teacher_params

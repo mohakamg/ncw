@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170402212221) do
+ActiveRecord::Schema.define(version: 20170407143311) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,24 +21,25 @@ ActiveRecord::Schema.define(version: 20170402212221) do
     t.string   "order_type",          default: "Get Homework Done"
     t.text     "special_comments"
     t.string   "status",              default: "Pending"
-    t.datetime "deadline"
+    t.date     "deadline",            default: '2017-04-07'
     t.boolean  "approved_completion", default: false
     t.string   "website"
     t.string   "credentials"
     t.string   "subject"
     t.string   "topic"
     t.text     "about_homework"
-    t.datetime "created_at",                                        null: false
-    t.datetime "updated_at",                                        null: false
-    t.string   "stud_docs",           default: [],                               array: true
+    t.datetime "created_at",                                          null: false
+    t.datetime "updated_at",                                          null: false
+    t.string   "stud_docs",           default: [],                                 array: true
     t.string   "stud_docs_tmp"
-    t.string   "teacher_docs",        default: [],                               array: true
-    t.string   "stud_pasted_images",  default: [],                               array: true
+    t.string   "teacher_docs",        default: [],                                 array: true
+    t.string   "stud_pasted_images",  default: [],                                 array: true
     t.integer  "price"
     t.text     "notification_params"
     t.string   "purchase_status"
     t.string   "transaction_id"
     t.datetime "purchased_at"
+    t.time     "time",                default: '2000-01-01 23:59:00'
     t.index ["student_id"], name: "index_orders_on_student_id", using: :btree
     t.index ["teacher_id"], name: "index_orders_on_teacher_id", using: :btree
   end
@@ -50,6 +51,7 @@ ActiveRecord::Schema.define(version: 20170402212221) do
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
     t.boolean  "acceptance_of_terms",   default: false
+    t.string   "token"
   end
 
   create_table "teacher_comments", force: :cascade do |t|

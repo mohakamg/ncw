@@ -47,6 +47,21 @@ class TeacherSessionsController < ApplicationController
     end
   end
 
+  protect_from_forgery except: [:login_mobile_teacher]
+  def login_mobile_teacher
+    email = params[:email]
+    password = params[:password]
+    if Teacher.find_by_email(email) && Teacher.find_by_email(email).authenticate(password)
+      respond_to do |f|
+        f.json {render json: Teacher.find_by_email(email)}
+      end
+    else
+      respond_to do |f|
+        f.json {render json: {'error': 'Invalid Login Credentials'}.to_json}
+      end
+    end
+  end
+
   private
 
   def check_student_login

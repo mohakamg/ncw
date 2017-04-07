@@ -1,18 +1,17 @@
 	<section id="banner">
 			<div class="wrapper">
 				<div class="content">
-					<h1 class="title animated bounce">We create Billionaires ! </h1>
-					<h5 class="animated fadeInDown sub-sub-title">(Not The 4.0 Pointers)</h5><br>
-					<h2 class="sub_title animated lightSpeedIn">"Tomorrow is my Exam, but I don't care because a single sheet of paper cannot decide my future." <br> - Thomas Edison</h2>
+					<h1 class="title">We create Billionaires ! </h1>
+					<h5 class="sub-sub-title">(Not The 4.0 Pointers)</h5><br>
+					<h2 class="sub_title">"Tomorrow is my Exam, but I don't care because a single sheet of paper cannot decide my future." <br> - Thomas Edison</h2>
 					<div class="button_wrapper">
 
-						<button type="button" class="button button_highlight animated slideInLeft" data-toggle="modal" data-target="#login-modal">
-						  Login
+						<button type="button" class="" data-toggle="modal" data-target="#login-modal" id="homework_btn">
+						  Get Your Homework Done
 						</button>
-						<button type="button" name="button" class="button button_secondary animated slideInRight">	<%= link_to "Sign Up", new_student_path %></button>
 					</div>
 					<div id="see_more">
-						<%= image_tag 'arrows_down.png', class:"see_more animated wobble" %>
+						<%= image_tag 'arrows_down.png', class:"see_more" %>
 					</div>
 				</div>
 			</div>
@@ -83,7 +82,16 @@
 							</div>
 							<div class="hw-list">
 								<%= image_tag 'arrow.png' %>
-								<li>Your Homework Done @ $3 / homework.</li>
+								<li>Your Homework Done @ <u>$3 / homework.</u></li>
+							</div>
+							<div class="hw-list">
+								<%= image_tag 'arrow.png' %>
+								<li>Every Subject Covered.</li>
+							</div>
+							<br>
+							<div class="hw-list">
+								<%= image_tag 'arrow.png' %>
+								<li>Unlimited Revisions until Not Satisfied With Homework<br></li>
 							</div>
 						</ul>
 					</div>
@@ -102,27 +110,51 @@
 
 		<section class="past_work" id="past2">
 
-				<h1>...Complete And Understand Your Homework</h1>
+				<h1>Dont Just Get it Done...Complete And Understand Your Homework</h1>
 
 				<div id="homework1">
 
 					<div id="hw1pts1">
-						<br><br>
-						<h2>The faster and smarter way to manage homework</h2>
-						<br><br>
-						<p>
-							Providing meaningful learning experiences for students, quality homework resources for teachers and powerfully simple homework management for leaders.
-						</p><br>
+						<ul>
+							<div class="hw-list">
+								<%= image_tag 'arrow.png' %>
+								<li>Anonymous Identity. No Login Details Taken.</li>
+							</div>
+							<div class="hw-list">
+								<%= image_tag 'arrow.png' %>
+								<li>Get Proper Explainations and Solutions of the Homework</li>
+							</div>
+							<div class="hw-list">
+								<%= image_tag 'arrow.png' %>
+								<li>Query Your Doubts while submitting the homework - in special comments section</li>
+							</div>
+							<div class="hw-list">
+								<%= image_tag 'arrow.png' %>
+								<li>Select From a Range Of Experts.</li>
+							</div>
+						</ul>
 					</div>
 
 					<div id="hw1pts2">
-						<br><br><br><br>
+						<ul>
 							<div class="hw-list">
-								<div>
-									<h2>MORE HOME...</h2>
-									<h2>...LESS WORK!</h2>
-								</div>
+								<%= image_tag 'arrow.png' %>
+								<li>Set Deadline For the Homework.</li>
 							</div>
+							<div class="hw-list">
+								<%= image_tag 'arrow.png' %>
+								<li>Your Homework Done @ <u>$4 / homework.</u></li>
+							</div>
+							<div class="hw-list">
+								<%= image_tag 'arrow.png' %>
+								<li>Every Subject Covered.</li>
+							</div>
+							<br>
+							<div class="hw-list">
+								<%= image_tag 'arrow.png' %>
+								<li>Unlimited Revisions until Not Satisfied With Homework<br></li>
+							</div>
+						</ul>
 					</div>
 
 					<div class="hw1imgdiv">

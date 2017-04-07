@@ -8,11 +8,15 @@
             <% end %>
         <% end %>
 
+
+
         <div class="form-group">
             <%= f.label "Order" %><span class="red-star">*</span><br>
             <%= f.select(:order_type, ["Get Homework Done", "Live Video Tuition", "Homework with Explaination"], {}, {class: "custom-select mb-2 mr-sm-2 mb-sm-0"}) %>
         </div>
+
         <h3 id='price_of_option' style="color:grey;">Price: $3</h3>
+
         <div class="form-group">
             <%= f.label "Subject:" %><span class="red-star">*</span><br>
             <%= f.text_field :subject, class: "form-control", placeholder: "Subject" %>
@@ -28,22 +32,34 @@
         </div><br>
 
         <div class="form-group">
-            <%= f.label "Deadline (yy-mm-dd hh:mm)" %><span class="red-star">*</span><br>
-            <%= f.datetime_field :deadline, class: "form-control" %>
+            <%= f.label "Date (yy-mm-dd)" %><span class="red-star">*</span><br>
+            <%= f.date_field :deadline, class: "form-control" %>
         </div><br>
 
         <div class="form-group">
-            <%= f.text_field :website, class: "form-control", placeholder: "Link To Homework (if any?)" %>
+            <%= f.label "Time (yy-mm-dd)" %><span class="red-star">*</span><br>
+            <%= f.time_field :time, class: "form-control", placeholder: "11:59:00" %>
         </div><br>
 
-        <div class="form-group">
-            <%= f.text_field :credentials, class: "form-control", placeholder: "Credentials for the Website. Leave blank if no website provided." %>
-        </div><br>
+        <div>
+
+          <h4>You Can Upload Screenshots of the website later in edit order.<br></h4><h4 class="text-center">OR</h4><h4>Put Website and Credentials Securely. Your Information will be 256 SSL Encrypted and will not be shared with the Teacher</h4><br>
+          <div class="form-group">
+            <%= f.label "Link To Homework (if any?)" %>
+            <%= f.url_field :website, class: "form-control", value: "www.something.something.com" %>
+          </div><br>
+
+          <div class="form-group">
+            <%= f.label "Credentials - Leave blank if no website provided." %>
+            <%= f.password_field :credentials, class: "form-control"  %>
+          </div><br>
+
+        </div>
+        <br><br>
 
         <div class="form-group">
             <%= f.text_area :special_comments, class: "form-control", placeholder: "Special Comments" %>
         </div><br>
-
         <div class="form-group">
             <%= f.label "Docs (You Can Upload Multiple Docs With Multiple Select)" %><br>
             <%= f.file_field :stud_docs, multiple: true, class: "btn" %>
@@ -51,6 +67,7 @@
 
         <div class="form-group">
             <%= f.submit "Place Order", class: "button button_highlight" %>
+            <p><span class="red-star">*</span> Required Fields</p>
         </div>
     <% end %>
 

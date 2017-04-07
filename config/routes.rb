@@ -30,6 +30,8 @@ Rails.application.routes.draw do
   end
 
   post "/hook" => "orders#hook", as: :hook
-  get '/student_info/:username' => 'students#getInfo'
+  post "/login_mobile_student" => "students_sessions#login_mobile_student"
+  post "/login_mobile_teacher" => "teacher_sessions#login_mobile_teacher"
+  get "/orders/:id/:token" => "orders#getOrdersmobile"
 
 end

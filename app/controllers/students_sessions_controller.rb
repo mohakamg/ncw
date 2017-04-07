@@ -38,6 +38,21 @@ class StudentsSessionsController < ApplicationController
     end
   end
 
+  protect_from_forgery except: [:login_mobile_student]
+  def login_mobile_student
+    username = params[:username]
+    password = params[:password]
+    if Student.find_by_username(username) && Student.find_by_username(username).authenticate(password)
+      student = Student.find_by_username(username)
+      token = SecureRandom.hex(10)
+      student.token = token
+      student.save!
+      respond_to do |f|
+        f.json {render json: {id: student.id, username: student.username, token: student.token}.to_json}
+      end
+    end
+  end
+
   private
 
   def check_login
