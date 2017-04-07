@@ -101,7 +101,7 @@
                 Topic: <%= order.topic %><br>
                 Student Name: <%= order.student.username %><br>
                 Status: <%= order.status %><br>
-                Deadline: <%= order.deadline %> | Time: <%= order.time %><br>
+                Deadline: <%= order.deadline %> | Time: <%= order.time %><br><br><br>
                 <%= link_to "Accept this Order", teacher_order_accept_order_path_path(@teacher, order), method: :patch, remote: true , class:"button button_highlight" %>
               </p><br>
             </div>
