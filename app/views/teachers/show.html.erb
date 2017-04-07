@@ -41,7 +41,9 @@
     <div id="comments-section">
       <div class="card-columns" id="comments">
         <% if @teacher.teacher_comments.any? %>
-        <%= render @teacher.teacher_comments %>
+          <% @top_comments = @teacher.teacher_comments.order("created_at desc").limit(6) %>
+          <%= render @top_comments %>
+          <button type="button" class="button button_highlight" data-toggle="modal" data-target="#comments">View More Comments</button>
         <% else %>
         <p>No Comments/Reviews yet</p>
         <% end %>
