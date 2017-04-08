@@ -40,6 +40,7 @@
 
     <div id="comments-section">
       <div class="card-columns" id="comments">
+        <h3 style="font-family: 'Shadows Into Light';">Comments:</h3>
         <% if @teacher.teacher_comments.any? %>
           <% @top_comments = @teacher.teacher_comments.order("created_at desc").limit(6) %>
           <%= render @top_comments %>

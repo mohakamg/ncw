@@ -1,9 +1,9 @@
-<div class="card card-inverse card-s">
-  <div class="card-header" style="color: white;">
+<div class="card card-inverse ">
+  <div class="card-header" style="color: black;">
      <%=  teacher_comment.student.username %>
   </div>
   <div class="card-block">
-    <blockquote class="card-blockquote" style="color: #fff;">
+    <blockquote class="card-blockquote" style="color: #000;">
       <p><%= teacher_comment.comment %></p>
       <footer>Submitted <cite title="Source Title"><%= time_ago_in_words(teacher_comment.created_at) %></cite> ago</footer>
     </blockquote>
