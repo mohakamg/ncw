@@ -67,7 +67,7 @@
 }
 
 .our-teachers{
-  background-image: image-url("crowd2.jpg");
+  background-image: image-url("");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -85,14 +85,16 @@
 }
 
 .card-border{
-  box-shadow: 10px 10px 5px grey;
   opacity: 0;
   border: 1px solid lightgrey;
-  border-radius: 1rem;
+  border-radius: 2rem;
+  img{
+    border-radius: 2rem;
+  }
 }
 
 .card-columns-teachers {
-  column-count: 5;
+  column-count: 6;
 }
 
 .wrapper2{
