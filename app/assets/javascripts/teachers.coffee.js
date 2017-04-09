@@ -1,4 +1,5 @@
 $(document).ready(function(){
+  
   $('.inner-form-no-bg').animate({
     opacity: 1
   }, 1000, "linear");
