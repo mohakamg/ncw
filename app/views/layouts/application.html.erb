@@ -51,9 +51,11 @@
                   <%= link_to "LogOut", students_session_path(current_student), method: :delete, class:"button button_secondary button_small" %>
                 <% else %>
                   <%= link_to "Teacher LogIn", new_teacher_session_path %>
-                  <%= link_to "Teacher Sign Up!", new_teacher_path, class:"button button_secondary button_small" %>
+                  <%= link_to "Teacher Sign Up!", new_teacher_path %>
                 <% end %>
+                <%= link_to "Chat With Us", '#', id: "chat", class:"button button_secondary button_small" %>
     					</nav>
+
     	</header>
   	</div>
 	</div>
@@ -78,11 +80,7 @@
   <footer id="main-footer">
 			<p class="copyright">&copy; 2017 <a href="#">Because We Hate School More Than You Do</a> :)</p>
   </footer>
-  <!--Start of Tawk.to Script-->
-  <script type="text/javascript">
 
-  </script>
-  <!--End of Tawk.to Script-->
 
 </body>
 
