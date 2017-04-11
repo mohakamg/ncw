@@ -38,14 +38,20 @@ class OrdersController < ApplicationController
     elsif params[:order][:order_type] == "Paper"
       @order.price = 15
     end
-
-    if @order.save
-      redirect_to @order.paypal_url(student_order_path(@student, @order))
+    dt = DateTime.parse(@order.deadline + " " + @order.time)
+    deadline = dt.strftime("20%y-%m-%d %I:%M %p").to_datetime
+    now = Time.now.strftime("20%y-%m-%d %I:%M %p").to_datetime
+    if((deadline-now).to_f*24 > 24 || (deadline-now).to_f *24< 0)
+      if @order.save
+        redirect_to @order.paypal_url(student_order_path(@student, @order))
+      else
+        flash[:notice] = "Not Created"
+        render :new
+      end
     else
-      flash[:notice] = "Not Created"
+      flash[:alert] = "Sorry. We Currently Do not Accept orders due in less than 24hrs"
       render :new
     end
-
   end
 
   def update
