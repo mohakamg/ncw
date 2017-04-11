@@ -12,19 +12,19 @@
 
         <div class="form-group">
             <%= f.label "Order" %><span class="red-star">*</span><br>
-            <%= f.select(:order_type, ["Get Homework Done", "Homework with Explaination"], {}, {class: "custom-select mb-2 mr-sm-2 mb-sm-0"}) %>
+            <%= f.select(:order_type, ["Get Homework Done", "Homework with Explaination", "Project", "Lab","Paper"], {}, {class: "custom-select mb-2 mr-sm-2 mb-sm-0"}) %>
         </div>
 
         <h3 id='price_of_option' style="color:grey;">Price: $3</h3>
 
         <div class="form-group">
             <%= f.label "Subject:" %><span class="red-star">*</span><br>
-            <%= f.text_field :subject, class: "form-control", placeholder: "Subject" %>
+            <%= f.select(:subject, ["Chemistry", "Physics", "Mathematics", "English", "Computer", "Electrical", "Politcals", "Arts" ], {}, {class: "custom-select mb-2 mr-sm-2 mb-sm-0"}) %>
         </div><br>
 
         <div class="form-group">
-          <%= f.label "Topic:" %><span class="red-star">*</span><br>
-            <%= f.text_field :topic, class: "form-control", placeholder: "Topic" %>
+          <%= f.label "Topic: " %><span class="red-star">*</span><br>
+            <%= f.text_field :topic, class: "form-control", placeholder: "(For Eg: SubCategory - Calculus 2, Topic - Integration I)" %>
         </div><br>
 
         <div class="form-group">
@@ -32,12 +32,12 @@
         </div><br>
 
         <div class="form-group">
-            <%= f.label "Date (yy-mm-dd)" %><span class="red-star">*</span><br>
+            <%= f.label "Date (mm-dd-hh)" %><span class="red-star">*</span><br>
             <%= f.date_field :deadline, class: "form-control" %>
         </div><br>
 
         <div class="form-group">
-            <%= f.label "Time (yy-mm-dd)" %><span class="red-star">*</span><br>
+            <%= f.label "Time (hh:mm AM/PM)" %><span class="red-star">*</span><br>
             <%= f.time_field :time, class: "form-control", placeholder: "11:59:00" %>
         </div><br>
 
@@ -46,7 +46,7 @@
           <h4>You Can Upload Screenshots of the website later in edit order.<br></h4><h4 class="text-center">OR</h4><h4>Put Website and Credentials Securely. Your Information will be 256 SSL Encrypted and will not be shared with the Teacher</h4><br>
           <div class="form-group">
             <%= f.label "Link To Homework (if any?)" %>
-            <%= f.url_field :website, class: "form-control", value: "www.something.something.com" %>
+            <%= f.url_field :website, class: "form-control", value: "https://www.something.something.com" %>
           </div><br>
 
           <div class="form-group">
@@ -66,7 +66,7 @@
         </div><br>
 
         <div class="form-group">
-            <%= f.submit "Place Order", class: "button button_highlight" %>
+            <%= f.submit "Place Order", class: "button button_highlight" %> <br>On Payment Page, Select Paypal to Pay with Paypal or Don't have a Paypal Account or Pay with Debit/Credit Card to pay with card.
             <p><span class="red-star">*</span> Required Fields</p>
         </div>
     <% end %>
@@ -84,6 +84,18 @@
       } else if(selectedOption == "Live Video Tuition"){
         console.log("Selected");
         $('#price_of_option').html("Price: $5/hr");
+      }
+      else if(selectedOption == "Project"){
+        console.log("Selected");
+        $('#price_of_option').html("Price: $15/Project");
+      }
+      else if(selectedOption == "Lab"){
+        console.log("Selected");
+        $('#price_of_option').html("Price: $10");
+      }
+      else if(selectedOption == "Paper"){
+        console.log("Selected");
+        $('#price_of_option').html("Price: $15");
       }
       else if(selectedOption == "Homework with Explaination"){
         $('#price_of_option').html("Price: $4");

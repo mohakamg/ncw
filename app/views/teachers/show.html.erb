@@ -4,29 +4,29 @@
     <div class="teacher-show-details">
 
         <div class="left">
-          <h1 class="display-3 heading-name animated slideInLeft">Hello, I am <br> <%= @teacher.first_name + " " + @teacher.last_name %></h1>
+          <h1 class="display-3 heading-name slideInLeft">Hello, I am <br> <%= @teacher.first_name + " " + @teacher.last_name %></h1>
           <hr class="my-4">
-          <p class="heading-status animated fadeInDown"><%= @teacher.status %></p><br>
-          <div class="contact animated wobble">
+          <p class="heading-status  fadeInDown"><%= @teacher.status %></p><br>
+          <div class="contact  wobble">
             <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><%= " " + @teacher.email %></p>
             <p><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span><%= " " + @teacher.phone %></p>
           </div>
-          <p class="heading-status animated zoomInUp">About Me: <%= @teacher.about.html_safe %></p><br>
-          <p class="heading-status animated zoomInUp">Why Me: <%= @teacher.whyme.html_safe %></p><br>
+          <p class="heading-status  zoomInUp">About Me: <%= @teacher.about.html_safe %></p><br>
+          <p class="heading-status  zoomInUp">Why Me: <%= @teacher.whyme.html_safe %></p><br>
         </div>
 
 
 
-        <div class="right animated slideInRight">
+        <div class="right  slideInRight">
           <% if @teacher.profile_pic? %>
-            <%= image_tag @teacher.profile_pic, class: "pro-pic animated swing" %>
+            <%= image_tag @teacher.profile_pic, class: "pro-pic  swing" %>
           <% elsif @teacher.gender == "Male" %>
-            <%= image_tag "boy.jpg", class: "pro-pic animated swing" %>
+            <%= image_tag "boy.jpg", class: "pro-pic  swing" %>
           <% else %>
-            <%= image_tag "girl.jpg", class: "pro-pic animated swing" %>
+            <%= image_tag "girl.jpg", class: "pro-pic  swing" %>
           <% end %>
-          <p class="overlay2 animated slideInRight"></p>
-          <p class="after  animated rollIn">> LETS WORK TOGETHER</p>
+          <p class="overlay2  slideInRight"></p>
+          <p class="after   rollIn">> LETS WORK TOGETHER</p>
         </div>
 
     </div>
@@ -72,7 +72,7 @@
         <% if @teacher.orders.any? %>
           <% @teacher.orders.where(approved_completion: false, purchase_status: "Completed").order(updated_at: :desc).each do |order| %>
             <div class="card card-success">
-              <div class="card-block animated bounce">
+              <div class="card-block  bounce">
                 <h4 class="card-title"><%= link_to(order.id, teacher_order_path(@teacher, order)) + " " + order.order_type %></h4>
                 <p class="card-text">
                   Student: <%= order.student.username %>
@@ -95,7 +95,7 @@
       <% if Order.where(teacher_id: 0).any? %>
         <% Order.where(teacher_id: 0, purchase_status: "Completed").order(updated_at: :desc).each do |order| %>
           <div class="card">
-            <div class="card-block animated bounce" style="color:#333;">
+            <div class="card-block  bounce" style="color:#333;">
               <h4 class="card-title"><%= link_to(order.id, teacher_order_path(@teacher, order)) + " " + order.order_type %></h4>
               <p class="card-text" style="color:#333;">
                 Subject: <%= order.subject %><br>

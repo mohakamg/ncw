@@ -26,4 +26,6 @@ class Order < ApplicationRecord
     "#{Rails.application.secrets.paypal_host}/cgi-bin/webscr?" + values.to_query
   end
 
+
+
 end

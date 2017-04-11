@@ -3,14 +3,14 @@
   <br><br><br><br>
   <% if @student.orders.where(purchase_status: "Completed").any? %>
 
-      <%= link_to "Place New Order", new_student_order_path(student_id: current_student), class: "button button_highlight animated fadeIn" %>
+      <%= link_to "Place New Order", new_student_order_path(student_id: current_student), class: "button button_highlight  fadeIn" %>
       <br><br><br>
       <% @student.orders.where(approved_completion: false, status: "Completed", purchase_status: "Completed").order(updated_at: :desc).each do |order| %>
 
 
                     <div class="card-columns">
-                      <div class="card card-success animated slideInLeft">
-                        <div class="card-block animated bounce">
+                      <div class="card card-success  slideInLeft">
+                        <div class="card-block  bounce">
                           <h4 class="card-title"><%= link_to(order.id, student_order_path(@student, order)) + " " + order.order_type %></h4>
                           <p class="card-text">
                             Subject: <%= order.subject %><br>
@@ -35,8 +35,8 @@
 
       <div class="card-columns">
       <% @student.orders.where(approved_completion: false, purchase_status: "Completed").where.not(status: "Completed").order(updated_at: :desc).each do |order| %>
-            <div class="card animated slideInRight">
-              <div class="card-block animated bounce">
+            <div class="card  slideInRight">
+              <div class="card-block  bounce">
                 <h4 class="card-title"><%= link_to(order.id, student_order_path(@student, order)) + " " + order.order_type %></h4>
                 <p class="card-text">
                   Subject: <%= order.subject %><br>
@@ -59,8 +59,8 @@
 
         <% @student.orders.where(approved_completion: true, purchase_status: "Completed").order(updated_at: :desc).each do |order| %>
           <div class="card-columns">
-            <div class="card card-danger animated slideInLeft">
-              <div class="card-block animated bounce">
+            <div class="card card-danger  slideInLeft">
+              <div class="card-block  bounce">
                 <h4 class="card-title"><%= link_to(order.id, student_order_path(@student, order)) + " " + order.order_type %></h4>
                 <p class="card-text">
                   Subject: <%= order.subject %><br>
