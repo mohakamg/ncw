@@ -2,7 +2,7 @@
     <div class="inner-form-no-bg">
 
     <h3>Signup</h3><br><br>
-    <%= form_for @teacher do |f| %>
+    <%= form_for @teacher, validate: true do |f| %>
 
     <% if @teacher.errors.any? %>
       <div class="alert alert-danger">
@@ -11,6 +11,7 @@
         <li><%= e %></li>
         <% end %>
       </div>
+      <br><br><br>
     <% end %>
 
     <div class="form-group">

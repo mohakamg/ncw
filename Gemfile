@@ -42,6 +42,7 @@ gem "sidekiq"
 gem 'figaro'
 gem 'localtunnel'
 gem 'bootstrap-sass', '3.2.0.2'
+gem 'client_side_validations'
 gem 'rails_12factor', group: :production
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
