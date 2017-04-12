@@ -44,7 +44,6 @@
         <h3 style="font-family: 'Shadows Into Light';">Comments:</h3>
           <% @top_comments = @teacher.teacher_comments.order("created_at desc").limit(6) %>
           <%= render @top_comments %>
-          <button type="button" class="button button_highlight" data-toggle="modal" data-target="#comments">View More Comments</button>
         <% end %>
       </div>
       <br>
