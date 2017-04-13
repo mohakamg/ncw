@@ -67,6 +67,7 @@ $(document).ready(function()
 
             <% else %>
 
+                Deadline: <%= @order.deadline %> | Time: <%= @order.time + " UTC" %><br><br><br>
                 <% if @order.stud_docs.any? %>
                   <p>My Uploads:</p>
                   <% @order.stud_docs.each do |f| %>
