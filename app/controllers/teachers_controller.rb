@@ -24,6 +24,9 @@ class TeachersController < ApplicationController
 
   def show
     @teacher = Teacher.find(params[:id])
+    if cookies['timezone']
+      Time.zone = cookies['timezone']
+    end
     if teacher_logged_in?
       if session[:teacher_id] != @teacher.id
         flash[:alert] = "No Sneaking Into Another Account"

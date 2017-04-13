@@ -27,9 +27,12 @@ class StudentsController < ApplicationController
 
   def show
     @student = Student.find(params[:id])
+    if cookies['timezone']
+      Time.zone = cookies['timezone']
+    end
     if session[:student_id] != @student.id
       flash[:alert] = "No Sneaking Into Another Account"
-      redirect_to current_studenst
+      redirect_to current_student
     end
   end
 

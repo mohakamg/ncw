@@ -8,6 +8,9 @@ class OrdersController < ApplicationController
   end
 
   def show
+    if cookies['timezone']
+      Time.zone = cookies['timezone']
+    end
     if student_logged_in?
       @student = Student.find(params[:student_id])
     else
