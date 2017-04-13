@@ -15,7 +15,7 @@
             <%= f.select(:order_type, ["Get Homework Done", "Homework with Explaination", "Project", "Lab","Paper"], {}, {class: "custom-select mb-2 mr-sm-2 mb-sm-0"}) %> More Subjects will be added soon.
         </div>
 
-        <h3 id='price_of_option' style="color:grey;">Price: $3</h3>
+        <h3 id='price_of_option' style="color:grey;">Price: $3 if hw due in next 2 days or more.<br>Price: $8 if hw due next day.</h3>
 
         <div class="form-group">
             <%= f.label "Subject:" %><span class="red-star">*</span><br>
@@ -33,7 +33,7 @@
 
         <div class="form-group">
             <%= f.label "Date (mm-dd-hh)" %><span class="red-star">*</span><br>
-            <%= f.date_field :deadline, class: "form-control" %>
+            <%= f.date_field :date, class: "form-control" %>
         </div><br>
 
         <div class="form-group">
@@ -80,7 +80,7 @@
       console.log(selectedOption);
       if(selectedOption == "Get Homework Done"){
         console.log("Selected");
-        $('#price_of_option').html("Price: $3");
+        $('#price_of_option').html("Price: $3 if hw due in next 2 days or more.<br>Price: $8 if hw due next day.");
       } else if(selectedOption == "Live Video Tuition"){
         console.log("Selected");
         $('#price_of_option').html("Price: $5/hr");
@@ -98,7 +98,7 @@
         $('#price_of_option').html("Price: $15");
       }
       else if(selectedOption == "Homework with Explaination"){
-        $('#price_of_option').html("Price: $4");
+        $('#price_of_option').html("Price: $6 if hw due in next 2 days or more.<br>Price: $10 if hw due next day.");
       }
     });
   });

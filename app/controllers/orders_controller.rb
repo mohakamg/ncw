@@ -25,19 +25,37 @@ class OrdersController < ApplicationController
     @student = Student.find(params[:student_id])
     @order = @student.orders.new(create_order_student_params)
     @order.teacher_id = 0
-    if params[:order][:order_type] == "Get Homework Done"
-      @order.price = 3
-    elsif params[:order][:order_type] == "Homework with Explaination"
-      @order.price = 4
-    elsif params[:order][:order_type] == "Live Video Tuition"
-      @order.price = 5
-    elsif params[:order][:order_type] == "Lab"
-      @order.price = 10
-    elsif params[:order][:order_type] == "Project"
-      @order.price = 15
-    elsif params[:order][:order_type] == "Paper"
-      @order.price = 15
+    @order.deadline = (params[:order][:date]+ " " + params[:order][:time]).to_time
+    if( (@order.deadline - Time.now.to_time)/1.hours>24)
+      if params[:order][:order_type] == "Get Homework Done"
+        @order.price = 3
+      elsif params[:order][:order_type] == "Homework with Explaination"
+        @order.price = 6
+      elsif params[:order][:order_type] == "Live Video Tuition"
+        @order.price = 5
+      elsif params[:order][:order_type] == "Lab"
+        @order.price = 10
+      elsif params[:order][:order_type] == "Project"
+        @order.price = 15
+      elsif params[:order][:order_type] == "Paper"
+        @order.price = 15
+      end
+    else
+      if params[:order][:order_type] == "Get Homework Done"
+        @order.price = 8
+      elsif params[:order][:order_type] == "Homework with Explaination"
+        @order.price = 10
+      elsif params[:order][:order_type] == "Live Video Tuition"
+        @order.price = 5
+      elsif params[:order][:order_type] == "Lab"
+        @order.price = 10
+      elsif params[:order][:order_type] == "Project"
+        @order.price = 15
+      elsif params[:order][:order_type] == "Paper"
+        @order.price = 15
+      end
     end
+
 
     if @order.save
       redirect_to @order.paypal_url(student_order_path(@student, @order))
@@ -156,7 +174,7 @@ class OrdersController < ApplicationController
   private
 
   def create_order_student_params
-    params.require(:order).permit(:student_id, :order_type, :special_comments, :deadline, :approved_completion, :website, :credentials, :subject, :topic, :about_homework, {stud_docs: []}, :price, :notification_params, :purchase_status, :time)
+    params.require(:order).permit(:student_id, :order_type, :special_comments, :deadline, :approved_completion, :website, :credentials, :subject, :topic, :about_homework, {stud_docs: []}, :price, :notification_params, :purchase_status, :time, :date)
   end
 
   def create_order_teacher_params
