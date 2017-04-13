@@ -44,6 +44,7 @@ gem 'localtunnel'
 gem 'bootstrap-sass', '3.2.0.2'
 gem 'client_side_validations'
 gem 'rails_12factor', group: :production
+gem 'detect_timezone_rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'rails_admin'

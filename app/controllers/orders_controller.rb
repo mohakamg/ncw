@@ -24,9 +24,9 @@ class OrdersController < ApplicationController
   def create
     @student = Student.find(params[:student_id])
     @order = @student.orders.new(create_order_student_params)
+    Time.zone = cookies[:timezone]
     @order.teacher_id = 0
-    @order.deadline = (params[:order][:date]+ " " + params[:order][:time]).to_time
-    if( (@order.deadline - Time.now.to_time)/1.hours>24)
+    if( (@order.deadline.to_time - Time.now.to_time)/1.hours>24)
       if params[:order][:order_type] == "Get Homework Done"
         @order.price = 3
       elsif params[:order][:order_type] == "Homework with Explaination"

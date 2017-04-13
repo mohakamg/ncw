@@ -47,7 +47,7 @@ $(document).ready(function()
                 <p>Topic: <%= @order.topic %></p>
                 <p>Placed On: <%= @order.created_at %></p>
                 <p>Status: <%= @order.status %></p>
-                Deadline: <%= @order.deadline %> | Time: <%= @order.time + " UTC" %><br><br><br>
+                Deadline: <%= @order.deadline %><br>
                 <p>Extra Comments: <%= @order.special_comments %></p>
                 <p>Approved Completion: <%= @order.approved_completion.to_s.titleize %></p>
 
@@ -67,7 +67,7 @@ $(document).ready(function()
 
             <% else %>
 
-                Deadline: <%= @order.deadline %> | Time: <%= @order.time + " UTC" %><br><br><br>
+                Deadline: <%= @order.deadline %><br>
                 <% if @order.stud_docs.any? %>
                   <p>My Uploads:</p>
                   <% @order.stud_docs.each do |f| %>
@@ -148,7 +148,7 @@ $(document).ready(function()
       <p>Subject: <%= @order.subject %></p>
       <p>Topic: <%= @order.topic %></p>
       <p>Placed On: <%= @order.created_at %></p>
-      Deadline: <%= @order.deadline %> | Time: <%= @order.time + " UTC" %><br><br><br>
+      Deadline: <%= @order.deadline %><br><br><br>
       <p>Extra Comments: <%= @order.special_comments %></p>
       <p>Approved Completion: <%= @order.approved_completion.to_s.titleize %></p>
       <p>Student Uploads:</p>

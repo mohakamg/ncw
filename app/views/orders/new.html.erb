@@ -32,13 +32,8 @@
         </div><br>
 
         <div class="form-group">
-            <%= f.label "Date (mm-dd-hh)" %><span class="red-star">*</span><br>
-            <%= f.date_field :date?, class: "form-control" %>
-        </div><br>
-
-        <div class="form-group">
-            <%= f.label "Time (hh:mm AM/PM)" %><span class="red-star">*</span><br>
-            <%= f.time_field :time, class: "form-control", placeholder: "11:59:00" %>
+            <%= f.label "Deadline (mm-dd-hh) (hh:mm AM/PM)" %><span class="red-star">*</span><br>
+            <%= f.datetime_field :deadline, class: "form-control", id: "deadline_field"  %>
         </div><br>
 
         <div>
@@ -66,7 +61,7 @@
         </div><br>
 
         <div class="form-group">
-            <%= f.submit "Place Order", class: "button button_highlight" %> <br>On Payment Page, Select Paypal to Pay with Paypal or Don't have a Paypal Account or Pay with Debit/Credit Card to pay with card.
+            <%= f.submit "Place Order", class: "button button_highlight" %><br>On Payment Page, Select Paypal to Pay with Paypal or Don't have a Paypal Account or Pay with Debit/Credit Card to pay with card.
             <p><span class="red-star">*</span> Required Fields</p>
         </div>
     <% end %>
@@ -75,6 +70,8 @@
 <script type="text/javascript">
 
   $(document).ready(function(){
+    console.log($('#deadline_field').get_timezone());
+    document.cookie= "timezone="+$('#deadline_field').get_timezone();
     $('#order_order_type').on('change', function(){
       var selectedOption = $('#order_order_type option:selected').text();
       console.log(selectedOption);
