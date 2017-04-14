@@ -336,11 +336,16 @@ footer .copyright a {
     overflow-x: hidden;
   }
 
+  #nav{
+    background: white;
+  }
+
   #nav header{
     display: flex;
     flex-direction: column;
     align-items: center;
     #logo{
+      color: black;
       font-size: 3rem;
     }
     nav{
@@ -349,6 +354,7 @@ footer .copyright a {
       align-items: center;
       font-size: 2rem;
       a{
+        color: black;
         margin-top: 4%;
         margin-bottom: 4%;
       }
