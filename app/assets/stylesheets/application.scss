@@ -127,6 +127,22 @@ hr{
   display: inline;
 }
 
-@media (max-width: 1064px){
+@media (max-width: 450px){
+  .form-wrapper{
+    padding: 0;
+  }
+  .inner-form-no-bg{
+    margin: 0;
+  }
 
+  .inner-form{
+    padding-top: 50%;
+    background: transparent;
+  }
+  nav::before{
+    content: " ";
+    border-bottom: 1px solid white;
+    width: 100%;
+    padding-top: 7%;
+  }
 }

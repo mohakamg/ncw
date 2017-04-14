@@ -5,3 +5,10 @@
     background: radial-gradient(circle,#537577, #233237);
     padding-bottom: 20px;
 }
+
+@media (max-width: 450px){
+  .inner-form{
+    padding: 10%;
+    background: transparent;
+  }
+}
