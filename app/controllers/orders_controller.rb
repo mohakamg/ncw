@@ -93,7 +93,7 @@ class OrdersController < ApplicationController
       order.approved_completion = params[:order][:approved_completion]
 
       if order.save
-        flash[:success] = "Order Updated Successfully. Have a wonderful time!!!"
+        flash[:success] = "Order Updated Successfully. Have a wonderful time!!"
         redirect_to student_order_path(student, order)
       else
         flash[:notice] = "Not Created"
