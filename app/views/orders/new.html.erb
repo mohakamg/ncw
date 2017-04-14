@@ -33,7 +33,7 @@
 
         <div class="form-group">
             <%= f.label "Deadline (mm-dd-hh) (hh:mm AM/PM)" %><span class="red-star">*</span><br>
-            <%= f.datetime_field :deadline, class: "form-control", id: "deadline_field"  %>
+            <%= f.datetime_field :deadline, class: "form-control", id: "deadline_field", input_html: {value: DateTime.now}  %>
         </div><br>
 
         <div>
