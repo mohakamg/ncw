@@ -11,11 +11,11 @@
 
 
         <div class="form-group">
-            <%= f.label "Order" %><span class="red-star">*</span><br>
-            <%= f.select(:order_type, ["Get Homework Done", "Homework with Explaination", "Project", "Lab","Paper"], {}, {class: "custom-select mb-2 mr-sm-2 mb-sm-0"}) %> More Subjects will be added soon.
+            <%= f.label "Order" %><span class="red-star">*</span><br>More Subjects will be added soon.
+            <%= f.select(:order_type, ["Get Homework Done", "Homework with Explaination", "Project", "Lab","Paper"], {}, {class: "custom-select mb-2 mr-sm-2 mb-sm-0"}) %>
         </div>
 
-        <h3 id='price_of_option' style="color:grey;">Price: $3 if hw due in next 2 days or more.<br>Price: $8 if hw due next day.</h3>
+        <p id='price_of_option'>Price: $3 if hw due in next 2 days or more.<br>Price: $8 if hw due next day.</p>
 
         <div class="form-group">
             <%= f.label "Subject:" %><span class="red-star">*</span><br>
@@ -38,7 +38,7 @@
 
         <div>
 
-          <h4>You Can Upload Screenshots of the website later in edit order.<br></h4><h4 class="text-center">OR</h4><h4>Put Website and Credentials Securely. Your Information will be 256 SSL Encrypted and will not be shared with the Teacher</h4><br>
+          <p>You Can Upload Screenshots of the website later in edit order or put Website and Credentials Securely. Your Information will be 256 SSL Encrypted and will not be shared with the Teacher<p><br>
           <div class="form-group">
             <%= f.label "Link To Homework (if any?)" %>
             <%= f.url_field :website, class: "form-control", value: "https://www.something.something.com" %>
@@ -50,9 +50,9 @@
           </div><br>
 
         </div>
-        <br><br>
 
         <div class="form-group">
+          <%= f.label "Special Comments" %>
             <%= f.text_area :special_comments, class: "form-control", placeholder: "Special Comments" %>
         </div><br>
         <div class="form-group">
@@ -61,7 +61,7 @@
         </div><br>
 
         <div class="form-group">
-            <%= f.submit "Place Order", class: "button button_highlight" %><br>On Payment Page, Select Paypal to Pay with Paypal or Don't have a Paypal Account or Pay with Debit/Credit Card to pay with card.
+            <%= f.submit "Place Order", class: "button button_highlight" %><br><br>On Payment Page, Select Paypal to Pay with Paypal or Don't have a Paypal Account or Pay with Debit/Credit Card to pay with card.
             <p><span class="red-star">*</span> Required Fields</p>
         </div>
     <% end %>

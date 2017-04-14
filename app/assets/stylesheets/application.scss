@@ -131,15 +131,18 @@ hr{
   .form-wrapper{
     padding: 0;
     background: #7ac483;
+    color: white;
   }
   .inner-form-no-bg{
     margin: 0;
     background: #7ac483;
+    color: white;
   }
 
   .inner-form{
     padding-top: 50%;
     background: #7ac483;
+    color: white;
   }
   nav::before{
     content: " ";
@@ -150,6 +153,7 @@ hr{
   .form-wrapper2{
     margin: 0;
     background: #7ac483;
+    color: white;
   }
 
   .order-edit-show{
@@ -168,6 +172,10 @@ hr{
   .button_highlight{
     background: white;
     color: black;
+  }
+
+  .order-form{
+    padding-top: 10%;
   }
 
 }
