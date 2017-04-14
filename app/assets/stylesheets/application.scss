@@ -130,14 +130,16 @@ hr{
 @media (max-width: 500px){
   .form-wrapper{
     padding: 0;
+    background: #7ac483;
   }
   .inner-form-no-bg{
     margin: 0;
+    background: #7ac483;
   }
 
   .inner-form{
     padding-top: 50%;
-    background: transparent;
+    background: #7ac483;
   }
   nav::before{
     content: " ";
@@ -147,9 +149,17 @@ hr{
   }
   .form-wrapper2{
     margin: 0;
+    background: #7ac483;
   }
 
   .order-edit-show{
     padding: 0;
   }
+
+  #main-footer{
+    background: white;
+    h3,p, a {color: black;}
+
+  }
+
 }
