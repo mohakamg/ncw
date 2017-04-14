@@ -327,3 +327,89 @@ footer .copyright a {
   border-radius: 3rem;
   border: none;
 }
+
+
+@media (max-width: 800px) {
+
+  html{
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  #nav header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    #logo{
+      font-size: 3rem;
+    }
+    nav{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 2rem;
+      a{
+        margin-top: 4%;
+        margin-bottom: 4%;
+      }
+    }
+  }
+
+  #banner .content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .sub_title{
+      display: none;
+    }
+  }
+
+  #services{
+    display: none;
+  }
+
+  .past_work{
+    h1{
+      font-size: 1.8rem;
+      font-weight: bold;
+      padding: 1%;
+    }
+    #homework1{
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      margin: 0;
+      margin-top: 2%;
+      .hw1img{
+      margin-bottom: 10%;
+      width: 95%;
+      padding: 1%;
+      }
+      #hw1pts2, #hw1pts1{
+        width: 100%;
+      }
+
+    }
+    .block-button-container{
+      margin: 0;
+      padding: 0;
+    }
+    .block-button-container2{
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  #contact{
+
+  }
+
+  .button_large{
+
+      font-size: 1.2rem;
+
+  }
+
+}
