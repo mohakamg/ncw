@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  
+
   $('.inner-form-no-bg').animate({
     opacity: 1
   }, 1000, "linear");
@@ -22,7 +22,7 @@ $(document).ready(function(){
     if (--i) {
       theLoop(i);
     }
-  }, 500);
+  }, 50);
 })($('.card-border').length);
 
 
