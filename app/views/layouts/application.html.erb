@@ -43,7 +43,7 @@
   <div id="nav">
     <div class="wrapper">
       <header>
-    					<p id="logo">Naughty<span>College</span>Works</p>
+    					<p id="logo">College<span>Studios</span></p>
 
     					<nav>
                 <% if !teacher_logged_in? && !student_logged_in? %>
@@ -60,7 +60,7 @@
                   <%= link_to "LogOut", students_session_path(current_student), method: :delete %>
                 <% else %>
                   <%= link_to "Teacher LogIn", new_teacher_session_path %>
-                  <%= link_to "Teacher Sign Up!", new_teacher_path %>
+                  <!-- <%= link_to "Teacher Sign Up!", new_teacher_path %> -->
                 <% end %>
                 <%= link_to "Chat With Us", '#', id: "chat", class:"button button_secondary button_small" %>
     					</nav>
@@ -89,7 +89,7 @@
   <footer id="main-footer">
 
     	<h3 class="copyright">Best kept secret of college success. Used by thousands of students and still counting.</h3><hr>
-			<p class="copyright">&copy; 2017 <a href="#">Because We Hate School More Than You Do</a> :)</p>
+			<p class="copyright">&copy; 2017 <a href="#">Because We Have No Special Talents, Only Passionately Curious</a> :)</p>
   </footer>
 
 

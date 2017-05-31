@@ -31,31 +31,31 @@ class OrdersController < ApplicationController
     @order.teacher_id = 0
     if( (@order.deadline.to_time - Time.now.to_time)/1.hours>24)
       if params[:order][:order_type] == "Get Homework Done"
-        @order.price = 3
-      elsif params[:order][:order_type] == "Homework with Explaination"
-        @order.price = 6
-      elsif params[:order][:order_type] == "Live Video Tuition"
-        @order.price = 5
-      elsif params[:order][:order_type] == "Lab"
-        @order.price = 10
-      elsif params[:order][:order_type] == "Project"
-        @order.price = 15
-      elsif params[:order][:order_type] == "Paper"
-        @order.price = 15
-      end
-    else
-      if params[:order][:order_type] == "Get Homework Done"
         @order.price = 8
       elsif params[:order][:order_type] == "Homework with Explaination"
         @order.price = 10
       elsif params[:order][:order_type] == "Live Video Tuition"
-        @order.price = 5
+        @order.price = 8
       elsif params[:order][:order_type] == "Lab"
-        @order.price = 10
+        @order.price = 15
       elsif params[:order][:order_type] == "Project"
-        @order.price = 15
+        @order.price = 20
       elsif params[:order][:order_type] == "Paper"
+        @order.price = 20
+      end
+    else
+      if params[:order][:order_type] == "Get Homework Done"
         @order.price = 15
+      elsif params[:order][:order_type] == "Homework with Explaination"
+        @order.price = 18
+      elsif params[:order][:order_type] == "Live Video Tuition"
+        @order.price = 8
+      elsif params[:order][:order_type] == "Lab"
+        @order.price = 15
+      elsif params[:order][:order_type] == "Project"
+        @order.price = 20
+      elsif params[:order][:order_type] == "Paper"
+        @order.price = 20
       end
     end
 

@@ -48,7 +48,7 @@ body {
     clear: both
 }
 #banner {
-    background-image: image-url("banner_background.png");
+    background-image: image-url("crowd2.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
@@ -57,9 +57,10 @@ body {
     color: white;
 }
 #nav{
-    background: black;
+    //background: black;
     padding-bottom: 1%;
-    opacity: 0.5;
+    //opacity: 0.5;
+    background: #7ac483;
 }
 #nav header {
     padding: 2rem 0;
@@ -91,6 +92,7 @@ body {
     font-weight: bold;
     text-align: center;
     animation-duration: 4s;
+    color: #7ac483;
 }
 .sub-sub-title{
 }

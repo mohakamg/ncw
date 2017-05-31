@@ -57,13 +57,17 @@
 
 
 .teacher-signup{
-  background: linear-gradient(135deg, #537577, #233237);
-  color: white;
+  //background: linear-gradient(135deg, #537577, #233237);
+  //color: white;
 }
 
 .inner-form-no-bg{
   opacity: 0;
   margin: auto 20%;
+  color: black;
+  h3{
+    color: black;
+  }
 }
 
 .our-teachers{

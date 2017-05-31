@@ -15,7 +15,7 @@
             <%= f.select(:order_type, ["Get Homework Done", "Homework with Explaination", "Project", "Lab","Paper"], {}, {class: "custom-select mb-2 mr-sm-2 mb-sm-0"}) %>
         </div>
 
-        <p id='price_of_option'>Price: $3 if hw due in next 2 days or more.<br>Price: $8 if hw due next day.</p>
+        <p id='price_of_option'>Price: $8 if hw due in next 2 days or more.<br>Price: $15 if hw due next day.</p>
 
         <div class="form-group">
             <%= f.label "Subject:" %><span class="red-star">*</span><br>
@@ -77,25 +77,25 @@
       console.log(selectedOption);
       if(selectedOption == "Get Homework Done"){
         console.log("Selected");
-        $('#price_of_option').html("Price: $3 if hw due in next 2 days or more.<br>Price: $8 if hw due next day.");
+        $('#price_of_option').html("Price: $8 if hw due in next 2 days or more.<br>Price: $15 if hw due next day.");
       } else if(selectedOption == "Live Video Tuition"){
         console.log("Selected");
-        $('#price_of_option').html("Price: $5/hr");
+        $('#price_of_option').html("Price: $8/hr");
       }
       else if(selectedOption == "Project"){
         console.log("Selected");
-        $('#price_of_option').html("Price: $15/Project");
+        $('#price_of_option').html("Price: $20/Project");
       }
       else if(selectedOption == "Lab"){
         console.log("Selected");
-        $('#price_of_option').html("Price: $10");
+        $('#price_of_option').html("Price: $15");
       }
       else if(selectedOption == "Paper"){
         console.log("Selected");
-        $('#price_of_option').html("Price: $15");
+        $('#price_of_option').html("Price: $20/Order");
       }
       else if(selectedOption == "Homework with Explaination"){
-        $('#price_of_option').html("Price: $6 if hw due in next 2 days or more.<br>Price: $10 if hw due next day.");
+        $('#price_of_option').html("Price: $10 if hw due in next 2 days or more.<br>Price: $18 if hw due next day.");
       }
     });
   });
