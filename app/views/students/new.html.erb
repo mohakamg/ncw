@@ -1,7 +1,7 @@
 <div class="form-wrapper new-student">
   <div class="inner-form">
     <%= form_for @student do |f| %>
-
+    <h3>Student Signup</h3>
     <% if @student.errors.any? %>
     <div class="alert alert-danger">
       <h1><%= pluralize(@student.errors.count, "Errors") %> Prevented Your Anonymous Identity Creation </h1>
